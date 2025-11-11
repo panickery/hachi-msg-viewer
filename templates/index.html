@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MSG Viewer</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div id="app">
+<!--    <div id="sidebar" class="sidebar">-->
+<!--    <input type="text" id="searchBox" placeholder="Search..." />-->
+<!--    <div id="folderTree" class="folder-tree"></div>-->
+<!--    <div id="messageList" class="message-list"></div>-->
+<!--    </div>-->
+<!--    <div id="messageView" class="message-view"></div>-->
+
+    <header>
+      <h1>MSG Viewer</h1>
+      <div class="controls">
+        <input id="folder-input" placeholder="스캔할 폴더 경로 입력 (예: C:\\Users\\you\\Desktop\\mails)" />
+        <button id="scan-btn">Scan</button>
+        <input id="search-input" placeholder="검색어 입력" />
+        <button id="search-btn">Search</button>
+      </div>
+    </header>
+    <main>
+      <aside id="left-pane">
+<!--        <div id="message-list"></div>-->
+        <div id="sidebar" class="sidebar">
+    <input type="text" id="searchBox" placeholder="Search..." />
+    <div id="folderTree" class="folder-tree"></div>
+    <div id="messageList" class="message-list"></div>
+    </div>
+    <div id="messageView" class="message-view"></div>
+      </aside>
+      <section id="right-pane">
+        <div id="message-detail">선택된 메일이 없습니다.</div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+body{font-family: Arial, sans-serif;margin:0;padding:0}
+header{padding:10px;background:#222;color:#fff;display:flex;align-items:center;justify-content:space-between}
+header h1{margin:0;font-size:18px}
+.controls input{margin-right:6px}
+main{display:flex;height:calc(100vh - 60px)}
+aside#left-pane{width:360px;border-right:1px solid #ddd;overflow:auto}
+section#right-pane{flex:1;padding:12px;overflow:auto}
+.msg-row{padding:8px;border-bottom:1px solid #eee;cursor:pointer}
+.msg-row:hover{background:#f5f5f5}
+pre{white-space:pre-wrap}
+.sidebar { width: 320px; overflow-y: auto; border-right: 1px solid #ddd; padding: 10px; }
+.folder-item { padding: 4px 6px; cursor: pointer; }
+.folder-item:hover { background: #eee; }
+.folder-children { margin-left: 12px; }
+.message-list { margin-top: 14px; }
+.message-item { padding: 6px; cursor: pointer; border-bottom: 1px solid #eee; }
+.message-item:hover { background: #f5f5f5; }
+.message-view { flex: 1; padding: 14px; overflow-y: auto; }
