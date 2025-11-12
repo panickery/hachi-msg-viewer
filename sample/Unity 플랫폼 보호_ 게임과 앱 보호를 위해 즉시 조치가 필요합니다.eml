@@ -1,0 +1,512 @@
+Delivered-To: panicker0117@gmail.com
+Received: by 2002:a05:7000:d886:b0:729:c8bf:da9a with SMTP id mm6csp5001069mab;
+        Fri, 3 Oct 2025 04:13:06 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHVpf5FhA2npzWaMlhNIPF+sQiR6bphFDRkfmyKAIcFi+9941fklQWyARrproxt4z6dnjeE
+X-Received: by 2002:a05:6214:1308:b0:7f0:88f2:a42e with SMTP id 6a1803df08f44-879dc841cc5mr29781756d6.33.1759489986061;
+        Fri, 03 Oct 2025 04:13:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1759489986; cv=none;
+        d=google.com; s=arc-20240605;
+        b=b0G017Hi7B5QSrEesh7ZN3SR6WA8GfvjkPEuaPtPKvMX8uXAk1eBHSOy30NhvCoChG
+         dAct4Q56UW45mMcSOmDGhuIthoXGwbaFSIALZEAdADyioYrynRsuOGb8qlOaIND6VcXY
+         ddxoyvdCdK5zNhPmL0o4X760UuafG4nxK7hJqsQLdWF8JCtokDtH36DMd5Yor2E0UPnJ
+         wtkKXXkzCq+n7dociadPvl3y55+RvXVMdYisCSFu5o1Yjl6F+p97Z1J4x8bAFOx+zLZE
+         /oxUIb2NDGvnBeD6BKZE/xuUovfwS7Lth7CxxHGNNO18p3yxGEGjS6DFDlY58FXZJ21Q
+         uTTA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:reply-to:subject:message-id:mime-version:from:date
+         :content-transfer-encoding:dkim-signature:dkim-signature;
+        bh=24PnL5PUVy7NHN8jZVjrToKY/nK0LtXzU5/L4tcGY78=;
+        fh=61LiNnff/7rrwP3NHDsjY26kmdCWf8iOsm4ycRDdRpc=;
+        b=b9/hRjKo86bI1U9AtxGXrJQ2gEFJy7CcXEUh2JHSSese+YEwiaMglF+/QVFACtvJFt
+         BO1yZhDQRtOWHt7y4/XGG1P+KAqknT/x9hP5kGZMvRx6NBr1VrefqaTm9+SUcaMRydtx
+         m+3JwkL5rbNdfzzXOiyjMCW6IpHyv6oozTqPwu3DspvD3HNHbmkhRCzoUVg8xstqqel9
+         1DP237Cma9T4OooCWodc/jOHl/6VwSw9WmZZk3pAEyLCcFDiRtnap6/11KMCHZcmyJT8
+         YOaGbkqBIVxs6D+uGnhx7J8oCjGpGQfGd/cj2leXCuGX59qy/LjAGFKfeOYKDRFwlx02
+         G+cA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@unity3d.com header.s=mte header.b="EMQH/ijO";
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=qNtvHQOb;
+       spf=pass (google.com: domain of bounces+29417914-7cd8-panicker0117=gmail.com@em437.unity3d.com designates 167.89.92.213 as permitted sender) smtp.mailfrom="bounces+29417914-7cd8-panicker0117=gmail.com@em437.unity3d.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=unity3d.com
+Return-Path: <bounces+29417914-7cd8-panicker0117=gmail.com@em437.unity3d.com>
+Received: from o1.sg.unity3d.com (o1.sg.unity3d.com. [167.89.92.213])
+        by mx.google.com with ESMTPS id 6a1803df08f44-878bdf53bb8si20088886d6.372.2025.10.03.04.13.05
+        for <panicker0117@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 03 Oct 2025 04:13:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+29417914-7cd8-panicker0117=gmail.com@em437.unity3d.com designates 167.89.92.213 as permitted sender) client-ip=167.89.92.213;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@unity3d.com header.s=mte header.b="EMQH/ijO";
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=qNtvHQOb;
+       spf=pass (google.com: domain of bounces+29417914-7cd8-panicker0117=gmail.com@em437.unity3d.com designates 167.89.92.213 as permitted sender) smtp.mailfrom="bounces+29417914-7cd8-panicker0117=gmail.com@em437.unity3d.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=unity3d.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unity3d.com;
+	h=content-transfer-encoding:content-type:date:from:mime-version:subject:
+	reply-to:to:cc:content-type:date:feedback-id:from:subject:to;
+	s=mte; bh=24PnL5PUVy7NHN8jZVjrToKY/nK0LtXzU5/L4tcGY78=;
+	b=EMQH/ijOLhKDI6ChPtKcrPy+cTG5ttdXClOzYFIxmesVoPoNkJpdlCT30XdLR+Nc885a
+	WUuFwongVIQ1l3ANnBxaZyRgKeVyJ6Au8hg2KlwxQFnwkOEDyCDqMAYcHpZKe7TGYV5pp4
+	ORgp5VCkOZEeIan/zw715wE0ys33sPjGNtg9TzHCb5LSpUVQxXf9b1kHYy96TtrmIu17RR
+	oC0CkXowX6QncZorsWBRcKovl8X7Kw11li31gikj0bAbECW1c2zU7lAD5GphHOrMXXbyc7
+	VhOo38oAGJBMVczoXWNt15P47+XKM+PeGWaYdnMagdLXq9rtr4ooaIOlqGHEMUDw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-transfer-encoding:content-type:date:from:mime-version:subject:
+	reply-to:to:cc:content-type:date:feedback-id:from:subject:to;
+	s=smtpapi; bh=24PnL5PUVy7NHN8jZVjrToKY/nK0LtXzU5/L4tcGY78=;
+	b=qNtvHQOb1/iUS56sidlEP/LT9yIOJsZzX0yGBtwClfaruEGuMoxuQWxuISraAfLbSH1s
+	fpUGYEXfHL6Id52SB2bpO5ipryvMxPlBVidP9RHY4G4365heR64/i8lRDTaBNvCJeQ0jRk
+	Vf1af4wGWDXwc3SaCPux5Hu+0+JCGiNy0=
+Received: by recvd-cd74f57c6-l926q with SMTP id recvd-cd74f57c6-l926q-1-68DFAFBB-3
+	2025-10-03 11:12:59.032273805 +0000 UTC m=+10434531.926400628
+Received: from Mjk0MTc5MTQ (unknown)
+	by geopod-ismtpd-4 (SG) with HTTP
+	id 6PANEPi2TiKgt447HYXnyw
+	Fri, 03 Oct 2025 11:12:58.990 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Date: Fri, 03 Oct 2025 11:13:05 +0000 (UTC)
+From: Unity <info@unity3d.com>
+Mime-Version: 1.0
+Message-ID: <6PANEPi2TiKgt447HYXnyw@geopod-ismtpd-4>
+Subject: Unity =?UTF-8?B?7ZSM656r7Y+8IOuztO2YuDog6rKM7J6E6rO8IOyVsQ==?=
+ =?UTF-8?B?IOuztO2YuOulvCDsnITtlbQg7KaJ7IucIOyhsOy5mOqwgA==?=
+ =?UTF-8?B?IO2VhOyalO2VqeuLiOuLpA==?=
+Reply-To: Unity <noreply@unity3d.com>
+X-SG-EID: 
+ =?us-ascii?Q?u001=2EKL=2FuFxdeFmWOUaNNaGmRJN8zucBGtYa1wfPPkEbswvEZCim83S70JUmi9?=
+ =?us-ascii?Q?UDaEPYGJy07eCeuspY4kr3KnytXafDCvR1jnVrm?=
+ =?us-ascii?Q?pwJclAsUklOS6ZF8vhlSE2kYVhFXx+EKzBtv5yr?=
+ =?us-ascii?Q?E7pV3vIqYewKXsWxZ9DolHl821RM8=2FPBtLanSOv?=
+ =?us-ascii?Q?STh2sT9qs0Lb5CDqYQbj6OrbheeCAYkHhVEbmvf?=
+ =?us-ascii?Q?LEnOHMtpRROkR=2FHgeQaOaY=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?u001=2ESdBcvi+Evd=2FbQef8eZF3BjL1uj6WAYE3P3oDx14p9MsU2qtHciNmtFAxy?=
+ =?us-ascii?Q?i6t0DLqkx+qMllZDYLJ3loes=2FYVDQ=3D=3D?=
+To: panicker0117@gmail.com
+X-Entity-ID: u001.Mz19M5KP76LXQPGZHUKHrw==
+
+<!DOCTYPE html><html><head><!-- template date: may 2019 --><meta charset=3D=
+"utf-8"><meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-sc=
+ale=3D1"><meta name=3D"MobileOptimized" content=3D"320"><meta http-equiv=3D=
+"X-UA-Compatible" content=3D"IE=3Dedge"><meta name=3D"color-scheme" content=
+=3D"light dark"><meta name=3D"supported-color-schemes" content=3D"light dar=
+k"><title>Unity</title><link href=3D"https://fonts.googleapis.com/css?famil=
+y=3DRoboto:100,300,400,700" rel=3D"stylesheet" type=3D"text/css"><link href=
+=3D"https://fonts.googleapis.com/css?family=3DRoboto+Mono:100,300,400,700" =
+rel=3D"stylesheet" type=3D"text/css"><!-- main --><style type=3D"text/css">=
+:root {color-scheme: light dark;supported-color-schemes: light dark;}@media=
+ (prefers-color-scheme: dark) {/* Shows Dark Mode-Only Content, Like Images=
+ */.dark-img { display:block !important; width: auto !important; overflow: =
+visible !important; float: none !important; max-height:inherit !important; =
+max-width:inherit !important; line-height: auto !important; margin-top:0px =
+!important; visibility:inherit !important; }/* Hides Light Mode-Only Conten=
+t, Like Images */.light-img { display:none; display:none !important; }/* Cu=
+stom Dark Mode Background Color */.darkmode { background-color: #121212 !im=
+portant; }/* Custom Dark Mode Font Colors */h1, h2, p, span, b, strong, td =
+{ color: #ffffff !important; }}/* Shows Dark Mode-Only Content, Like Images=
+ */[data-ogsc] .dark-img { display:block !important; width: auto !important=
+; overflow: visible !important; float: none !important; max-height:inherit =
+!important; max-width:inherit !important; line-height: auto !important; mar=
+gin-top:0px !important; visibility:inherit !important; }/* Hides Light Mode=
+-Only Content, Like Images */[data-ogsc] .light-img { display:none; display=
+:none !important; }/* Custom Dark Mode Background Color */[data-ogsc] .dark=
+mode { background-color: #121212 !important; }/* Custom Dark Mode Font Colo=
+rs */[data-ogsc] h1, [data-ogsc] h2, [data-ogsc] p, [data-ogsc] span, [data=
+-ogsc] b, [data-ogsc] strong, [data-ogsc] td { color: #ffffff !important; }=
+</style><style type=3D"text/css">@import url(https://fonts.googleapis.com/c=
+ss?family=3DRoboto:100,300,400,500,700); @import url(https://fonts.googleap=
+is.com/css?family=3DRoboto+Mono:100,300,400,500,700); td {font-family: 'Rob=
+oto', Arial, sans-serif; }body {margin: 0; padding: 0; }img {border: 0; max=
+-width: 100%; height: auto; outline: none; text-decoration: none; }table td=
+ {border-collapse: collapse; }strong, b {font-weight: 500; }.appleLinksUnit=
+yBlue a {color: #000000 !important; text-decoration: none; }.appleLinksWhit=
+e a {color: #ffffff !important; text-decoration: none; }</style><!-- deskto=
+p --><style type=3D"text/css">@media only screen and (min-width: 600px) {}<=
+/style><!-- mobile --><style type=3D"text/css">@media only screen and (max-=
+width: 600px) {.logo-container {padding: 20px 0 !important;} .browser-view =
+{padding: 32px 0 !important;} .font14 {font-size: 14px !important; line-hei=
+ght: 22px !important; } .font16 {font-size: 16px !important; line-height: 2=
+4px !important; } .header {padding: 0 0 25px !important; font-size: 14px !i=
+mportant; line-height: 22px !important; } .heading {font-size: 20px !import=
+ant; line-height: 28px !important; } .descriptive-label {font-size: 12px !i=
+mportant; line-height: 20px !important; } img.logo {width: 66px !important;=
+ } table.table {width: 100% !important; } td.content, table.content {width:=
+ 92% !important; } td.footer {font-size: 10px !important; } img {display: b=
+lock; width: 100%; } .responsive {display: block !important;width: 100% !im=
+portant; height: auto !important;} .responsive-2 {width: 47% !important;} .=
+responsive-3 {width: 96px !important;} .responsive-4 {display: block;} .hid=
+e {display:none;} .heading-gap {line-height: 8px !important; height: 8px !i=
+mportant; } .color-gap {height: 50px !important; line-height: 50px;} .block=
+-gap {line-height: 48px !important; height: 48px !important; } .height8 {he=
+ight: 8px !important;line-height: 8px !important;} .height12 {height: 12px =
+!important;line-height: 12px !important;} .height4 {height: 4px !important;=
+line-height: 4px !important;} .height16 {height: 16px !important;line-heigh=
+t: 16px !important;} .height24 {height: 24px !important;line-height: 24px !=
+important;} .height32{height: 32px !important;line-height: 32px !important;=
+} .height64 {height: 64px !important;line-height: 64px !important;} .width4=
+7 {width: 47% !important;} .padding6 {padding: 0 6% !important;} .padding24=
+ {padding: 0 24px !important;}}</style><!--[if mso]><style>td {color: #2121=
+21; font-family: Arial,sans-serif !important; }a {text-decoration: none !im=
+portant; }strong, b {font-weight: bold; }</style><![endif]--></head><body c=
+lass=3D"darkmode" style=3D"margin: 0; padding: 0; width: 100%; -webkit-text=
+-size-adjust: none;" bgcolor=3D"#ffffff"><div style=3D"font-size:0px;line-h=
+eight:1px;mso-line-height-rule:exactly;display:none;max-width:0px;max-heigh=
+t:0px;opacity:0;overflow:hidden;mso-hide:all;">=EB=B3=B4=EC=95=88 =EC=B7=A8=
+=EC=95=BD=EC=A0=90=EC=9D=B4 =ED=99=95=EC=9D=B8=EB=90=98=EC=97=88=EC=8A=B5=
+=EB=8B=88=EB=8B=A4. =EC=95=85=EC=9A=A9 =EC=82=AC=EB=A1=80=EB=8A=94 =EB=B0=
+=9C=EA=B2=AC=EB=90=98=EC=A7=80 =EC=95=8A=EC=95=98=EC=8A=B5=EB=8B=88=EB=8B=
+=A4. =EC=9C=A0=EB=8B=88=ED=8B=B0=EB=8A=94 =EC=84=A0=EC=A0=9C=EC=A0=81=EC=9C=
+=BC=EB=A1=9C =ED=8C=A8=EC=B9=98=EB=A5=BC =EC=A0=9C=EA=B3=B5=ED=95=A9=EB=8B=
+=88=EB=8B=A4.</div><h1 style=3D"display:none !important;visibility:hidden;m=
+so-hide:all;font-size:1px;font-family:sans-serif;color:#ffffff;line-height:=
+1px;max-height:0px;max-width:0px;opacity:0; overflow:hidden;">=EF=B8=8F=EF=
+=B8=8F&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; &zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp;&zwnj;&nbsp;&zwnj;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp;</h1><!-- wrapper --><table class=3D"table darkmode" style=3D"border-bo=
+ttom: 1px solid #eeeeee; width: 100%; min-width: 100%;" width=3D"100%" cell=
+spacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#ffffff"><tbody><!-=
+- header --><tr><td class=3D"" align=3D"center"><table class=3D"content" wi=
+dth=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"cente=
+r"><tbody><tr><td class=3D"logo-container" style=3D"padding: 25px 0;" align=
+=3D"left"><a href=3D"http://url3090.unity3d.com/ls/click?upn=3Du001.y5Ti9zx=
+f3DkWkwuRwmVrWapJ5f2-2FPxI4VRtZbkG2u-2BA-3DZlsf_jDETSH5etQCHM0tS8Ywc6XGX1xE=
+199Y9bQcK6TFkqiI5TAgexbGuwuz6k0Wt-2FgAaGBPVUb0zcGc0lXr9ag-2BibPuanczZV2cE38=
+F-2FHFKxe4FRiZl0YRftttsyOpVUImTqk28dVe5lMu1iu1S3tpwIfjIAgcn6snyHDvHdx7KgSdy=
+AQGy0oq813lLV5WFxwRLw1mxu0GRj69FekUlYFdbVOuJ-2FjUnatko-2FBCTXEI8VXXLMyIUFGX=
+6CsHv6WQvjp88-2B" target=3D"_blank"><img class=3D"light-img" src=3D"https:/=
+/www.emailimagecdnf5ya.com/ovk753c80i/en_us/images/656e2cf558e5c-1701719285=
+.3641.png" alt=3D"Unity" style=3D"border: 0 none; width: 77px; height: auto=
+;" width=3D"77" border=3D"0"><!-- The following Dark Mode logo image is hid=
+den with MSO conditional code and inline CSS, but will be revealed once Dar=
+k Mode is triggered --><!--[if !mso]><! --><div class=3D"dark-img" style=3D=
+"display:none; overflow:hidden; width:0px; max-height:0px; max-width:0px; l=
+ine-height:0px; visibility:hidden;"><img src=3D"https://img06.en25.com/Eloq=
+uaImages/clients/Unity/%7B5da7222a-6e8b-40ab-8daa-ed74896c54b0%7D_unity-mas=
+ter-white.png" alt=3D"Unity" style=3D"border: 0 none; width: 77px; height: =
+auto;" width=3D"77" border=3D"0"><!--<![endif]--></div></a></td></tr></tbod=
+y></table></td></tr><!-- body --><tr><td align=3D"center"><table class=3D"c=
+ontent" width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" alig=
+n=3D"center"><tbody><tr><td class=3D"font14" style=3D"color: #212121; font-=
+family: 'Roboto', Arial, sans-serif; font-weight: 400; font-size: 16px; lin=
+e-height: 24px;" align=3D"left"><div></div><!-- block 1 --><p><strong style=
+=3D"font-weight: bold;">=EC=A4=91=EC=9A=94 =EB=A9=94=EC=8B=9C=EC=A7=80</str=
+ong><br>=EC=9C=A0=EB=8B=88=ED=8B=B0=EB=8A=94 =EC=B5=9C=EA=B7=BC Unity 2017.=
+1 =EC=9D=B4=EC=83=81 =EB=B2=84=EC=A0=84=EC=9C=BC=EB=A1=9C =EB=B9=8C=EB=93=
+=9C=EB=90=9C Android, Windows, Linux, macOS =EC=9A=B4=EC=98=81 =EC=B2=B4=EC=
+=A0=9C=EC=9A=A9 =EA=B2=8C=EC=9E=84=EA=B3=BC =EC=95=A0=ED=94=8C=EB=A6=AC=EC=
+=BC=80=EC=9D=B4=EC=85=98=EC=97=90 =EC=98=81=ED=96=A5=EC=9D=84 =EB=AF=B8=EC=
+=B9=98=EB=8A=94 =EB=B3=B4=EC=95=88 =EC=B7=A8=EC=95=BD=EC=A0=90=EC=9D=84 =ED=
+=99=95=EC=9D=B8=ED=96=88=EC=8A=B5=EB=8B=88=EB=8B=A4. =EC=B7=A8=EC=95=BD=EC=
+=A0=90=EC=9D=98 =EC=95=85=EC=9A=A9 =EC=82=AC=EB=A1=80=EB=8A=94 =EB=B0=9C=EA=
+=B2=AC=EB=90=98=EC=A7=80 =EC=95=8A=EC=95=98=EC=9C=BC=EB=A9=B0, =EC=82=AC=EC=
+=9A=A9=EC=9E=90=EB=82=98 =EA=B3=A0=EA=B0=9D=EC=97=90=EA=B2=8C =EB=AF=B8=EC=
+=B9=9C =EC=98=81=ED=96=A5=EB=8F=84 =EC=97=86=EB=8A=94 =EA=B2=83=EC=9C=BC=EB=
+=A1=9C =EC=95=8C=EB=A0=A4=EC=A1=8C=EC=8A=B5=EB=8B=88=EB=8B=A4. =EC=A0=80=ED=
+=9D=AC=EB=8A=94 =EC=84=A0=EC=A0=9C=EC=A0=81=EC=9C=BC=EB=A1=9C =EC=9D=B4 =EB=
+=AC=B8=EC=A0=9C=EB=A5=BC =ED=8C=8C=EC=95=85=ED=95=B4 =EC=B7=A8=EC=95=BD=EC=
+=A0=90=EC=9D=84 =ED=95=B4=EA=B2=B0=ED=95=98=EB=8A=94 =EC=88=98=EC=A0=95 =ED=
+=94=84=EB=A1=9C=EA=B7=B8=EB=9E=A8=EC=9D=84 =EC=A0=9C=EA=B3=B5=ED=96=88=EC=
+=9C=BC=EB=A9=B0, =EC=9D=B4=EB=AF=B8 =EB=AA=A8=EB=93=A0 =EA=B0=9C=EB=B0=9C=
+=EC=9E=90=EA=B0=80 =EC=82=AC=EC=9A=A9=ED=95=A0 =EC=88=98 =EC=9E=88=EC=8A=B5=
+=EB=8B=88=EB=8B=A4. =ED=95=B4=EB=8B=B9 =EC=B7=A8=EC=95=BD=EC=A0=90=EC=9D=80=
+ =EB=B3=B4=EC=95=88 =EC=97=B0=EA=B5=AC=EC=9B=90 RyotaK=EC=9D=98 =EC=B1=85=
+=EC=9E=84 =EC=9E=88=EB=8A=94 =EB=B3=B4=EA=B3=A0=EB=A1=9C =ED=99=95=EC=9D=B8=
+=EB=90=98=EC=97=88=EC=8A=B5=EB=8B=88=EB=8B=A4. =ED=98=91=EB=A0=A5=EC=97=90 =
+=EA=B0=90=EC=82=AC=EB=93=9C=EB=A6=BD=EB=8B=88=EB=8B=A4.</p><p><strong style=
+=3D"font-weight: bold;">=EC=A3=BC=EC=9A=94 =EC=A0=95=EB=B3=B4:</strong><ul>=
+<li>=EC=B7=A8=EC=95=BD=EC=A0=90=EC=9D=98 =EC=95=85=EC=9A=A9 =EC=82=AC=EB=A1=
+=80=EB=8A=94 =EB=B0=9C=EA=B2=AC=EB=90=98=EC=A7=80 =EC=95=8A=EC=95=98=EC=9C=
+=BC=EB=A9=B0, =EC=82=AC=EC=9A=A9=EC=9E=90=EB=82=98 =EA=B3=A0=EA=B0=9D=EC=97=
+=90=EA=B2=8C =EB=AF=B8=EC=B9=9C =EC=98=81=ED=96=A5=EB=8F=84 =EC=97=86=EB=8A=
+=94 =EA=B2=83=EC=9C=BC=EB=A1=9C =EC=95=8C=EB=A0=A4=EC=A1=8C=EC=8A=B5=EB=8B=
+=88=EB=8B=A4.</li><li>=EC=9C=A0=EB=8B=88=ED=8B=B0=EB=8A=94 =ED=94=8C=EB=9E=
+=AB=ED=8F=BC=EA=B3=BC =EC=B5=9C=EC=A2=85 =EC=82=AC=EC=9A=A9=EC=9E=90=EB=A5=
+=BC =EC=95=88=EC=A0=84=ED=95=98=EA=B2=8C =EB=B3=B4=ED=98=B8=ED=95=98=EA=B8=
+=B0 =EC=9C=84=ED=95=B4 =EC=B6=94=EA=B0=80 =EC=A1=B0=EC=B9=98=EB=A5=BC =EC=
+=B7=A8=ED=95=9C =ED=94=8C=EB=9E=AB=ED=8F=BC =ED=98=91=EB=A0=A5=EC=82=AC=EC=
+=99=80 =EA=B8=B4=EB=B0=80=ED=9E=88 =ED=98=91=EB=A0=A5=ED=96=88=EC=8A=B5=EB=
+=8B=88=EB=8B=A4.</li><li>Unity 2017.1 =EC=9D=B4=EC=83=81 =EB=B2=84=EC=A0=84=
+=EC=9C=BC=EB=A1=9C =EB=A6=B4=EB=A6=AC=EC=8A=A4=ED=95=9C Android, Windows, m=
+acOS, Linux=EC=9A=A9 =EA=B2=8C=EC=9E=84=EC=9D=B4=EB=82=98 =EC=95=A0=ED=94=
+=8C=EB=A6=AC=EC=BC=80=EC=9D=B4=EC=85=98=EC=97=90 =EC=9D=B4=EB=9F=AC=ED=95=
+=9C =EC=B7=A8=EC=95=BD=EC=A0=90=EC=9D=B4 =ED=8F=AC=ED=95=A8=EB=90=98=EC=96=
+=B4 =EC=9E=88=EC=9D=84 =EC=88=98 =EC=9E=88=EC=8A=B5=EB=8B=88=EB=8B=A4.</li>=
+<li>Unity 2019.1 =EC=9D=B4=EC=83=81=EC=9D=98 =EB=AA=A8=EB=93=A0 =EB=AA=A8=
+=EB=93=A0 =EB=A9=94=EC=9D=B4=EC=A0=80 =EB=B0=8F =EB=A7=88=EC=9D=B4=EB=84=88=
+ =EB=B2=84=EC=A0=84 Unity =EC=97=90=EB=94=94=ED=84=B0=EC=9D=98 =EC=97=85=EB=
+=8D=B0=EC=9D=B4=ED=8A=B8=EB=A5=BC =EB=A6=B4=EB=A6=AC=EC=8A=A4=ED=96=88=EC=
+=8A=B5=EB=8B=88=EB=8B=A4.</li><li>=EC=9C=A0=EB=8B=88=ED=8B=B0=EB=8A=94 2017=
+.1 =EB=B2=84=EC=A0=84=EA=B9=8C=EC=A7=80 =EC=9D=B4=EB=AF=B8 =EB=B9=8C=EB=93=
+=9C=EB=90=9C =EC=95=A0=ED=94=8C=EB=A6=AC=EC=BC=80=EC=9D=B4=EC=85=98=EC=97=
+=90 =ED=8C=A8=EC=B9=98=EB=A5=BC =EC=A0=81=EC=9A=A9=ED=95=98=EB=8A=94 =EB=B0=
+=94=EC=9D=B4=EB=84=88=EB=A6=AC =ED=8C=A8=EC=B9=98 =ED=94=84=EB=A1=9C=EA=B7=
+=B8=EB=9E=A8=EC=9D=84 =EB=A6=B4=EB=A6=AC=EC=8A=A4=ED=96=88=EC=8A=B5=EB=8B=
+=88=EB=8B=A4.</li></ul></p><p><strong style=3D"font-weight: bold;">=EC=96=
+=B4=EB=96=A4 =EC=A1=B0=EC=B9=98=EB=A5=BC =EC=B7=A8=ED=95=B4=EC=95=BC =ED=95=
+=98=EB=82=98=EC=9A=94?</strong><br>Unity 2017.1 =EC=9D=B4=EC=83=81 =EB=B2=
+=84=EC=A0=84=EC=9C=BC=EB=A1=9C Android, Windows =EB=98=90=EB=8A=94 macOS=EC=
+=9A=A9 =EA=B2=8C=EC=9E=84=EC=9D=B4=EB=82=98 =EC=95=A0=ED=94=8C=EB=A6=AC=EC=
+=BC=80=EC=9D=B4=EC=85=98=EC=9D=84 =EA=B0=9C=EB=B0=9C=ED=96=88=EA=B1=B0=EB=
+=82=98 =EB=A6=B4=EB=A6=AC=EC=8A=A4=ED=95=9C =EA=B2=BD=EC=9A=B0=EC=97=90=EB=
+=8A=94 =EC=A1=B0=EC=B9=98=EB=A5=BC =EC=B7=A8=ED=95=B4=EC=95=BC =ED=95=A9=EB=
+=8B=88=EB=8B=A4. =EC=82=AC=EC=9A=A9=EC=9E=90 =EC=95=88=EC=A0=84=EC=9D=84 =
+=EC=A7=80=EC=86=8D=EC=A0=81=EC=9C=BC=EB=A1=9C =EB=B3=B4=EC=9E=A5=ED=95=98=
+=EA=B8=B0 =EC=9C=84=ED=95=B4 =EC=95=84=EB=9E=98 =EC=95=88=EB=82=B4 =EC=82=
+=AC=ED=95=AD=EC=9D=84 =EB=B0=98=EB=93=9C=EC=8B=9C =EA=B2=80=ED=86=A0=ED=95=
+=98=EC=8B=9C=EA=B8=B0 =EB=B0=94=EB=9E=8D=EB=8B=88=EB=8B=A4.<ul><li><strong =
+style=3D"font-weight: bold;">=ED=94=84=EB=A1=9C=EC=A0=9D=ED=8A=B8=EA=B0=80 =
+=EC=95=84=EC=A7=81 =EA=B0=9C=EB=B0=9C =EC=A4=91=EC=9D=B8 =EA=B2=BD=EC=9A=B0=
+:</strong><ul><li>=EB=B9=8C=EB=93=9C=ED=95=98=EA=B3=A0 =ED=8D=BC=EB=B8=94=
+=EB=A6=AC=EC=8B=9C=ED=95=98=EA=B8=B0 =EC=A0=84=EC=97=90 =EC=82=AC=EC=9A=A9 =
+=EC=A4=91=EC=9D=B8 Unity =EC=97=90=EB=94=94=ED=84=B0=EC=97=90 =ED=95=B4=EB=
+=8B=B9=ED=95=98=EB=8A=94 =ED=8C=A8=EC=B9=98 =EC=97=85=EB=8D=B0=EC=9D=B4=ED=
+=8A=B8=EB=A5=BC =EB=8B=A4=EC=9A=B4=EB=A1=9C=EB=93=9C=ED=95=98=EC=8B=9C=EA=
+=B8=B0 =EB=B0=94=EB=9E=8D=EB=8B=88=EB=8B=A4(<a href=3D"http://url3090.unity=
+3d.com/ls/click?upn=3Du001.y5Ti9zxf3DkWkwuRwmVrWVwwnjejzTr6cA7KAGwTu6onMAWr=
+hggyefC7IEO9UPt0OD-G_jDETSH5etQCHM0tS8Ywc6XGX1xE199Y9bQcK6TFkqiI5TAgexbGuwu=
+z6k0Wt-2FgAaNZu8s43Jd9b2qy4vlY8ZLH4Y-2FTWTf4vc84H2h2LAm8K14fE92jM6sDXycsbT4=
+LeWSQxQnpgOJ-2B7TG-2Fo-2FKjjJAz587HQVjfLX66kRSkvGX32fLFi6-2FwjY5dGd1N0LizU9=
+oQUHlH4cTCn7Od6p2vMBaLPxfUea2E7pSoRckcTM9UKMqL-2FTqyqh5KNwNALV1vCo" style=
+=3D"color: #3A5BC7; text-decoration: none;" target=3D"_blank">Unity Hub</a>=
+ =EB=98=90=EB=8A=94 <a href=3D"http://url3090.unity3d.com/ls/click?upn=3Du0=
+01.y5Ti9zxf3DkWkwuRwmVrWcdI9dx-2BQWpeqJZ-2BpNhsxSqroBIymhyWgA4cFXfW6WOSgKbn=
+jSJr0zS2VpjENLqizQ-3D-3DNpYL_jDETSH5etQCHM0tS8Ywc6XGX1xE199Y9bQcK6TFkqiI5TA=
+gexbGuwuz6k0Wt-2FgAaave6TTFAf-2BptZeqqU-2FDESWbaLt1Dp9j1yw7V1uscThRFVO4KzF9=
+h6UXwuy-2BInxXodBujy5BB8nPomNSiZSVjxHoS4dO-2Fug6N8rnwKyU2NU0fPnwRv3O1hnX4Jy=
+aYvAbCT73gCkYtzo-2FxTskLM49fn-2BGoNkbGs0yEjFFyUCQXzQure5eohmw0ttf7-2F0Xs-2F=
+phF" style=3D"color: #3A5BC7; text-decoration: none;" target=3D"_blank">Uni=
+ty =EB=8B=A4=EC=9A=B4=EB=A1=9C=EB=93=9C =EC=95=84=EC=B9=B4=EC=9D=B4=EB=B8=
+=8C</a>=EB=A5=BC =ED=86=B5=ED=95=B4 =EB=8B=A4=EC=9A=B4=EB=A1=9C=EB=93=9C =
+=EA=B0=80=EB=8A=A5). =EC=9D=B4=EB=A0=87=EA=B2=8C =ED=95=98=EB=A9=B4 =EB=A6=
+=B4=EB=A6=AC=EC=8A=A4=EB=A5=BC =EC=99=84=EC=A0=84=ED=9E=88 =EB=B3=B4=ED=98=
+=B8=ED=95=A0 =EC=88=98 =EC=9E=88=EC=8A=B5=EB=8B=88=EB=8B=A4.</ul></li><li><=
+strong style=3D"font-weight: bold;">=EC=9D=B4=EB=AF=B8 =EB=B9=8C=EB=93=9C=
+=EB=90=9C =EA=B2=8C=EC=9E=84 =EB=B0=8F =EC=95=A0=ED=94=8C=EB=A6=AC=EC=BC=80=
+=EC=9D=B4=EC=85=98=EC=9D=98 =EA=B2=BD=EC=9A=B0:</strong></li><ul><li>=EC=82=
+=AC=EC=9A=A9 =EC=A4=91=EC=9D=B8 Unity =EC=97=90=EB=94=94=ED=84=B0 =EB=B2=84=
+=EC=A0=84=EC=97=90 =ED=95=B4=EB=8B=B9=ED=95=98=EB=8A=94 =ED=8C=A8=EC=B9=98 =
+=EC=97=85=EB=8D=B0=EC=9D=B4=ED=8A=B8=EB=A5=BC =EB=8B=A4=EC=9A=B4=EB=A1=9C=
+=EB=93=9C=ED=95=98=EA=B3=A0 =EC=95=A0=ED=94=8C=EB=A6=AC=EC=BC=80=EC=9D=B4=
+=EC=85=98=EC=9D=84 =EB=8B=A4=EC=8B=9C =EC=BB=B4=ED=8C=8C=EC=9D=BC=ED=95=9C =
+=ED=9B=84 =EB=8B=A4=EC=8B=9C =ED=8D=BC=EB=B8=94=EB=A6=AC=EC=8B=9C=ED=95=A0 =
+=EA=B2=83=EC=9D=84 =EC=A0=81=EA=B7=B9 =EA=B6=8C=EC=9E=A5=ED=95=A9=EB=8B=88=
+=EB=8B=A4.</li><li>=ED=94=84=EB=A1=9C=EC=A0=9D=ED=8A=B8=EB=A5=BC =EB=8B=A4=
+=EC=8B=9C =EB=B9=8C=EB=93=9C=ED=95=98=EA=B3=A0 =EC=8B=B6=EC=A7=80 =EC=95=8A=
+=EC=9D=80 =EA=B0=9C=EB=B0=9C=EC=9E=90=EB=93=A4=EC=9D=84 =EC=9C=84=ED=95=B4 =
+2017.1 =EB=B2=84=EC=A0=84=EA=B9=8C=EC=A7=80 =EC=9D=B4=EB=AF=B8 =EB=B9=8C=EB=
+=93=9C=EB=90=9C =EC=95=A0=ED=94=8C=EB=A6=AC=EC=BC=80=EC=9D=B4=EC=85=98=EC=
+=97=90 =ED=8C=A8=EC=B9=98=EB=A5=BC =EC=A0=81=EC=9A=A9=ED=95=98=EB=8A=94 And=
+roid, Windows, macOS=EC=9A=A9 =ED=8C=A8=EC=B9=98 =ED=88=B4=EB=8F=84 =EC=A0=
+=9C=EA=B3=B5=ED=96=88=EC=8A=B5=EB=8B=88=EB=8B=A4. <a href=3D"http://url3090=
+.unity3d.com/ls/click?upn=3Du001.y5Ti9zxf3DkWkwuRwmVrWV-2BMqxB2LG41OO6sdTT9=
+GwSmQUnmyZw7VIRuImegu986GqdNr2WfhD703vIs8bSSqA-3D-3DZyXh_jDETSH5etQCHM0tS8Y=
+wc6XGX1xE199Y9bQcK6TFkqiI5TAgexbGuwuz6k0Wt-2FgAaG9qBxwW-2Fu-2B-2F3hvQzpvblL=
+FDopn-2BxbHNj2TIV6RRuHj7JnBRYptXJ8CHqNJwcshAdTOgPN5BE8QkDeE2272gJHHJAZGhC-2=
+BvJtxrlOkJxvJaQcS6FZ2x9ssykLPWtf8gs9WlzCXlckR33jQls8fC0p-2B49TZ3FYlPGZuFx8M=
+8IGcH3PnzZnegYh06svJ5ksXtJf" style=3D"color: #3A5BC7; text-decoration: none=
+;" target=3D"_blank">=EC=97=AC=EA=B8=B0=EC=97=90=EC=84=9C</a>=ED=88=B4=EC=
+=97=90 =EC=95=A1=EC=84=B8=EC=8A=A4=ED=95=A0 =EC=88=98 =EC=9E=88=EC=8A=B5=EB=
+=8B=88=EB=8B=A4.</li></ul><li><strong style=3D"font-weight: bold;">Android=
+=EB=82=98 Windows =EC=95=A0=ED=94=8C=EB=A6=AC=EC=BC=80=EC=9D=B4=EC=85=98=EC=
+=9D=98 =EA=B2=BD=EC=9A=B0, =EC=9D=BC=EB=B6=80 =EC=B6=94=EA=B0=80 =EB=B3=B4=
+=ED=98=B8 =EC=A1=B0=EC=B9=98 =EC=A0=81=EC=9A=A9 =EC=A4=91:</strong></li><ul=
+><li>Android =EC=95=A0=ED=94=8C=EB=A6=AC=EC=BC=80=EC=9D=B4=EC=85=98=EC=9D=
+=B4 Google Play, =EA=B8=B0=ED=83=80 =ED=83=80=EC=82=AC Android =EC=95=B1 =
+=EC=8A=A4=ED=86=A0=EC=96=B4 =EB=98=90=EB=8A=94 =EC=A7=81=EC=A0=91 =EB=8B=A4=
+=EC=9A=B4=EB=A1=9C=EB=93=9C=EB=A5=BC =ED=86=B5=ED=95=B4 =EB=B0=B0=ED=8F=AC=
+=EB=90=9C =EA=B2=BD=EC=9A=B0: =EC=B6=94=EA=B0=80=EC=A0=81=EC=9D=B8 =EB=B0=
+=A9=EC=96=B4 =EC=A1=B0=EC=B9=98=EB=A1=9C, Android=EC=9D=98 =EB=B9=8C=ED=8A=
+=B8=EC=9D=B8 =EC=95=85=EC=84=B1 =ED=94=84=EB=A1=9C=EA=B7=B8=EB=9E=A8 =EC=8A=
+=A4=EC=BA=94 =EB=B0=8F =EA=B8=B0=ED=83=80 =EB=B3=B4=EC=95=88 =EA=B8=B0=EB=
+=8A=A5=EC=9D=B4 =EC=9D=B4 =EC=B7=A8=EC=95=BD=EC=A0=90=EC=9C=BC=EB=A1=9C =EC=
+=9D=B8=ED=95=B4 =EC=82=AC=EC=9A=A9=EC=9E=90=EC=97=90=EA=B2=8C =EB=B0=9C=EC=
+=83=9D=ED=95=A0 =EC=88=98 =EC=9E=88=EB=8A=94 =EC=9C=84=ED=97=98=EC=9D=84 =
+=EC=A4=84=EC=97=AC =EC=A4=8D=EB=8B=88=EB=8B=A4. =ED=95=98=EC=A7=80=EB=A7=8C=
+ =EC=98=81=ED=96=A5=EC=9D=84 =EB=B0=9B=EB=8A=94 =EC=95=B1=EC=97=90 =EC=8B=
+=9C=EA=B8=89=ED=95=98=EA=B2=8C =ED=8C=A8=EC=B9=98 =EC=97=85=EB=8D=B0=EC=9D=
+=B4=ED=8A=B8=EB=A5=BC =EC=A0=81=EC=9A=A9=ED=95=B4=EC=95=BC =ED=95=A0 =ED=95=
+=84=EC=9A=94=EC=84=B1=EC=9D=80 =EC=97=AC=EC=A0=84=ED=95=A9=EB=8B=88=EB=8B=
+=A4. (=EC=9D=B4=EB=9F=AC=ED=95=9C =EB=B3=B4=ED=98=B8 =EC=A1=B0=EC=B9=98=EB=
+=8A=94 Google=EA=B3=BC =EC=A0=9C=ED=9C=B4=EB=A5=BC =EB=A7=BA=EC=A7=80 =EC=
+=95=8A=EC=9D=80 AOSP =EA=B8=B0=EB=B0=98 =ED=94=8C=EB=9E=AB=ED=8F=BC=EC=97=
+=90=EB=8A=94 =EC=A0=81=EC=9A=A9=EB=90=98=EC=A7=80 =EC=95=8A=EC=8A=B5=EB=8B=
+=88=EB=8B=A4.)<li>Windows =EB=8C=80=EC=83=81 =EC=95=A0=ED=94=8C=EB=A6=AC=EC=
+=BC=80=EC=9D=B4=EC=85=98=EC=9D=98 =EA=B2=BD=EC=9A=B0: Windows =EA=B8=B0=EB=
+=B0=98 =EC=95=A0=ED=94=8C=EB=A6=AC=EC=BC=80=EC=9D=B4=EC=85=98=EC=9D=98 =EA=
+=B2=BD=EC=9A=B0 Microsoft Defender=EA=B0=80 =EC=97=85=EB=8D=B0=EC=9D=B4=ED=
+=8A=B8=EB=90=98=EC=96=B4 =EC=B7=A8=EC=95=BD=EC=A0=90=EC=9D=84 =EA=B0=90=EC=
+=A7=80=ED=95=98=EA=B3=A0 =EC=B0=A8=EB=8B=A8=ED=95=A9=EB=8B=88=EB=8B=A4. Val=
+ve=EB=8A=94 Steam =ED=81=B4=EB=9D=BC=EC=9D=B4=EC=96=B8=ED=8A=B8=EB=A5=BC =
+=EB=8C=80=EC=83=81=EC=9C=BC=EB=A1=9C =EC=B6=94=EA=B0=80 =EB=B3=B4=ED=98=B8 =
+=EC=A1=B0=EC=B9=98=EB=A5=BC =EC=B7=A8=ED=95=A0 =EC=98=88=EC=A0=95=EC=9E=85=
+=EB=8B=88=EB=8B=A4.</li></li></ul><li><strong style=3D"font-weight: bold;">=
+=EC=95=A0=ED=94=8C=EB=A6=AC=EC=BC=80=EC=9D=B4=EC=85=98=EC=9D=B4 =EB=B3=80=
+=EC=A1=B0 =EB=B0=A9=EC=A7=80 =EB=98=90=EB=8A=94 =EB=B6=80=EC=A0=95 =ED=96=
+=89=EC=9C=84 =EB=B0=A9=EC=A7=80 =EC=86=94=EB=A3=A8=EC=85=98=EC=9D=84 =EC=82=
+=AC=EC=9A=A9=ED=95=98=EB=8A=94 =EA=B2=BD=EC=9A=B0:</strong></li><ul><li>=EC=
+=9D=B4=EB=9F=AC=ED=95=9C =EB=B3=B4=ED=98=B8 =EA=B8=B0=EB=8A=A5=EC=9D=84 =EC=
+=9C=A0=EC=A7=80=ED=95=98=EB=A0=A4=EB=A9=B4 =EC=82=AC=EC=9A=A9 =EC=A4=91=EC=
+=9D=B8 Unity =EC=97=90=EB=94=94=ED=84=B0 =EB=B2=84=EC=A0=84=EC=9D=98 =EC=B5=
+=9C=EC=8B=A0 =ED=8C=A8=EC=B9=98 =EC=97=85=EB=8D=B0=EC=9D=B4=ED=8A=B8=EB=A1=
+=9C =ED=94=84=EB=A1=9C=EC=A0=9D=ED=8A=B8=EB=A5=BC =EB=8B=A4=EC=8B=9C =EB=B9=
+=8C=EB=93=9C=ED=95=98=EA=B3=A0 =EB=8B=A4=EC=8B=9C =EB=B0=B0=ED=8F=AC=ED=95=
+=B4=EC=95=BC =ED=95=A9=EB=8B=88=EB=8B=A4. =EA=B8=B0=EC=A1=B4 =EC=95=A0=ED=
+=94=8C=EB=A6=AC=EC=BC=80=EC=9D=B4=EC=85=98=EC=97=90 =ED=8C=A8=EC=B9=98=EB=
+=A5=BC =EC=A0=81=EC=9A=A9=ED=95=98=EB=8A=94 =EA=B2=83=EC=9D=80 =EB=B3=80=EC=
+=A1=B0 =EB=B0=A9=EC=A7=80 =EA=B8=B0=EB=8A=A5=EC=9D=B4 =EC=9E=91=EB=8F=99=ED=
+=95=98=EC=97=AC =EB=B6=88=EA=B0=80=EB=8A=A5=ED=95=A9=EB=8B=88=EB=8B=A4.</li=
+></ul></ul></p><p><strong style=3D"font-weight: bold;">=EC=B6=94=EA=B0=80 =
+=ED=94=8C=EB=9E=AB=ED=8F=BC:</strong><ul><li><strong style=3D"font-weight: =
+bold;">Horizon OS:</strong> Meta =EB=94=94=EB=B0=94=EC=9D=B4=EC=8A=A4=EC=97=
+=90 =EC=9D=B4=EB=AF=B8 =EA=B4=80=EB=A0=A8 =EC=A1=B0=EC=B9=98=EA=B0=80 =EC=
+=A0=81=EC=9A=A9=EB=90=98=EC=96=B4, Horizon OS=EC=97=90=EC=84=9C =EC=8B=A4=
+=ED=96=89=EB=90=98=EB=8A=94 Unity =EC=95=B1=EC=9D=98 =EC=B7=A8=EC=95=BD=EC=
+=A0=90=EC=9D=B4 =EC=95=85=EC=9A=A9=EB=90=98=EC=A7=80 =EC=95=8A=EC=8A=B5=EB=
+=8B=88=EB=8B=A4.</li><li><strong style=3D"font-weight: bold;">Linux:</stron=
+g> Android, Windows, macOS=EC=97=90 =EB=B9=84=ED=95=B4 Linux=EC=97=90 =EC=
+=B7=A8=EC=95=BD=EC=A0=90=EC=9D=B4 =EC=98=81=ED=96=A5=EC=9D=84 =EB=AF=B8=EC=
+=B9=A0 =EC=9C=84=ED=97=98=EC=9D=80 =ED=9B=A8=EC=94=AC =EC=A0=81=EC=8A=B5=EB=
+=8B=88=EB=8B=A4.</li><li><strong style=3D"font-weight: bold;">iOS=EB=A5=BC =
+=ED=8F=AC=ED=95=A8=ED=95=9C =EB=8B=A4=EB=A5=B8 =EB=AA=A8=EB=93=A0 Unity =EC=
+=A7=80=EC=9B=90 =ED=94=8C=EB=9E=AB=ED=8F=BC=EC=97=90=EC=84=9C=EB=8A=94</str=
+ong>=EC=B7=A8=EC=95=BD=EC=A0=90=EC=9D=B4 =EC=95=85=EC=9A=A9=EB=90=A0 =EA=B0=
+=80=EB=8A=A5=EC=84=B1=EC=9D=B4 =EB=B0=9C=EA=B2=AC=EB=90=98=EC=A7=80 =EC=95=
+=8A=EC=95=98=EC=8A=B5=EB=8B=88=EB=8B=A4.</li><li>=EC=B5=9C=EA=B3=A0 =EC=88=
+=98=EC=A4=80=EC=9D=98 =EB=B3=B4=EC=95=88=EC=9D=84 =EC=9C=84=ED=95=B4 =EC=82=
+=AC=EC=9A=A9 =EC=A4=91=EC=9D=B8 =EB=B2=84=EC=A0=84=EC=9D=98 Unity=EB=8A=94 =
+=ED=95=AD=EC=83=81 =EC=B5=9C=EC=8B=A0 =ED=8C=A8=EC=B9=98 =EB=A6=B4=EB=A6=AC=
+=EC=8A=A4=EA=B0=80 =EC=A0=81=EC=9A=A9=EB=90=9C =EC=83=81=ED=83=9C=EB=A1=9C =
+=EC=9C=A0=EC=A7=80=ED=95=A0 =EA=B2=83=EC=9D=84 =EA=B6=8C=EC=9E=A5=ED=95=A9=
+=EB=8B=88=EB=8B=A4.</li></ul></p><p><strong style=3D"font-weight: bold;">=
+=EC=86=8C=EB=B9=84=EC=9E=90 =EA=B0=80=EC=9D=B4=EB=93=9C:</strong><ul><li>=
+=EC=B7=A8=EC=95=BD=EC=A0=90=EC=9D=98 =EC=95=85=EC=9A=A9 =EC=82=AC=EB=A1=80=
+=EB=8A=94 =EB=B0=9C=EA=B2=AC=EB=90=98=EC=A7=80 =EC=95=8A=EC=95=98=EC=9C=BC=
+=EB=A9=B0, =EC=82=AC=EC=9A=A9=EC=9E=90=EB=82=98 =EA=B3=A0=EA=B0=9D=EC=97=90=
+=EA=B2=8C =EB=AF=B8=EC=B9=9C =EC=98=81=ED=96=A5=EB=8F=84 =EC=97=86=EB=8A=94=
+ =EA=B2=83=EC=9C=BC=EB=A1=9C =EC=95=8C=EB=A0=A4=EC=A1=8C=EC=8A=B5=EB=8B=88=
+=EB=8B=A4.</li><li>=EC=82=AC=EC=9A=A9=EC=9E=90=EA=B0=80 =EB=94=94=EB=B0=94=
+=EC=9D=B4=EC=8A=A4=EC=99=80 =EC=95=A0=ED=94=8C=EB=A6=AC=EC=BC=80=EC=9D=B4=
+=EC=85=98=EC=9D=84 =EC=B5=9C=EC=8B=A0 =EC=83=81=ED=83=9C=EB=A1=9C =EC=9C=A0=
+=EC=A7=80=ED=95=98=EA=B3=A0, =EC=9E=90=EB=8F=99 =EC=97=85=EB=8D=B0=EC=9D=B4=
+=ED=8A=B8=EB=A5=BC =ED=99=9C=EC=84=B1=ED=99=94=ED=95=98=EB=A9=B0, =EC=B5=9C=
+=EC=8B=A0 =EB=B0=94=EC=9D=B4=EB=9F=AC=EC=8A=A4 =EB=B0=B1=EC=8B=A0 =EC=86=8C=
+=ED=94=84=ED=8A=B8=EC=9B=A8=EC=96=B4=EB=A5=BC =EC=82=AC=EC=9A=A9=ED=95=98=
+=EB=8F=84=EB=A1=9D =EC=A1=B0=EC=96=B8=ED=95=A9=EB=8B=88=EB=8B=A4.</li><li>=
+=EC=9D=98=EC=8B=AC=EC=8A=A4=EB=9F=AC=EC=9A=B4 =EB=8B=A4=EC=9A=B4=EB=A1=9C=
+=EB=93=9C=EB=A5=BC =ED=94=BC=ED=95=98=EA=B3=A0 =EB=AA=A8=EB=93=A0 =EC=86=8C=
+=ED=94=84=ED=8A=B8=EC=9B=A8=EC=96=B4=EB=A5=BC =EC=A0=95=EA=B8=B0=EC=A0=81=
+=EC=9C=BC=EB=A1=9C =EC=97=85=EB=8D=B0=EC=9D=B4=ED=8A=B8=ED=95=98=EB=8A=94 =
+=EB=93=B1, =EB=B3=B4=EC=95=88 =EB=B2=A0=EC=8A=A4=ED=8A=B8 =ED=94=84=EB=9E=
+=99=ED=8B=B0=EC=8A=A4=EB=A5=BC =EB=94=B0=EB=A5=B4=EB=8F=84=EB=A1=9D =EB=8F=
+=85=EB=A0=A4=ED=95=A9=EB=8B=88=EB=8B=A4.</li></ul></p><p><strong style=3D"f=
+ont-weight: bold;">=EC=9C=A0=EB=8B=88=ED=8B=B0=EC=9D=98 =EC=B1=85=EC=9E=84:=
+</strong> =EC=9C=A0=EB=8B=88=ED=8B=B0=EB=8A=94 =ED=94=8C=EB=9E=AB=ED=8F=BC=
+=EA=B3=BC =EA=B3=A0=EA=B0=9D, =EC=BB=A4=EB=AE=A4=EB=8B=88=ED=8B=B0=EC=9D=98=
+ =EB=B3=B4=EC=95=88=EA=B3=BC =EB=AC=B4=EA=B2=B0=EC=84=B1=EC=9D=84 =EC=9C=84=
+=ED=95=B4 =EB=85=B8=EB=A0=A5=ED=95=98=EA=B3=A0 =EC=9E=88=EC=8A=B5=EB=8B=88=
+=EB=8B=A4. =ED=88=AC=EB=AA=85=ED=95=9C =EC=BB=A4=EB=AE=A4=EB=8B=88=EC=BC=80=
+=EC=9D=B4=EC=85=98=EC=9D=80 =EC=9D=B4=EB=9F=AC=ED=95=9C =EB=85=B8=EB=A0=A5=
+=EC=9D=98 =ED=95=B5=EC=8B=AC=EC=9D=B4=EB=A9=B0, =ED=95=84=EC=9A=94=EC=97=90=
+ =EB=94=B0=EB=9D=BC =EC=A7=80=EC=86=8D=EC=A0=81=EC=9C=BC=EB=A1=9C =EC=97=85=
+=EB=8D=B0=EC=9D=B4=ED=8A=B8=EB=A5=BC =EC=A0=9C=EA=B3=B5=ED=95=A0 =EC=98=88=
+=EC=A0=95=EC=9E=85=EB=8B=88=EB=8B=A4.</p><p>=EA=B8=B0=EC=88=A0=EA=B3=BC =EA=
+=B4=80=EB=A0=A8=EB=90=9C =EC=A2=85=ED=95=A9=EC=A0=81=EC=9D=B8 =EC=84=B8=EB=
+=B6=80 =EC=A0=95=EB=B3=B4=EB=8A=94 <a href=3D"http://url3090.unity3d.com/ls=
+/click?upn=3Du001.y5Ti9zxf3DkWkwuRwmVrWV-2BMqxB2LG41OO6sdTT9GwSmQUnmyZw7VIR=
+uImegu986GqdNr2WfhD703vIs8bSSqA-3D-3DUqd7_jDETSH5etQCHM0tS8Ywc6XGX1xE199Y9b=
+QcK6TFkqiI5TAgexbGuwuz6k0Wt-2FgAaUSZpyPVgBexq-2BvgOP-2BymUTqebQXXpKvBXWkrwt=
+pb8VjnowuCrrChpKPbIHw1f52x0G4L8hUtMr8NspX4SxTFXwX253wzn2bqfqsCDww1uqq-2FD1v=
+qMLAL9hwj-2Fi0OP13M5McIm6AkH9-2F98a51cdgPTcbaHb9UDUcGXLhg8-2FY6-2FJstmv37t3=
+1whFhFeby7HaXK" style=3D"color: #3A5BC7; text-decoration: none;" target=3D"=
+_blank">=ED=8C=A8=EC=B9=98 =ED=88=B4 =EB=B0=8F =EB=AC=B8=EC=A0=9C =ED=95=B4=
+=EA=B2=B0 =EA=B0=80=EC=9D=B4=EB=93=9C</a>, <a href=3D"http://url3090.unity3=
+d.com/ls/click?upn=3Du001.y5Ti9zxf3DkWkwuRwmVrWV-2BMqxB2LG41OO6sdTT9GwSmQUn=
+myZw7VIRuImegu9868VwLv2ltjuZIMazqoHk61A-3D-3DLlxK_jDETSH5etQCHM0tS8Ywc6XGX1=
+xE199Y9bQcK6TFkqiI5TAgexbGuwuz6k0Wt-2FgAaDm6np4wLp-2FYU4bwZuyg4molECP24Meqt=
+H5uCn3Za-2FvYtb7SLJH2G9N2dEjM9k5Yda3kWi9C6NZ7DRO0m4vAPInXiMYORfxX6ub-2BIDlS=
+bDESkqsVc5iZ0WEJBPVJYE7-2BsN47yWuAonXTQeOlgs9GMqeiZRBWdazsA4xPHPdfejOrS1Gub=
+AQDKHCFFupgasfGy" style=3D"color: #3A5BC7; text-decoration: none;" target=
+=3D"_blank">=EB=B3=B4=EC=95=88 =EA=B6=8C=EA=B3=A0</a>, CVE-2025-59489=EB=A5=
+=BC =EC=B0=B8=EA=B3=A0=ED=95=98=EC=8B=9C=EA=B8=B0 =EB=B0=94=EB=9E=8D=EB=8B=
+=88=EB=8B=A4. =EA=B6=81=EA=B8=88=ED=95=9C =EC=A0=90=EC=9D=B4 =EC=9E=88=EC=
+=9C=BC=EB=A9=B4 <a href=3D"http://url3090.unity3d.com/ls/click?upn=3Du001.y=
+5Ti9zxf3DkWkwuRwmVrWSIn9rEqCTcL-2B-2BhFZsOkinjknM3Zt8yqXMtkOsS-2FuZCD77H2sB=
+AbAkw7h23mmv6NVA-3D-3Dhgk6_jDETSH5etQCHM0tS8Ywc6XGX1xE199Y9bQcK6TFkqiI5TAge=
+xbGuwuz6k0Wt-2FgAaLdCWudMCNQwg1GoIZ-2BVmn9EdHAgnEXIPu-2BUSuvL-2BDt6e0P-2B5-=
+2F2zdi6FgexLC4Le8duOJBrnhthjoZCyo6h1gnQhfmnzo1sAaQiyLmmkCQyMMD2QOeEywQlCFxl=
+JUKhHVVfwrDO1CiPgfqxQ1jpMSPT4PHhO1KdhAdw3O7kWumz-2FUM46Dvqq0ZQLg5zEX9V6y" s=
+tyle=3D"color: #3A5BC7; text-decoration: none;" target=3D"_blank">Discussio=
+ns</a> =ED=8E=98=EC=9D=B4=EC=A7=80=EC=97=90 =EC=B0=B8=EC=97=AC=ED=95=B4 =EC=
+=A3=BC=EC=8B=9C=EA=B3=A0, =EC=B6=94=EA=B0=80 =EC=A7=80=EC=9B=90=EC=9D=B4 =
+=ED=95=84=EC=9A=94=ED=95=9C =EA=B2=BD=EC=9A=B0 <a href=3D"http://url3090.un=
+ity3d.com/ls/click?upn=3Du001.y5Ti9zxf3DkWkwuRwmVrWWpOVDvaNTnx7BWGg-2Bp6b6-=
+2F5kKLqH9-2FTsMXSimUuvsk25o4p_jDETSH5etQCHM0tS8Ywc6XGX1xE199Y9bQcK6TFkqiI5T=
+AgexbGuwuz6k0Wt-2FgAaUzLgPVpR1TQoRCMu-2F-2Bi5JH1n331zRmIoFTL5Tq06q-2FdzNazE=
+CZlUXOyv2630RxUkbhnwuJ-2FMGwWANa5M7DPSFNRT00JY4A9ZBjlItI659J2ROskHT2syvYGg3=
+gcmqx0gHxbIaqeZExS3TsRlFA-2BuuP4FH7cut6bpi87YCVfVGq9BcRlhC3u3-2Bi63y8dfX1O-=
+2F" style=3D"color: #3A5BC7; text-decoration: none;" target=3D"_blank">supp=
+ort.unity.com/hc/ko</a> =EC=97=90=EC=84=9C =ED=8B=B0=EC=BC=93=EC=9D=84 =EC=
+=A0=9C=EC=B6=9C=ED=95=98=EC=8B=9C=EA=B8=B0 =EB=B0=94=EB=9E=8D=EB=8B=88=EB=
+=8B=A4.</p><p><a href=3D"http://url3090.unity3d.com/ls/click?upn=3Du001.y5T=
+i9zxf3DkWkwuRwmVrWV-2BMqxB2LG41OO6sdTT9GwSmQUnmyZw7VIRuImegu986zC3xdq51aD-2=
+FSpFVl39-2B4rWRSG3FX9Z0DD-2FpNqZ-2FnMHw-3DU5T9_jDETSH5etQCHM0tS8Ywc6XGX1xE1=
+99Y9bQcK6TFkqiI5TAgexbGuwuz6k0Wt-2FgAaJ8lCly-2BYLCoVNUbBB68mDZ394mS8GTCjFUU=
+9o2FPYRgll9xiFY3XQvBsf10WhxmE-2B-2FHx-2FcRqNg-2BMiCfUM0-2FICun01POtMIRPRUx7=
+IVxG3nNqUV0yVH3IPmsKJ-2Bbh8P7pfmSYUic1bMRpX9jE0ImxpoJ0ZEVQwBBp3G4RIIkT4KV5E=
+zPrMa1lQqtU1LB-2BGS0D" style=3D"color: #3A5BC7; text-decoration: none;" tar=
+get=3D"_blank">FAQ</a> =ED=8E=98=EC=9D=B4=EC=A7=80=EB=8F=84 =EC=B0=B8=EA=B3=
+=A0=ED=95=98=EC=8B=9C=EB=A9=B4 =EB=8F=84=EC=9B=80=EC=9D=B4 =EB=90=A9=EB=8B=
+=88=EB=8B=A4.</p><p><strong style=3D"font-weight: bold;">=EC=82=AC=EC=9A=A9=
+=EC=9E=90 =EB=B3=B4=ED=98=B8=EC=99=80 =EC=B5=9C=EA=B3=A0 =EC=88=98=EC=A4=80=
+=EC=9D=98 =EB=B3=B4=EC=95=88 =EC=9C=A0=EC=A7=80=EB=A5=BC =EC=9C=84=ED=95=B4=
+ =EC=9D=B4 =EB=AC=B8=EC=A0=9C=EC=97=90 =EC=84=A0=EC=A0=9C=EC=A0=81=EC=9D=B8=
+ =EA=B4=80=EC=8B=AC=EC=9D=84 =EA=B8=B0=EC=9A=B8=EC=97=AC =EC=A3=BC=EC=8B=9C=
+=EA=B8=B0=EB=A5=BC =EB=B0=94=EB=9E=8D=EB=8B=88=EB=8B=A4.</strong></p><p><br=
+></p><div class=3D"height8" style=3D"line-height: 16px; height: 16px;">&nbs=
+p;</div><!-- /block 1 --><table align=3D"center"><tr><td align=3D"center" c=
+lass=3D"footer" style=3D"color: #A5A5A5; font-family: 'Roboto', Arial, sans=
+-serif; font-weight: 300; font-size: 11px; line-height: 20px; margin: 0; pa=
+dding: 24px 0 50px 0;"><a style=3D"color: inherit; text-decoration: none">U=
+nity Technologies SF, 116 New Montgomery Street, Suite 300, San Francisco, =
+CA 94105, United States.</a><br /><a href=3D"http://url3090.unity3d.com/ls/=
+click?upn=3Du001.y5Ti9zxf3DkWkwuRwmVrWd-2FeVxJcMrl8GgJrLTVcLGDYuCXg0c6f9BTr=
+TP2DJy98NItS9XV2YAW-2F0HuE3FuNyQ-3D-3DAHp7_jDETSH5etQCHM0tS8Ywc6XGX1xE199Y9=
+bQcK6TFkqiI5TAgexbGuwuz6k0Wt-2FgAaGGolI8B7-2B7RbqCsT5bAYBrsCqIaxvlb4dGUW1Ay=
+wVVz3qsSrHfPQwSfwJ-2BaehwAvqF0xZV6YrNn-2Ba7tPisfOMTyw5D-2BsUKp9HEU56gTWaYdF=
+CaowdfKmjCTdYkiQorI2WXwRKBmo5PwKgGDO5WXy11vt01fzRGIvQpkQbSZc-2FRTwLt-2FO7iH=
+kV1TQNTfRn-2FuD" style=3D"color: #606060; text-decoration: none;">=EA=B0=9C=
+=EC=9D=B8 =EC=A0=95=EB=B3=B4 =EC=A0=95=EC=B1=85</a> - <a href=3D"http://url=
+3090.unity3d.com/ls/click?upn=3Du001.y5Ti9zxf3DkWkwuRwmVrWd-2FeVxJcMrl8GgJr=
+LTVcLGApVfVCf3NruHvcagQ7h9YBCVk87SbHjjxDwOE-2BrqL8Vg-3D-3DIWYW_jDETSH5etQCH=
+M0tS8Ywc6XGX1xE199Y9bQcK6TFkqiI5TAgexbGuwuz6k0Wt-2FgAaNZu8s43Jd9b2qy4vlY8ZL=
+OPr8WedQv41hlUF3umK44icKfyNh80MMPhZAsyieNYI3UDpkUnRJ-2B2j6ZtqyJrrdKhqPvK6ws=
+C2lS83amlCBKtjAtbTy-2BXto4EVEgrCraoLJxx2Om0Ak5dJnLRYVyyhbfYZCOsvO-2FMukm8KE=
+sdwa191E-2BmHP8ZQ0xjavqC-2B7vTL" style=3D"color: #606060; text-decoration: =
+none;">=EC=9D=B4=EC=9A=A9=EC=95=BD=EA=B4=80</a> - Copyright Unity Technolog=
+ies &copy; 2025</td></tr></table></td></tr></tbody></table></td></tr></tbod=
+y></table><img src=3D"http://url3090.unity3d.com/wf/open?upn=3Du001.91SC210=
+GPo-2FmWOtNlLGSgmMqIoZrvnGpiQYtSkhIQSgYd4s7Qq-2FdPibA3H2i7qXnsQfyLkqBAcqaq0=
+7I5mlwVjQIKDNJlVfYd5f1-2B7-2F82YMiOu5-2BMOEz5Y2Kq5MjF0CAiRM6Yw3alTNlqxSC36c=
+xvQL-2BXEmhltWQIaQTV4L8vReS-2FASpq8mIf4mjFto-2F5IAQDxoN9TaAexCUS8iNSf7H-2FO=
+UXHKVPNwYeEgtIXSiO4Tmq21l2o3DuHdAcRwp8Nq2wv3QtXbvAmd7K-2FYy7aCnxdw-3D-3D" a=
+lt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !importan=
+t;width:1px !important;border-width:0 !important;margin-top:0 !important;ma=
+rgin-bottom:0 !important;margin-right:0 !important;margin-left:0 !important=
+;padding-top:0 !important;padding-bottom:0 !important;padding-right:0 !impo=
+rtant;padding-left:0 !important;"/></body></html>

@@ -1,0 +1,961 @@
+Delivered-To: panicker0117@gmail.com
+Received: by 2002:a05:7000:1747:b0:79e:d5ed:1766 with SMTP id c7csp276259maw;
+        Wed, 29 Oct 2025 07:05:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGzcRI9SQi9er/jyVe1qelkq7PeZtYZBLJG0upyPJnzdhPM+aob9O8sEvpu4nbvnJTbd/ER
+X-Received: by 2002:a05:690c:360b:b0:783:7081:c48b with SMTP id 00721157ae682-7862939b4bdmr47648497b3.57.1761746752830;
+        Wed, 29 Oct 2025 07:05:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1761746752; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ZXRaqHGzU0JKDH9+qE0/paCETzGgCpgqjCYdyMnOQZz+4ZF+IP+v7CMSRolMfD5FaD
+         pm0X+jbeR1qOmQWZMrv3heKJ7IcUvfEyZNgsQLHMNQUWpg5BlrnKEPD/ilg/j8fy6BjU
+         3Jc1SVhRItv0I+ZUdbN2bTaMvXNQ7oTrBxSEM5C7Twffav9e//+Rusqk5EPSsW8Jx975
+         BPsJrjLLPNx0RV8PR8u/HFVzh/98a88Dxo5nth/O9CM1EvPgYQAXrSn5R3ZOKJRLeUlL
+         LxvaUMWCBsLcdRL6S8wbd8nk9YQw84SIGJ5yctUb5NbiPAeU9E2SUaX9VyDzpH/gjdlq
+         hqlQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=reply-to:subject:mime-version:date:to:list-unsubscribe-post
+         :list-unsubscribe:message-id:from:dkim-signature;
+        bh=16wvtluDVJjNRqkZz7TkLit5wxkhw+FureVYRlS0Ulw=;
+        fh=61LiNnff/7rrwP3NHDsjY26kmdCWf8iOsm4ycRDdRpc=;
+        b=TVI30v7K4kGDU/q3hyp4WGA/RWHfKVLuZvjo/Lc2+267BrjjAmUswOM3nlLcbpYXJY
+         2cFO/cX4Msn4dVj6/k5TZ1HzJukwuZqD70wjcK9azTTazTSkeIssOBPqWddzciZJkiwU
+         +QonrnzqY2tIc0U2dRTvQcgwH+QvobqYdf0jzYxXizVNPhX1PTbkqfzxEL5VA8Rpyrwe
+         uqKZLT1nu357RQWUzd6vGDOOwftpRyWIPsCDSdRnl3MkNtKDbp/Xr6OjXxvC8hWWh4bD
+         WkVpLFfaL92O16T9kEKpeHlodMC38HyujBpSHNN4te1z0Kq+7qmvFziQNzzmNxqHgd5w
+         k3pw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@hello.stackoverflow.email header.s=scph0225 header.b=PsGBldIq;
+       spf=pass (google.com: domain of msprvs1=20397u18fwfwr=bounces-266693-1559@hello.stackoverflow.email designates 137.22.233.225 as permitted sender) smtp.mailfrom="msprvs1=20397U18fwFWR=bounces-266693-1559@hello.stackoverflow.email";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hello.stackoverflow.email
+Return-Path: <msprvs1=20397U18fwFWR=bounces-266693-1559@hello.stackoverflow.email>
+Received: from ucib4dke.hello.stackoverflow.email (ucib4dke.hello.stackoverflow.email. [137.22.233.225])
+        by mx.google.com with ESMTPS id 00721157ae682-785ee7edd07si89505677b3.332.2025.10.29.07.05.52
+        for <panicker0117@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 29 Oct 2025 07:05:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of msprvs1=20397u18fwfwr=bounces-266693-1559@hello.stackoverflow.email designates 137.22.233.225 as permitted sender) client-ip=137.22.233.225;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@hello.stackoverflow.email header.s=scph0225 header.b=PsGBldIq;
+       spf=pass (google.com: domain of msprvs1=20397u18fwfwr=bounces-266693-1559@hello.stackoverflow.email designates 137.22.233.225 as permitted sender) smtp.mailfrom="msprvs1=20397U18fwFWR=bounces-266693-1559@hello.stackoverflow.email";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hello.stackoverflow.email
+Return-Path: <msprvs1=20397U18fwFWR=bounces-266693-1559@hello.stackoverflow.email>
+X-MSFBL: 3ywa1F7awfJL0Tlc7PDr+4S5WjPcaQOEfixyjJhUayU=|eyJ0ZW5hbnRfaWQiOiJ
+	zcGMiLCJjdXN0b21lcl9pZCI6IjI2NjY5MyIsIm1lc3NhZ2VfaWQiOiI2OGZmM2Y
+	xZjAyNjk3NDE1MWM5MSIsInN1YmFjY291bnRfaWQiOiIxNTU5IiwiciI6InBhbml
+	ja2VyMDExN0BnbWFpbC5jb20ifQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=hello.stackoverflow.email; s=scph0225; t=1761746751;
+	i=@hello.stackoverflow.email;
+	bh=16wvtluDVJjNRqkZz7TkLit5wxkhw+FureVYRlS0Ulw=;
+	h=From:Message-ID:List-Unsubscribe:List-Unsubscribe-Post:To:Date:
+	 Content-Type:Subject:From:To:Cc:Subject;
+	b=PsGBldIqa7bB1IJN5SdqX89MYyX1LjCjcTzH13NGaFXH1qM6LJ2IGtBNGNW5FNBaz
+	 25VWijhbaNibr1jimSGtkZZKYZAfZ6NUWVc16zbR1sbOPolagV2+Zp3aHKJwelbP92
+	 8+jWZwmt+y0jhQZDiAvlKV+pPeAJt0wCwYsc0fTS5PAWF0WGrLSOLkDmZ3PJkLH5Uu
+	 tlMngr16eoUZY9yPqW2y711258rZfq6CFD3mI1YsDJLCWkhAyjakn+4MVAxELGPn+B
+	 JIDNERdK4nKrNmKyHQ+wq8PbS5sFIeLSU9U0HL6zw2CSgfuAwoB1bjE0L8SsK5tH5S
+	 xf+vtB9LDqp7A==
+Received: from [10.90.22.81] ([10.90.22.81])
+	by i-034f6229b3d205d12.mta1vrest.sd.prd.sparkpost (ecelerity 5.1.0.74659 r(msys-ecelerity:tags/5.1.0.17)) with REST
+	id 19/C9-53467-F3F12096; Wed, 29 Oct 2025 14:05:51 +0000
+From: "Stack Overflow" <do-not-reply@hello.stackoverflow.email>
+Message-ID: <19.C9.53467.F3F12096@i-034f6229b3d205d12.mta1vrest.sd.prd.sparkpost>
+List-Unsubscribe: <https://07.emailinboundprocessing.com/enc_user/list_unsubscribe?d=%241%245gtU6btC15XmeeR1H%2FmdWw%3D%3D%24DTNOszkWjK2%2FycPWSPL9VI3mgQp20HKCTOxK1cK4EOkL74xdghedcR%2F1yXVd%0A8uJ5mzREdkV9gtfOP5zdHjoUa8UIDiq9H5yLAUzlNEyGOjtONXlbGZBj7Gmq%0AC2geKxzkyW%2B1ZeFI1n8rSNE6UTYrdDANPkJwy4VgBdCtTD1ORH%2F3pvGYgwer%0ARb%2B24tumTVVOZNzpWvvPbUyFdduvDitiO5hGR7UZZG5LrelDsZxiI0NpImj3%0AELs3HOfsP0pyESkYbci7TCepS5bPYougklwISF7aQTY9STlPEKSo2qriIU85%0AiFYD2B92oZ2Fx0uCobdwJmK7hGQW%2BhBe91QbYRFvng%3D%3D&1=1>,<mailto:4_ptsd5mtj6ln3ret7s492vjpn9sake0npfwc2yk8azcg578yird3njx@unsubscribe-07.emailinboundprocessing.com?subject=Unsubscribe%20pnrcgsqiftj60jsprjte33wycbfz7l0s3773x7trhnwovcfd&body=DO_NOT_DELETE-fr1911a069xt8ny40x2hmew7ewtp166ime3x2e9bgp5pskjh956aabe31hrmnqzobd6lhclug9k233v10b1a867h-DO_NOT_DELETE>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+To: panicker0117@gmail.com
+Date: Wed, 29 Oct 2025 14:05:51 +0000
+Content-Type: multipart/alternative; boundary="_----1zquMXzLuD2RmTjRDQhifQ===_CF/B9-53467-F3F12096"
+MIME-Version: 1.0
+Subject: Issue 301: Knock knock. The agents are here.
+Reply-To: do-not-reply@hello.stackoverflow.email
+
+--_----1zquMXzLuD2RmTjRDQhifQ===_CF/B9-53467-F3F12096
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+
+E-bikes, LLM brain rot, and keeping open source alive=0A=0A*************=0A=
+The Overflow.=0A*************=0A=0A29 October        If you're keeping your=
+ ear to the beat of=0AAI's robotic heart like we are, you're probably notic=
+ing that=0Aagents are everywhere now. This week's newsletter is not=0Adiffe=
+rent=E2=80=94we've got plenty of stories for you on the newest AI=0Ahype. J=
+ohn Dickerson, CEO of Mozilla.ai, joins us on the pod to=0Atalk about the r=
+ole of open source in the future of AI agents,=0Aincluding the challenges O=
+S communities are facing in the age of=0AAI. If you're looking to throw awa=
+y your runbook, we've got=0Aanother conversation with Spiros Xanthos, CEO a=
+nd founder of=0AResolve AI, all about how AI agents are reducing the work o=
+f=0Aincident management and troubleshooting for developers. Plus, on=0Athe =
+blog, find out what it takes to build out agentic virtual=0Aassistants on t=
+op of decades of ebike manuals."=0A=0AIf you're saying, "Enough about agent=
+s, what else is going on=3F",=0Adon't worry, we have plenty of other storie=
+s for you. On Leaders=0Aof Code, our very own Natalie Rotnov dives into the=
+ 2025=0ADeveloper Survey and what the results mean for tech leaders. From=
+=0Athe web, we've just learned that LLMs=E2=80=94much like your teenager=E2=
+=80=94can=0Aget brain rot. But don't worry, if your AI starts spamming meme=
+s=0Ayou don't understand, you can just go back to working on a 1980s=0AZX S=
+pectrum. We have that story from the internet, plus a story=0Aabout buildin=
+g software for a different kind of rot, ready for=0Ayou in this issue.=0A=
+=0AAnd just to prove that agents aren't the only things that people=0Aare t=
+alking about, we have plenty of questions and answers for=0Ayou. Wondering =
+what is and isn't an indie game=3F Mostly, it's the=0Avibes. How do you ext=
+end your WiFi through an old house=3F We hate=0Ato tell you this, but you p=
+robably need to use an Ethernet cable.=0AHow do you keep your kids from bik=
+ing straight into oncoming=0Atraffic=3F Like any parent, you just have to t=
+ry your best. We have=0Athose answers and more in the links below.=0A=0A---=
+----------=0AFrom the blog=0A-------------=0A=0AYour runbooks are obsolete =
+in the age of agents =0A( https://clicks.stackoverflow.email/f/a/GONnNlz_gn=
+VwdWRSFzC-sw~~/AAQRxRA~/yHtlmKHQTD25WJ0kqucmBs4mNcztdI33Vvf8VcaNm3VHHTP3Z7v=
+eq-TyLzwFjEU2gMJBkjGCo4n481E4-RduZN0RGsi403aox5Hh185ujJcO0MQhQ2ou8Q6aGhcmf0=
+vHpmZjbv1rBZmn-2u_UnDLCdKS7qIPEREWHw44_PhY6N8iaHCgNH5yiqURjOn9jxfASyNiUGlTf=
+AZZk2dmFVrt_JLiLYQQA3zMXWLJMxF1Mo4y0zpEAjfcLekux7SllM8W7hOJAWQ710z1dhJept3B=
+GwZSqwzV8MHgRLemu9V_gBnYSe09cuOdabqw6kZ468N0 )=0A stackoverflow.blog=0ARyan=
+ is joined by Spiros Xanthos, CEO and founder of Resolve AI,=0Ato talk abou=
+t the future of AI agents in incident management and=0Atroubleshooting, the=
+ challenges of maintaining complex software=0Asystems with traditional runb=
+ooks, and the changing role of=0Adevelopers in an AI-driven world.=0A=0AWha=
+t leaders need to know from the 2025 Stack Overflow Developer=0ASurvey =0A(=
+ https://clicks.stackoverflow.email/f/a/Q3ddxwvyJH7PjrHhAyn7tA~~/AAQRxRA~/b=
+eUX13kF5U-n9yRTSlgOqABORAScfTn_39C5CTsDp2XpQo5Vghp1EtkYqfuWGzCbKJA5yMtJ_7z3=
+g6x4S2njJsMcmsFbtgw8CHbHJGFnCDNe1tTUDoAG9yX78tkGbDaNDWKItokXU3_vLTMYonnIOB7=
+Z2mg9AE5xwN6_qzvZd_ggAI00NnAGVV2UXK_Uuj8sJwD-Vavv5DcRh780zFNQB2eWC85ltzax-t=
+EgXHmZZ_WUNzHgSezitXAjHn7D02ecdmv91DuTrm8NvMma7ijTPUAk-xnD73paQLj4OeaMPw35A=
+WLUz6JVp0GBam-LQ0M2cMbTlHAsEwDznKWlIueDDg~~ )=0A stackoverflow.blog=0AThis =
+episode draws on insights from the 2025 Stack Overflow=0ADeveloper Survey t=
+o equip leaders with ways to navigate the=0Acurrent AI landscape and captur=
+e value beyond the hype.=0A=0AOpen source is giving you choices with your a=
+gent systems =0A( https://clicks.stackoverflow.email/f/a/dc6yfpqFSWU5UP9Zg5=
+9UQw~~/AAQRxRA~/1uqJtNTORMFPXh3tWLXPdadq6BXgMZAW7BtiC4N6EGr_alK0IZDKt3T5zS3=
+oeYqRWw4UTYJi_lUaVvyaIU97Hf5q3_EiZiTEprvrBrX_q1fGhfRMJcUU6Oesfw2ZEOqL3pwAVu=
+a28bHkbe-P-hIcIdKg-VdegC0GS5gBp6_yW8H41lsE2gMj3AppRP44AnG4MApW3a_PgGseTiMkR=
+ue7nhqMfjoTB_d86kyLFqejFE04KR8P6k_AiqKoRRQONXODuYLi54LqBye0Gmaotq7Gtdr5sW5Q=
+n5SH8v3Afdsy6o_FKw0dr9iptlNAbm-JRK080t64OD4xD7oy79ushqLy_g~~ )=0A stackover=
+flow.blog=0ARyan welcomes John Dickerson, CEO of Mozilla.ai, to talk about=
+=0Athe evolving landscape of AI agents, the role of open source in=0Akeepin=
+g the tech ecosystem healthy, the challenges OS communities=0Ahave faced wi=
+th the rise of AI, and the implications of data=0Aprivacy and user choice i=
+n the age of multi-agent AI systems.=0A=0AFrom multilingual semantic search=
+ to virtual assistants at Bosch=0ADigital =0A( https://clicks.stackoverflow=
+.email/f/a/8rtJwEqCAgf-53DiJNo1oA~~/AAQRxRA~/1rv6rJnsauTl-UDgNQZGbUa9Ew2YE=
+6lbMhC36LqU6L_pKxVN-bG7Ku3rSK3dLVDpLgepBYq-YaayuoTeipeSNq6gthwV6dOAR296OuNq=
+VRceAInbtaBCxu0HXQtMD0bWe-9w6IcSpHhK9T67youddeU7xRrRR6TeiFy8YQKj4waIXihHwNZ=
+Znnq3GKmWCED6_rvqzUmwQ3MrwwOnql5j-TPhYuV8ZVB_z1X0hyQLQvkYdlQ_HbDShQbiRp398C=
+qTIzPptFw5ZJyOOugM08v8UOwbkB6sd374ffNXv_M2097Sz_Zgdrg3td73MS4-aF07EU6ka1scT=
+g7-EIIn3JMJLA~~ )=0A stackoverflow.blog=0AFrom sprawling PDFs to a fast, fa=
+ctual conversational assistant.=0A=0ADistributed SQL for Dummies =E2=80=94 =
+Compliments of Yugabyte =0A( https://clicks.stackoverflow.email/f/a/D7M5p6U=
+c6jyEkULr4TR1Qw~~/AAQRxRA~/sNIvJi7rorOUKjNAWsceH9IzT2wOqjTyocftHR2vs3mcxIKs=
+1glmPYSW0ZhmU9Y2gfc_VCctX6bgW5lUWjmpyCtsjqmCninwzuQWlqHUewUFY3jS9NaGD0lko0g=
+vH_R47xI1qODQZO27sxdOnz4NmQ~~ ) promotion=0AModern organizations need an ag=
+ile, cloud-native database.=0ADistributed SQL Databases For Dummies shows h=
+ow distributed SQL=0Adelivers scalability, resilience, and consistency for =
+AI-ready,=0Acloud-native applications. Download your free copy today.=0A=0A=
+---------------------=0AInteresting questions=0A---------------------=0A=0A=
+Why can=E2=80=99t a body move faster than light=3F =0A( https://clicks.stac=
+koverflow.email/f/a/jquNksbHAFlFnZmbD2W1eQ~~/AAQRxRA~/ja0Gc6t6FQLBUre1pqbig=
+1SDist9u-DNGggWuoSv6UnG9zNubNgYoiQBhbEvPVseL984eJV7MJkKFA460_BSndQOVxfelcuj=
+CU7HREXWbQxp6BIpszLdAPRIIY2khmoE9ekxjfsa6WDqOeHpAqB4PO4m1w8wXxz6HzKFp4_PEx0=
+wSz8_aatpiAlmniIYcCL1sDRLmZDJr-FFiUe4RPivPPTdoC_9aNsZcLmWPiQ7osqcr89E_ffB_x=
+aReqP-2xYJRBn-boCHJheLcpMysSWbhrSZx2EHMI63sK2TjUTK8dKdLMPM5jFOMT_JC-bASDS1 =
+)=0A physics.stackexchange.com=0ADisproving Landau-Lifshitz with two simple=
+ words: Super Sonic.=0A=0AWhat is and isn=E2=80=99t an indie game=3F =0A( h=
+ttps://clicks.stackoverflow.email/f/a/3XIIMlHRnbyaNjzNmJCisA~~/AAQRxRA~/kHf=
+6gmj59OaQEZ5O73mEYs5iUASTjsuVmrXU97Iva8BYu7P9SlXhyocPOgNKKIqlda0vcjag259DlT=
+KrgDnhK3AAn7J1284E5-q926uVBO4O64emG714iQwnDSBDDPhyahp2pneUQs6mIbClHD_iUlQLt=
+c2j5MOPwUJbLIkF36sKUDtTFJyo0EDMdLp63saR0A4MB1l8Wvb14OuGv5dinq8SywNoPq86SlGR=
+Mg1z02OQRirnPvQ2QNaohOArErkR5bpNAeNvg-iQBELippjSjz-b4mWBioiV-qLmiNxhfQ8~ )=
+=0A rpg.stackexchange.com=0AHumans are really good at categorizing things b=
+ased purely off=0Avibes.=0A=0AHow to extend the Wi-Fi signal on second floo=
+r of an old house=3F=0A=0A( https://clicks.stackoverflow.email/f/a/T8lRtYYf=
+KtelcvbSGmVeaA~~/AAQRxRA~/c6YuEo6_JY_eJtU2vES6HAfQJvWgr5xqtS5poO04iijzKBeiw=
+rHN_55puITZS-1lPi3CW3B5IRBItxggkTfgrv63ABFA81zTPDQkwWlHs94WgFGxnT-G3wT4U3te=
+FY-jZbXD4t0-Xw5OwNPVyPA0tvfW_Ve6-ER4uWlxTKo9h7GZ6LAObkckd4lRKrELj6DSY7otYBr=
+0s_bIxtwnc7S3l-uYzneyNqLqGxvqwd7OKWvFInVKUy8jEiM2Ds5Xpc3oikKHdbjhDdrA98jzPx=
+2R2oVIlmIn9Oh1ISEAK-5V_a5Q6CzNyDZrixThpeF_z0Em1QtWLH9WcxeCUcHpmrmWZA~~ )=0A=
+ superuser.com=0AWhen in doubt, the solution to your poor WiFi is probably =
+just=0AEthernet cables.=0A=0ACycling with a kid in real world conditions =
+=0A( https://clicks.stackoverflow.email/f/a/FbkDw1-uyu7DwDZyRGp6Xw~~/AAQRxR=
+A~/zIRkTnCyMMecQMnsb4my_0pV-ZiRMbVnB6sW7Bjbrz4LOXaBZBU8Vx_LDxQqezYphkqGrM8y=
+MnCEbS-GzOidTbfj_U6UYL18fuQ41PnUUbU0ypR0_9KroDHcVlWJ2YDl5Rz0QVvn6Q4CmZHnCm1=
+2emKSHoIc5YNlF02SGqpVFtB27WQV1hDvAG1J_KZo4llwNmysg6H4aTRAxd8OZvXCq8YQluLBfY=
+m-3SJuEhUP71QbcuimXriZ9okJn1LuJ8bEHeOK6lb0gT9swl2E7MRRqozIbm5wGgWqUBbQ4ojCJ=
+chFdEL9qhEUB2snMy7a-z02 )=0A bicycles.stackexchange.com=0AThe age-old paren=
+t problem of, =E2=80=9CDo I watch my kids or do I watch=0Awhere I'm going=
+=3F=E2=80=9D=0A=0A-------------------------=0ALinks from around the web=0A-=
+------------------------=0A=0AModern web for the ZX Spectrum =0A( https://c=
+licks.stackoverflow.email/f/a/ENgql4QsajabL9ZhQnAJBQ~~/AAQRxRA~/-gB7_ddr5zc=
+YZAOSw5ooNlqlWhHjolG0EEVTteW7jkPj8RDOGX7uN7zuHysMS6vCJzPZNOitSEfC4U1l9BQ--y=
+ZVX0quhoR3E0u7rnamJMk5ToA1d5bZMXT1tOV4wqhiTs691EZnVnomjaF9fCH5Qw~~ ) 0x00.c=
+l=0AYou'll need big hair and shoulder pads to sign onto this=0Acomputer, th=
+ough.=0A=0ALLMs can get brain rot =0A( https://clicks.stackoverflow.email/f=
+/a/rhll4h7UI73Jh5T_VnpwDA~~/AAQRxRA~/PLQS8Ay9tS-e6Juk9PFph2FjSjPbbHPYY3LNI5=
+WGdxaMschdRX4M69zbs3PCm_cTqejztV2--HbN0uKZu1xgRv3LhKZ-2-3BAo-295TB1CRddqyTL=
+M6bztqrk2ZbDEWtkqSUgSfMQIPwKN-qBcC0Lw~~ )=0Allm-brain-rot.github.io=0AEven =
+LLMs are not immune to AI-slop TikTok videos.=0A=0AScripts I wrote that I u=
+se all the time =0A( https://clicks.stackoverflow.email/f/a/crW0xQ5Jf0oHI6u=
+BMbvBqQ~~/AAQRxRA~/Vm1DLCWls6PkePye4TpMnDqByp2jEi40DGPqt8_XUh0bvcnXWlF9qcIG=
+iYxNRbcepsp3ne8T-Bcubzcqv1hLzplDZBPnEixzy_8x2TpdzkWs40p2bYRMQWIck1tMMZzpxsW=
+c9JMeWlmyOPGT0AsOhNwt68SB0w7XAO4Ow7f_6x6vo6j68I_vSAr3cAiLAOR0 )=0A evanhahn=
+.com=0AThe original automation: pre-writing a bunch of little scripts=0Ath=
+at you can copy-paste later.=0A=0ADesigning software for things that rot =
+=0A( https://clicks.stackoverflow.email/f/a/9QUb4AinS5-UimAxQjWqVw~~/AAQRxR=
+A~/E1wlr0SwZyDOsledwZSXRJYnf3In8bd2xiv_WtRuIpwuk3vpoG30o_GYXU9328ThP4N9TelY=
+3vGFqklx9_S7JBdOadbqbu4UvDV7REnk9DAXxaCuAV5oBaETaQX-YA_8FsqKAsgkjJKc9CJGC4g=
+3xpuC2tnqu1rTVohzoU2WazPoCmr51xD196c4XSg6TaPh )=0A drobinin.com=0AA softwar=
+e to replace your dad saying =E2=80=9CEh, it's probably fine,=E2=80=9D=0Awh=
+en he looks at last week's leftovers.=0A=0AFind a job that fits your techni=
+cal expertise and career goals=0Awith Stack Overflow Jobs, powered by Indee=
+d=E2=80=99s hiring platform=0A(US, UK, NL, DE, and FR only). Explore now =
+=0A( https://clicks.stackoverflow.email/f/a/Z4mfW6bNDFpSQGhng93dbw~~/AAQRxR=
+A~/-z4g7l6wWlCr2DyzH9FyAAongzz--P9l75RrobDGwRHWn1m5kCa4WvCTVPkBYR2XOfSjASQm=
+x12n_BFkh3Ve5cwi_OesIZ90lOIS2Pz0qHAMVBIfYfdwYPtkrt7l9V5-41sismLUYUmppA_xAmt=
+CwnLUpnH2JSrDRXKXxfhCK-N6FkX59Osh3TmGju1gWQPoiCavKMwRfqtVjMH2dbJUEvVbClaehF=
+gOCAAIoir0dyyzamjzhV9wt7U-JNp0vMl9GoHOSFLCjMafsjDXXcNK4g~~ )=0A.=0A=0AYou a=
+re receiving this email because you=0Aare subscribed to The Overflow Newsle=
+tter from Stack Overflow.=0AUnsubscribe ( https://clicks.stackoverflow.emai=
+l/f/a/2NCJ-NKLsJS-HtaBlBH3Vg~~/AAQRxRA~/FzHLb6PlAw7IsYlYm1Pj9cwsEIVdGRfN2MC=
+uJAjmF1zKaMFQlXiEK4cMxgChpx9lYM5DLWYZgUJ08d3ClDXgoRMRdrtsSuxJ_PBE4vEKvJqvc6=
+8O3Pp7mj-UToWgNLkgM9sRnBy6PmF2VKkXZJyQxJRADYXo5hEweAt03R8VLQRZGHj18XdOHX4ZK=
+trCYM_F_x90EYRK50Ho1aoMCZHtqVsgQ5cnJm5ddL636ZJiKF7yfhtjtL824jE-62TITw_eAYcZ=
+DRH3K4G05suhocNrOLX0mEA60l4tfQOXzn8b3LuVACP28OhrrbcmOX-Bs5uMxUM8QsrLZuuXRIL=
+aXXYMQLgTvcE-yrFRP4kpN_TGLf3iIqMiZ0FpmMv0nz1Bcqgx-EntjGdyRzkKcMcrdDcL6r_OgY=
+5hP1MDfyC9nokO2UloNeADl4rnYmIK-OIQlqUBm9RqFHF1jn6nd8n03NfDjn2chybHUjJbv3NPd=
+ImE_QH8qWrGNE7RIoiHfqOwPS8hDHRuq1HwCfMmf73COmWH72erxnDaajSE_60ParwxGkP0FHcx=
+S-Ng34fMT0aqiEBOPNTjXE5STyFjmgMVTthnLNNC1el87LFi7bGsjYWVV-7Xco9Hy03zLU5uHmM=
+4y8972sBM9cmJYYJx8v-900wLNS7xLBaPA_X7wVchDF6pselh1PIAChUUh6POLLckaDiZ ) Edi=
+t email=0Asettings ( https://clicks.stackoverflow.email/f/a/K790dCiusmoJ3CO=
+Znx1O0A~~/AAQRxRA~/kyZ2KvFBlks-bOXLceBfpXnGbbWqFw16NWIGfA_TUw-QyXPzqm0wzBIX=
+YGN3d62_nMNkFDuI11yvSZNNDsXomYZSzoqS9x9I99YsNgk7UAsdtewlP_P81CCkvABfNAn0Ul3=
+e_obJoYDGFMCAEkbDNVbxIzV9HA-vaURTs3a9FdERVj9GPzTIGNwuixyAys1znCNHFAX50hbV1m=
+V92oHn2u4TeIYXf1VbcG8GOlzENR8xSFzlRUx3X6jh81pDvj1db2duSHm1I5yq7KR0OzA6N1jWo=
+RLb7096Pie2KtExadIRNhdY8lm1ipeW3XHKcZXr3mJKqanmFQ5ak7HNgXU0Bi-3V8jRV6zGbwKx=
+whzOmuhKFu7y7Db38NnKi5YRiXCT3KZJHcOUcsMMMeyR4_uUCM8IowLvHOd9yAdTvr1ektFw0dp=
+CCzn0i3FRIeCbjHWSuLxc_0Cbc78VIu0oBEgXITX80xeNJdOVARVBTerjRj-t4ByF57ZukJtuJg=
+vFY27WuAH8u4FqyxMScbr9ybLJgYDj0oNiAGgaWLyaCpdhP57QZPc9G58mzIEg4ekgOwnpN19J7=
+TBAgNBQhNFfIvo1_iAxxfbhxaDzdf5puvx2LZZb1sY1lkQq_paBTozDGBIYmZatPWWkSTDNQU8l=
+ZHyKp2yxaBh82KKPw0ecc4Z1bNTWvXEsAHjKGv-LSpdDOxrkrHAIsxvckp9EU7Cccz06FAjOspq=
+yj0PDOL_UbnjSGPuOZmxR6Ix38-T_iWSDqKEP3Gx7Mj6OVly_fbAVgkaWuC8YxPYz576P_Q1JyK=
+nOEppoweJIJus9r1q9UIQ3m_B4wlcVWn4-ZAIVqqS51ZyxRlbuX-OYkcbLkjXJ1I-Gj-a8Qqvcv=
+K-k2xKDsYGt2f5lWp1BZIa0JzQr7qFxL8YfqgqMfqqAZCDHz-jwaWKaKZcYltTf4nzKjm_FEsNF=
+NIApUc2xqJj9jAQSOyQw4XO91lA5yLFTXHtUuimm69DeBHku_kW8PH_wpNVw3RoH-zVfRuhs-r2=
+xp9kJt1Tzmsgd7tk1R0ugaaKq2j92j0rDTtj_WwoMVrb7WsFJ4PdjqweDvd0ixTVhOndKeNtugl=
+Bi2lW1CJoMYoDtMVUpTXNQMiI~ ) Contact us =0A( https://clicks.stackoverflow.e=
+mail/f/a/GSkrYM0eXxb9N_3XWWWIjA~~/AAQRxRA~/z0xLR8BC_9lbml5fOO0EsmDQlFeXSJup=
+MKCf0fpQEhVoyYNiPMv8YbXSll_fCMgLJaPjHAWbsmwvtiGjHF2tu5TodYcVUy9BD6jT6ARfO2E=
+xhyr_pNhSuKNfm511YzDMufTRsj37Vww9pLxNNu_bxMuVMoXSBFbg7NVXYBRmyZGYjN8_1yN9Lo=
+7LcvOugsH30Am1a1ESORL_74S5DJFQbgrOfKZPHli2GFKdqHdTzh2TXSJxtnHMlHRs5dlBuc4i =
+)=0A Privacy Policy =0A( https://clicks.stackoverflow.email/f/a/KOHc400vPpa=
+XSRY3tOlYig~~/AAQRxRA~/hfaQ0obMSidSnSEkBDfJRazzgtz1doGA-w_4R2KXdQ3_w2rscIEs=
+wHGCBSb2txoRsC7-8Jo3FkFBMH1E5jJwJNl77kX_TUTJDZIaU74n5AGJDoEr6K65aWVJedlaVOv=
+G-BDdK_XTNpoyzvG0aIvNyZKTNQlD6fDW4LyZ6Ac5IUHNXdNN1huYBhJAbK8fVEFyc6RGbtT6mv=
+skK_NU1W5TpeLyimTh6lRQCyFkeO8x7_YkSIrEt7mufiU_NJl-5G2z )=0A Stack Overflow,=
+ 14 Wall Street, 20th=0AFloor, New York, NY 10005          <3
+--_----1zquMXzLuD2RmTjRDQhifQ===_CF/B9-53467-F3F12096
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html>=0A<html lang=3D"en" xmlns=3D"http://www.w3.org/1999/xhtml" =
+xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns:v=3D"urn:schemas-=
+microsoft-com:vml" style=3D"height: 100% !important; width: 100% !important=
+; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin: 0; pa=
+dding: 0;">=0A<head>=0A<meta http-equiv=3D"Content-Type" content=3D"text/ht=
+ml; charset=3DUTF-8">=0A    <title></title> <!-- The title tag shows in ema=
+il notifications, like Android 4.4. -->=0A    <meta charset=3D"utf-8"> <!--=
+ utf-8 works for most cases -->=0A    <meta name=3D"viewport" content=3D"wi=
+dth=3Ddevice-width"> <!-- Forcing initial-scale shouldn't be necessary -->=
+=0A    <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"> <!-- Use=
+ the latest (edge) version of IE rendering engine -->=0A    <meta name=3D"x=
+-apple-disable-message-reformatting"> <!-- Disable auto-scale in iOS 10 Mai=
+l entirely -->=0A    <meta name=3D"format-detection" content=3D"telephone=
+=3Dno,address=3Dno,email=3Dno,date=3Dno,url=3Dno"> <!-- Tell iOS not to aut=
+omatically link certain text strings. -->=0A=0A    <!-- Desktop Outlook on =
+Windows sometimes chokes on web font references and defaults to Times New R=
+oman, so we force a safe system font fallback. -->=0A    <!--[if mso]>=0A  =
+  <style>=0A        * {=0A            font-family: arial, sans-serif !impor=
+tant;=0A        }=0A    </style>=0A    <![endif]-->=0A=0A    <!-- All other=
+ clients get the webfont reference; some will render the font and others wi=
+ll silently fail to the fallbacks. More on that here: http://stylecampaign.=
+com/blog/2015/02/webfont-support-in-email/ -->=0A    <!--[if !mso]><!-->=0A=
+    =0A    <!--<![endif]-->=0A=0A    <!-- CSS Reset : BEGIN -->=0A    =0A  =
+  <!-- What it does: Helps DPI scaling in Outlook 2007-2013 -->=0A    <!--[=
+if gte mso 9]>=0A    <xml>=0A        <o:OfficeDocumentSettings>=0A         =
+   <o:AllowPNG/>=0A            <o:PixelsPerInch>96</o:PixelsPerInch>=0A    =
+    </o:OfficeDocumentSettings>=0A        </xml>=0A    <![endif]-->=0A=0A  =
+  <!-- CSS Reset : END -->=0A=0A    <!-- Progressive Enhancements : BEGIN -=
+->=0A    =0A    <!-- Progressive Enhancements : END -->=0A=0A    <!-- Hubsp=
+ot data-hse-inline-css -->=0A    =0A=0A<style>@font-face {=0Afont-family: '=
+Roboto Slab'; font-style: normal; font-weight: 700; src: url('https://fonts=
+.gstatic.com/s/robotoslab/v36/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjoa4Omb2Rm=
+.ttf') format('truetype');=0A}=0Abody {=0Amargin: 0 !important; padding: 0=
+ !important; height: 100% !important; width: 100% !important;=0A}=0Aimg {=
+=0A-ms-interpolation-mode: bicubic;=0A}=0A.s-btn__primary:hover {=0Abackgro=
+und: #0077CC !important; border-color: #0077CC !important;=0A}=0A.s-btn__wh=
+ite:hover {=0Abackground: #EFF0F1 !important; border-color: #EFF0F1 !import=
+ant;=0A}=0A.s-btn__outlined:hover {=0Abackground: rgba(0,119,204,.05) !impo=
+rtant; color: #005999 !important;=0A}=0A.s-tag:hover {=0Aborder-color: #cee=
+0ed !important; background: #cee0ed !important;=0A}=0A.post-tag:hover {=0Ab=
+order-color: #cee0ed !important; background: #cee0ed !important;=0A}=0A.has=
+-markdown a:visited {=0Acolor: #0077CC !important; text-decoration: none !i=
+mportant;=0A}=0A.has-markdown a:visited {=0Acolor: #0077CC !important; text=
+-decoration: none !important;=0A}=0A@media only screen and (min-device-widt=
+h: 320px) and (max-device-width: 374px) {=0A  u ~ div .email-container {=0A=
+    min-width: 320px !important;=0A  }=0A}=0A@media only screen and (min-de=
+vice-width: 375px) and (max-device-width: 413px) {=0A  u ~ div .email-conta=
+iner {=0A    min-width: 375px !important;=0A  }=0A}=0A@media only screen an=
+d (min-device-width: 414px) {=0A  u ~ div .email-container {=0A    min-widt=
+h: 414px !important;=0A  }=0A}=0A@media screen and (max-width: 680px) {=0A =
+ .stack-column {=0A    display: block !important; width: 100% !important; m=
+ax-width: 100% !important; direction: ltr !important;=0A  }=0A  .stack-colu=
+mn-center {=0A    display: block !important; width: 100% !important; max-wi=
+dth: 100% !important; direction: ltr !important;=0A  }=0A  .stack-column-ce=
+nter {=0A    text-align: center !important;=0A  }=0A  .hide-on-mobile {=0A =
+   display: none !important; max-height: 0 !important; overflow: hidden !im=
+portant; visibility: hidden !important;=0A  }=0A  .sm-p-none {=0A    paddin=
+g: 0 !important;=0A  }=0A  .sm-pt-none {=0A    padding-top: 0 !important;=
+=0A  }=0A  .sm-pb-none {=0A    padding-bottom: 0 !important;=0A  }=0A  .sm-=
+pr-none {=0A    padding-right: 0 !important;=0A  }=0A  .sm-pl-none {=0A    =
+padding-left: 0 !important;=0A  }=0A  .sm-px-none {=0A    padding-left: 0 !=
+important; padding-right: 0 !important;=0A  }=0A  .sm-py-none {=0A    paddi=
+ng-top: 0 !important; padding-bottom: 0 !important;=0A  }=0A  .sm-p {=0A   =
+ padding: 20px !important;=0A  }=0A  .sm-pt {=0A    padding-top: 20px !impo=
+rtant;=0A  }=0A  .sm-pb {=0A    padding-bottom: 20px !important;=0A  }=0A  =
+.sm-pr {=0A    padding-right: 20px !important;=0A  }=0A  .sm-pl {=0A    pa=
+dding-left: 20px !important;=0A  }=0A  .sm-px {=0A    padding-left: 20px !i=
+mportant; padding-right: 20px !important;=0A  }=0A  .sm-py {=0A    padding-=
+top: 20px !important; padding-bottom: 20px !important;=0A  }=0A  .sm-mb {=
+=0A    margin-bottom: 20px !important;=0A  }=0A  .bar {=0A    border-top-le=
+ft-radius: 0; border-top-right-radius: 0; border-bottom-left-radius: 0; bor=
+der-bottom-right-radius: 0;=0A  }=0A  .btr {=0A    border-top-left-radius: =
+0; border-top-right-radius: 0; border-bottom-left-radius: 0; border-bottom-=
+right-radius: 0;=0A  }=0A  .bbr {=0A    border-top-left-radius: 0; border-t=
+op-right-radius: 0; border-bottom-left-radius: 0; border-bottom-right-radiu=
+s: 0;=0A  }=0A  .adjust-logo {=0A    padding-left: 0;=0A  }=0A}=0A</style>=
+=0A</head>=0A=0A<body width=3D"100%" style=3D"mso-line-height-rule: exactly=
+; height: 100% !important; width: 100% !important; -ms-text-size-adjust: 10=
+0%; -webkit-text-size-adjust: 100%; margin: 0; padding: 0;" bgcolor=3D"#f3f=
+3f5">=0A<div style=3D"display:none !important;visibility:hidden;mso-hide:al=
+l;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;=
+opacity:0;overflow:hidden;">E-bikes, LLM brain rot, and keeping open source=
+ alive</div>=0A<div style=3D"display:none !important;visibility:hidden;mso-=
+hide:all;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-wid=
+th:0px;opacity:0;overflow:hidden;">=CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=
+=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=
+=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=
+=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =
+=CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=
+=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =
+=C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=
+=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =
+=EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=
+=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =
+=E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=
+=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =
+=E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=
+=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=
+=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=
+=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=
+=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =
+=CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=
+=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =
+=C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=
+=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =
+=EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=
+=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =
+=E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=
+=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =
+=E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=
+=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=
+=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=
+=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=
+=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =
+=CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=
+=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =
+=C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=
+=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =
+=EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=
+=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =
+=E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=
+=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =
+=E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=
+=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=
+=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=
+=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=
+=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =
+=CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=
+=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =
+=C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=
+=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =
+=EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=
+=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =
+=E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=
+=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =
+=E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=
+=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=
+=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=
+=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=
+=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =
+=CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=
+=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =
+=C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=
+=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF </div>=0A    <center style=3D"widt=
+h: 100%; background-color: #f3f3f5; -ms-text-size-adjust: 100%; -webkit-tex=
+t-size-adjust: 100%;">=0A    <!--[if mso | IE]>=0A    <table role=3D"presen=
+tation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" sty=
+le=3D"background-color: #f3f3f5;">=0A    <tr>=0A    <td>=0A    <![endif]-->=
+=0A=0A        <div class=3D"email-container" style=3D"max-width: 680px; -ms=
+-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin: 0 auto;">=
+=0A            <!--[if mso]>=0A            <table role=3D"presentation" cel=
+lspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"680" align=3D"center=
+">=0A            <tr>=0A            <td>=0A            <![endif]-->=0A     =
+       <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" style=3D"max-width: 680px; width: 100%; -ms-text-size-adjust: 100=
+%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt !important; mso-ta=
+ble-rspace: 0pt !important; border-spacing: 0; border-collapse: collapse; b=
+order-width: 0;">=0A                <!-- Logo : BEGIN -->=0A               =
+ <tr style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">=
+=0A                    <td style=3D"-ms-text-size-adjust: 100%; -webkit-tex=
+t-size-adjust: 100%; mso-table-lspace: 0pt !important; mso-table-rspace: 0p=
+t !important; padding: 20px 30px;" class=3D"sm-px" align=3D"left">=0A      =
+                  <a href=3D"https://clicks.stackoverflow.email/f/a/3UrGJJu=
+AGxWiJyEqTYthjQ~~/AAQRxRA~/vOExbfmdtLMCHxwSePcrsvVwSBsGoRCaCD_3ckJ7VQOYhPwF=
+luiJstK9AnotYZCUM1S_yU9AYAED9m221vMaBTEof85PlNS_1UHG3yTmdmt3owg2Bxob37QjDMf=
+ABkXiyYZNlpSQqaot9odKmnos5w~~" style=3D"-ms-text-size-adjust: 100%; -webkit=
+-text-size-adjust: 100%; text-decoration: none;">=0A                       =
+     <img src=3D"https://braze-images.com/appboy/communication/assets/image=
+_assets/images/67f40dddf58829007389cf8f/original.png=3F1744047580" alt=3D""=
+ border=3D"0" height=3D"36" width=3D"146" style=3D"display: block; font-fam=
+ily: arial, sans-serif; font-size: 15px; line-height: 15px; color: #3C3F44;=
+ -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; -ms-interpolat=
+ion-mode: bicubic; margin: 0;">=0A                        </a>=0A          =
+          </td>=0A                </tr>=0A                <!-- Logo : END -=
+->=0A=0A                <!-----------------------------=0A=0A              =
+      EMAIL BODY : BEGIN=0A=0A                -----------------------------=
+->=0A=0A                <tr style=3D"-ms-text-size-adjust: 100%; -webkit-te=
+xt-size-adjust: 100%;">=0A                    <td style=3D"-ms-text-size-ad=
+just: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt !importan=
+t; mso-table-rspace: 0pt !important; border-radius: 5px; padding: 0 30px;" =
+class=3D"sm-px bar" bgcolor=3D"#ffffff">=0A                        <table b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"width: 100%; font-family: arial, sans-serif; font-size: 15px; line-heig=
+ht: 21px; color: #3C3F44; text-align: left; -ms-text-size-adjust: 100%; -we=
+bkit-text-size-adjust: 100%; mso-table-lspace: 0pt !important; mso-table-rs=
+pace: 0pt !important; border-spacing: 0; border-collapse: collapse; border-=
+width: 0;">=0A                            <!-- Header : BEGIN -->=0A       =
+                     <tr style=3D"-ms-text-size-adjust: 100%; -webkit-text-=
+size-adjust: 100%;">=0A                                <td style=3D"padding=
+-top: 20px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso=
+-table-lspace: 0pt !important; mso-table-rspace: 0pt !important; padding-le=
+ft: 15px;" class=3D"adjust-logo" align=3D"center">=0A                      =
+              <h1 style=3D"line-height: 1; -ms-text-size-adjust: 100%; -web=
+kit-text-size-adjust: 100%; margin: 0;" align=3D"center">=0A               =
+                         <img src=3D"https://braze-images.com/appboy/commun=
+ication/assets/image_assets/images/67f40df13c9783006433204d/original.png=3F=
+1744047601" alt=3D"The Overflow." height=3D"" width=3D"354" border=3D"0" st=
+yle=3D"width: 100%; max-width: 354px; height: auto; display: block; font-we=
+ight: normal; font-family: arial, sans-serif; font-size: 15px; color: #3C3F=
+44; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; -ms-interpo=
+lation-mode: bicubic; margin: 0 auto;">=0A                                 =
+   </h1>=0A                                </td>=0A                        =
+    </tr>=0A                            <tr style=3D"-ms-text-size-adjust: =
+100%; -webkit-text-size-adjust: 100%;">=0A                                <=
+td style=3D"padding-bottom: 10px; font-family: 'Roboto Slab', arial, sans; =
+font-size: 12px; line-height: 15px; color: #848D95; text-transform: upperca=
+se; letter-spacing: .1em; -ms-text-size-adjust: 100%; -webkit-text-size-adj=
+ust: 100%; mso-table-lspace: 0pt !important; mso-table-rspace: 0pt !importa=
+nt;" class=3D"unstyle-auto-detected-links" align=3D"center">=0A            =
+                       29 October=0A                                </td>=
+=0A                            </tr>=0A                            <!-- Hea=
+der : END -->=0A                            <!-- Intro : BEGIN -->=0A      =
+                      <tr style=3D"-ms-text-size-adjust: 100%; -webkit-text=
+-size-adjust: 100%;">=0A                                <td style=3D"paddin=
+g-top: 20px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt !important; mso-table-rspace: 0pt !important;">=0A     =
+                               <p style=3D"-ms-text-size-adjust: 100%; -web=
+kit-text-size-adjust: 100%; margin: 0 0 30px;">=0A                         =
+               If you're keeping your ear to the beat of AI's robotic heart=
+ like we are, you're probably noticing that agents are everywhere now. This=
+ week's newsletter is not different=E2=80=94we've got plenty of stories for=
+ you on the newest AI hype. John Dickerson, CEO of Mozilla.ai, joins us on =
+the pod to talk about the role of open source in the future of AI agents, i=
+ncluding the challenges OS communities are facing in the age of AI. If you'=
+re looking to throw away your runbook, we've got another conversation with =
+Spiros Xanthos, CEO and founder of Resolve AI, all about how AI agents are =
+reducing the work of incident management and troubleshooting for developers=
+. Plus, on the blog, find out what it takes to build out agentic virtual a=
+ssistants on top of decades of ebike manuals." <br style=3D"-ms-text-size-a=
+djust: 100%; -webkit-text-size-adjust: 100%;"><br style=3D"-ms-text-size-ad=
+just: 100%; -webkit-text-size-adjust: 100%;">If you're saying, "Enough abou=
+t agents, what else is going on=3F", don't worry, we have plenty of other s=
+tories for you. On Leaders of Code, our very own Natalie Rotnov dives into =
+the 2025 Developer Survey and what the results mean for tech leaders. From =
+the web, we've just learned that LLMs=E2=80=94much like your teenager=E2=80=
+=94can get brain rot. But don't worry, if your AI starts spamming memes you=
+ don't understand, you can just go back to working on a 1980s ZX Spectrum. =
+We have that story from the internet, plus a story about building software =
+for a different kind of rot, ready for you in this issue. <br style=3D"-ms-=
+text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><br style=3D"-ms-t=
+ext-size-adjust: 100%; -webkit-text-size-adjust: 100%;">And just to prove t=
+hat agents aren't the only things that people are talking about, we have pl=
+enty of questions and answers for you. Wondering what is and isn't an indie=
+ game=3F Mostly, it's the vibes. How do you extend your WiFi through an old=
+ house=3F We hate to tell you this, but you probably need to use an Etherne=
+t cable. How do you keep your kids from biking straight into oncoming traff=
+ic=3F Like any parent, you just have to try your best. We have those answer=
+s and more in the links below.                                </p>=0A      =
+                          </td>=0A                            </tr>=0A     =
+                       <!-- Intro : END -->=0A                            <=
+!-- Section : BEGIN -->=0A                            <tr style=3D"-ms-text=
+-size-adjust: 100%; -webkit-text-size-adjust: 100%;">=0A                   =
+             <td style=3D"border-top-width: 1px; border-top-color: #D6D8DB;=
+ border-top-style: solid; -ms-text-size-adjust: 100%; -webkit-text-size-adj=
+ust: 100%; mso-table-lspace: 0pt !important; mso-table-rspace: 0pt !importa=
+nt; padding: 30px 0 0;" class=3D"sm-pt">=0A                                =
+    <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"present=
+ation" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;=
+ mso-table-lspace: 0pt !important; mso-table-rspace: 0pt !important; border=
+-spacing: 0; border-collapse: collapse; border-width: 0;">=0A              =
+                          <tr style=3D"-ms-text-size-adjust: 100%; -webkit-=
+text-size-adjust: 100%;">=0A                                            <td=
+ style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-t=
+able-lspace: 0pt !important; mso-table-rspace: 0pt !important; padding: 0 1=
+0px 20px 0;" valign=3D"middle">=0A                                         =
+       <img src=3D"https://braze-images.com/appboy/communication/assets/ima=
+ge_assets/images/68388f57b9e8860066719e9f/original.png=3F1748537175" height=
+=3D"26" width=3D"26" border=3D"0" alt=3D"" style=3D"display: block; font-fa=
+mily: arial, sans-serif; font-size: 15px; line-height: 15px; color: #3C3F44=
+; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; -ms-interpola=
+tion-mode: bicubic;">=0A                                            </td>=
+=0A                                            <td style=3D"padding-bottom:=
+ 20px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-tabl=
+e-lspace: 0pt !important; mso-table-rspace: 0pt !important;" valign=3D"midd=
+le">=0A                                                <h2 style=3D"font-fa=
+mily: 'Roboto Slab', arial, sans; font-size: 19px; line-height: 19px; font-=
+weight: bold; color: #3C3F44; -ms-text-size-adjust: 100%; -webkit-text-size=
+-adjust: 100%; margin: 0;">=0A                                             =
+       From the blog=0A                                                </h2=
+>=0A                                            </td>=0A                   =
+                     </tr>=0A                                    </table>=
+=0A                                    =0A                                 =
+                               <p style=3D"-ms-text-size-adjust: 100%; -web=
+kit-text-size-adjust: 100%; margin: 0 0 30px;"><a href=3D"https://clicks.st=
+ackoverflow.email/f/a/GONnNlz_gnVwdWRSFzC-sw~~/AAQRxRA~/yHtlmKHQTD25WJ0kquc=
+mBs4mNcztdI33Vvf8VcaNm3VHHTP3Z7veq-TyLzwFjEU2gMJBkjGCo4n481E4-RduZN0RGsi403=
+aox5Hh185ujJcO0MQhQ2ou8Q6aGhcmf0vHpmZjbv1rBZmn-2u_UnDLCdKS7qIPEREWHw44_PhY6=
+N8iaHCgNH5yiqURjOn9jxfASyNiUGlTfAZZk2dmFVrt_JLiLYQQA3zMXWLJMxF1Mo4y0zpEAjfc=
+Lekux7SllM8W7hOJAWQ710z1dhJept3BGwZSqwzV8MHgRLemu9V_gBnYSe09cuOdabqw6kZ468N=
+0" style=3D"font-weight: bold; color: #0077cc; text-decoration: none; -ms-t=
+ext-size-adjust: 100%; -webkit-text-size-adjust: 100%;">Your runbooks are o=
+bsolete in the age of agents</a>=C2=A0<span style=3D"color: #6A737C; font-s=
+ize: 12px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" cla=
+ss=3D"unstyle-auto-detected-links">stackoverflow.blog</span><br style=3D"-m=
+s-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">Ryan is joined b=
+y Spiros Xanthos, CEO and founder of Resolve AI, to talk about the future o=
+f AI agents in incident management and troubleshooting, the challenges of m=
+aintaining complex software systems with traditional runbooks, and the chan=
+ging role of developers in an AI-driven world.</p>=0A<p style=3D"-ms-text-s=
+ize-adjust: 100%; -webkit-text-size-adjust: 100%; margin: 0 0 30px;"><a hre=
+f=3D"https://clicks.stackoverflow.email/f/a/Q3ddxwvyJH7PjrHhAyn7tA~~/AAQRxR=
+A~/beUX13kF5U-n9yRTSlgOqABORAScfTn_39C5CTsDp2XpQo5Vghp1EtkYqfuWGzCbKJA5yMtJ=
+_7z3g6x4S2njJsMcmsFbtgw8CHbHJGFnCDNe1tTUDoAG9yX78tkGbDaNDWKItokXU3_vLTMYonn=
+IOB7Z2mg9AE5xwN6_qzvZd_ggAI00NnAGVV2UXK_Uuj8sJwD-Vavv5DcRh780zFNQB2eWC85ltz=
+ax-tEgXHmZZ_WUNzHgSezitXAjHn7D02ecdmv91DuTrm8NvMma7ijTPUAk-xnD73paQLj4OeaMP=
+w35AWLUz6JVp0GBam-LQ0M2cMbTlHAsEwDznKWlIueDDg~~" style=3D"font-weight: bold=
+; color: #0077cc; text-decoration: none; -ms-text-size-adjust: 100%; -webki=
+t-text-size-adjust: 100%;">What leaders need to know from the 2025 Stack Ov=
+erflow Developer Survey</a>=C2=A0<span style=3D"color: #6A737C; font-size: =
+12px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" class=3D=
+"unstyle-auto-detected-links">stackoverflow.blog</span><br style=3D"-ms-tex=
+t-size-adjust: 100%; -webkit-text-size-adjust: 100%;">This episode draws on=
+ insights from the 2025 Stack Overflow Developer Survey to equip leaders wi=
+th ways to navigate the current AI landscape and capture value beyond the h=
+ype.</p>=0A<p style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust=
+: 100%; margin: 0 0 30px;"><a href=3D"https://clicks.stackoverflow.email/f/=
+a/dc6yfpqFSWU5UP9Zg59UQw~~/AAQRxRA~/1uqJtNTORMFPXh3tWLXPdadq6BXgMZAW7BtiC4N=
+6EGr_alK0IZDKt3T5zS3oeYqRWw4UTYJi_lUaVvyaIU97Hf5q3_EiZiTEprvrBrX_q1fGhfRMJc=
+UU6Oesfw2ZEOqL3pwAVua28bHkbe-P-hIcIdKg-VdegC0GS5gBp6_yW8H41lsE2gMj3AppRP44A=
+nG4MApW3a_PgGseTiMkRue7nhqMfjoTB_d86kyLFqejFE04KR8P6k_AiqKoRRQONXODuYLi54Lq=
+Bye0Gmaotq7Gtdr5sW5Qn5SH8v3Afdsy6o_FKw0dr9iptlNAbm-JRK080t64OD4xD7oy79ushqL=
+y_g~~" style=3D"font-weight: bold; color: #0077cc; text-decoration: none; -=
+ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">Open source is =
+giving you choices with your agent systems</a>=C2=A0<span style=3D"color: #=
+6A737C; font-size: 12px; -ms-text-size-adjust: 100%; -webkit-text-size-adju=
+st: 100%;" class=3D"unstyle-auto-detected-links">stackoverflow.blog</span><=
+br style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">Ry=
+an welcomes John Dickerson, CEO of Mozilla.ai, to talk about the evolving l=
+andscape of AI agents, the role of open source in keeping the tech ecosyste=
+m healthy, the challenges OS communities have faced with the rise of AI, an=
+d the implications of data privacy and user choice in the age of multi-agen=
+t AI systems. </p>=0A<p style=3D"-ms-text-size-adjust: 100%; -webkit-text-s=
+ize-adjust: 100%; margin: 0 0 30px;"><a href=3D"https://clicks.stackoverflo=
+w.email/f/a/8rtJwEqCAgf-53DiJNo1oA~~/AAQRxRA~/1rv6rJnsauTl-UDgNQZGbUa9Ew2YE=
+6lbMhC36LqU6L_pKxVN-bG7Ku3rSK3dLVDpLgepBYq-YaayuoTeipeSNq6gthwV6dOAR296OuNq=
+VRceAInbtaBCxu0HXQtMD0bWe-9w6IcSpHhK9T67youddeU7xRrRR6TeiFy8YQKj4waIXihHwNZ=
+Znnq3GKmWCED6_rvqzUmwQ3MrwwOnql5j-TPhYuV8ZVB_z1X0hyQLQvkYdlQ_HbDShQbiRp398C=
+qTIzPptFw5ZJyOOugM08v8UOwbkB6sd374ffNXv_M2097Sz_Zgdrg3td73MS4-aF07EU6ka1scT=
+g7-EIIn3JMJLA~~" style=3D"font-weight: bold; color: #0077cc; text-decoratio=
+n: none; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">From =
+multilingual semantic search to virtual assistants at Bosch Digital</a>=C2=
+=A0<span style=3D"color: #6A737C; font-size: 12px; -ms-text-size-adjust: 10=
+0%; -webkit-text-size-adjust: 100%;" class=3D"unstyle-auto-detected-links">=
+stackoverflow.blog</span><br style=3D"-ms-text-size-adjust: 100%; -webkit-t=
+ext-size-adjust: 100%;">From sprawling PDFs to a fast, factual conversation=
+al assistant.</p>=0A<p style=3D"-ms-text-size-adjust: 100%; -webkit-text-si=
+ze-adjust: 100%; margin: 0 0 30px;"><a href=3D"https://clicks.stackoverflow=
+.email/f/a/D7M5p6Uc6jyEkULr4TR1Qw~~/AAQRxRA~/sNIvJi7rorOUKjNAWsceH9IzT2wOq=
+jTyocftHR2vs3mcxIKs1glmPYSW0ZhmU9Y2gfc_VCctX6bgW5lUWjmpyCtsjqmCninwzuQWlqHU=
+ewUFY3jS9NaGD0lko0gvH_R47xI1qODQZO27sxdOnz4NmQ~~" style=3D"font-weight: bol=
+d; color: #0077cc; text-decoration: none; -ms-text-size-adjust: 100%; -webk=
+it-text-size-adjust: 100%;">Distributed SQL for Dummies =E2=80=94 Complimen=
+ts of Yugabyte</a>=C2=A0<span style=3D"color: #6A737C; font-size: 12px; lin=
+e-height: 12px; background-color: #FFEEA9; display: inline-block; border-ra=
+dius: 3px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; bord=
+er: 3px solid #FFEEA9;">promotion</span><br style=3D"-ms-text-size-adjust: =
+100%; -webkit-text-size-adjust: 100%;">Modern organizations need an agile, =
+cloud-native database. Distributed SQL Databases For Dummies shows how dist=
+ributed SQL delivers scalability, resilience, and consistency for AI-ready,=
+ cloud-native applications. Download your free copy today.</p>=0A          =
+                  =0A                                </td>=0A              =
+              </tr>=0A                            <!-- Section : END -->=0A=
+                            <!-- Section : BEGIN -->=0A                    =
+        <tr style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: =
+100%;">=0A                                <td style=3D"border-top-width: 1p=
+x; border-top-color: #D6D8DB; border-top-style: solid; -ms-text-size-adjust=
+: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt !important; m=
+so-table-rspace: 0pt !important; padding: 30px 0 0;" class=3D"sm-pt">=0A   =
+                                 <table border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" role=3D"presentation" style=3D"-ms-text-size-adjust: 100%; -w=
+ebkit-text-size-adjust: 100%; mso-table-lspace: 0pt !important; mso-table-r=
+space: 0pt !important; border-spacing: 0; border-collapse: collapse; border=
+-width: 0;">=0A                                        <tr style=3D"-ms-tex=
+t-size-adjust: 100%; -webkit-text-size-adjust: 100%;">=0A                  =
+                          <td style=3D"-ms-text-size-adjust: 100%; -webkit-=
+text-size-adjust: 100%; mso-table-lspace: 0pt !important; mso-table-rspace:=
+ 0pt !important; padding: 0 10px 20px 0;" valign=3D"middle">=0A            =
+                                    <img src=3D"https://braze-images.com/ap=
+pboy/communication/assets/image_assets/images/68388f3b75c4c800745ca891/orig=
+inal.png=3F1748537147" height=3D"26" width=3D"26" border=3D"0" alt=3D"" sty=
+le=3D"display: block; font-family: arial, sans-serif; font-size: 15px; line=
+-height: 15px; color: #3C3F44; -ms-text-size-adjust: 100%; -webkit-text-siz=
+e-adjust: 100%; -ms-interpolation-mode: bicubic;">=0A                      =
+                      </td>=0A                                            <=
+td style=3D"padding-bottom: 20px; -ms-text-size-adjust: 100%; -webkit-text-=
+size-adjust: 100%; mso-table-lspace: 0pt !important; mso-table-rspace: 0pt =
+!important;" valign=3D"middle">=0A                                         =
+       <h2 style=3D"font-family: 'Roboto Slab', arial, sans; font-size: 19p=
+x; line-height: 19px; font-weight: bold; color: #3C3F44; -ms-text-size-adju=
+st: 100%; -webkit-text-size-adjust: 100%; margin: 0;">=0A                  =
+                                  Interesting questions=0A                 =
+                               </h2>=0A                                    =
+        </td>=0A                                        </tr>=0A           =
+                         </table>=0A                                       =
+                         <p style=3D"-ms-text-size-adjust: 100%; -webkit-te=
+xt-size-adjust: 100%; margin: 0 0 30px;"><a href=3D"https://clicks.stackove=
+rflow.email/f/a/jquNksbHAFlFnZmbD2W1eQ~~/AAQRxRA~/ja0Gc6t6FQLBUre1pqbig1SDi=
+st9u-DNGggWuoSv6UnG9zNubNgYoiQBhbEvPVseL984eJV7MJkKFA460_BSndQOVxfelcujCU7H=
+REXWbQxp6BIpszLdAPRIIY2khmoE9ekxjfsa6WDqOeHpAqB4PO4m1w8wXxz6HzKFp4_PEx0wSz8=
+_aatpiAlmniIYcCL1sDRLmZDJr-FFiUe4RPivPPTdoC_9aNsZcLmWPiQ7osqcr89E_ffB_xaReq=
+P-2xYJRBn-boCHJheLcpMysSWbhrSZx2EHMI63sK2TjUTK8dKdLMPM5jFOMT_JC-bASDS1" sty=
+le=3D"font-weight: bold; color: #0077cc; text-decoration: none; -ms-text-si=
+ze-adjust: 100%; -webkit-text-size-adjust: 100%;">Why can=E2=80=99t a body =
+move faster than light=3F</a>=C2=A0<span style=3D"color: #6A737C; font-size=
+: 12px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" class=
+=3D"unstyle-auto-detected-links">physics.stackexchange.com</span><br style=
+=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">Disproving=
+ Landau-Lifshitz with two simple words: Super Sonic.</p>=0A<p style=3D"-ms-=
+text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin: 0 0 30px;">=
+<a href=3D"https://clicks.stackoverflow.email/f/a/3XIIMlHRnbyaNjzNmJCisA~~/=
+AAQRxRA~/kHf6gmj59OaQEZ5O73mEYs5iUASTjsuVmrXU97Iva8BYu7P9SlXhyocPOgNKKIqlda=
+0vcjag259DlTKrgDnhK3AAn7J1284E5-q926uVBO4O64emG714iQwnDSBDDPhyahp2pneUQs6mI=
+bClHD_iUlQLtc2j5MOPwUJbLIkF36sKUDtTFJyo0EDMdLp63saR0A4MB1l8Wvb14OuGv5dinq8S=
+ywNoPq86SlGRMg1z02OQRirnPvQ2QNaohOArErkR5bpNAeNvg-iQBELippjSjz-b4mWBioiV-qL=
+miNxhfQ8~" style=3D"font-weight: bold; color: #0077cc; text-decoration: non=
+e; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">What is and=
+ isn=E2=80=99t an indie game=3F</a>=C2=A0<span style=3D"color: #6A737C; fon=
+t-size: 12px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" =
+class=3D"unstyle-auto-detected-links">rpg.stackexchange.com</span><br style=
+=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">Humans are=
+ really good at categorizing things based purely off vibes.</p>=0A<p style=
+=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin: 0 0=
+ 30px;"><a href=3D"https://clicks.stackoverflow.email/f/a/T8lRtYYfKtelcvbSG=
+mVeaA~~/AAQRxRA~/c6YuEo6_JY_eJtU2vES6HAfQJvWgr5xqtS5poO04iijzKBeiwrHN_55puI=
+TZS-1lPi3CW3B5IRBItxggkTfgrv63ABFA81zTPDQkwWlHs94WgFGxnT-G3wT4U3teFY-jZbXD4=
+t0-Xw5OwNPVyPA0tvfW_Ve6-ER4uWlxTKo9h7GZ6LAObkckd4lRKrELj6DSY7otYBr0s_bIxtwn=
+c7S3l-uYzneyNqLqGxvqwd7OKWvFInVKUy8jEiM2Ds5Xpc3oikKHdbjhDdrA98jzPx2R2oVIlmI=
+n9Oh1ISEAK-5V_a5Q6CzNyDZrixThpeF_z0Em1QtWLH9WcxeCUcHpmrmWZA~~" style=3D"fon=
+t-weight: bold; color: #0077cc; text-decoration: none; -ms-text-size-adjust=
+: 100%; -webkit-text-size-adjust: 100%;">How to extend the Wi-Fi signal on =
+second floor of an old house=3F</a>=C2=A0<span style=3D"color: #6A737C; fon=
+t-size: 12px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" =
+class=3D"unstyle-auto-detected-links">superuser.com</span><br style=3D"-ms-=
+text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">When in doubt, the=
+ solution to your poor WiFi is probably just Ethernet cables.</p>=0A<p styl=
+e=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin: 0 =
+0 30px;"><a href=3D"https://clicks.stackoverflow.email/f/a/FbkDw1-uyu7DwDZy=
+RGp6Xw~~/AAQRxRA~/zIRkTnCyMMecQMnsb4my_0pV-ZiRMbVnB6sW7Bjbrz4LOXaBZBU8Vx_LD=
+xQqezYphkqGrM8yMnCEbS-GzOidTbfj_U6UYL18fuQ41PnUUbU0ypR0_9KroDHcVlWJ2YDl5Rz0=
+QVvn6Q4CmZHnCm12emKSHoIc5YNlF02SGqpVFtB27WQV1hDvAG1J_KZo4llwNmysg6H4aTRAxd8=
+OZvXCq8YQluLBfYm-3SJuEhUP71QbcuimXriZ9okJn1LuJ8bEHeOK6lb0gT9swl2E7MRRqozIbm=
+5wGgWqUBbQ4ojCJchFdEL9qhEUB2snMy7a-z02" style=3D"font-weight: bold; color: =
+#0077cc; text-decoration: none; -ms-text-size-adjust: 100%; -webkit-text-si=
+ze-adjust: 100%;">Cycling with a kid in real world conditions</a>=C2=A0<spa=
+n style=3D"color: #6A737C; font-size: 12px; -ms-text-size-adjust: 100%; -we=
+bkit-text-size-adjust: 100%;" class=3D"unstyle-auto-detected-links">bicycle=
+s.stackexchange.com</span><br style=3D"-ms-text-size-adjust: 100%; -webkit-=
+text-size-adjust: 100%;">The age-old parent problem of, =E2=80=9CDo I watch=
+ my kids or do I watch where I'm going=3F=E2=80=9D<br style=3D"-ms-text-siz=
+e-adjust: 100%; -webkit-text-size-adjust: 100%;"></p>=0A                   =
+             </td>=0A                            </tr>=0A                  =
+          <!-- Section : END -->=0A                            <!-- Section=
+ : BEGIN -->=0A                            <tr style=3D"-ms-text-size-adjus=
+t: 100%; -webkit-text-size-adjust: 100%;">=0A                              =
+  <td style=3D"border-top-width: 1px; border-top-color: #D6D8DB; border-top=
+-style: solid; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; =
+mso-table-lspace: 0pt !important; mso-table-rspace: 0pt !important; padding=
+: 30px 0 0;" class=3D"sm-pt">=0A                                    <table =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" styl=
+e=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-=
+lspace: 0pt !important; mso-table-rspace: 0pt !important; border-spacing: 0=
+; border-collapse: collapse; border-width: 0;">=0A                         =
+               <tr style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-a=
+djust: 100%;">=0A                                            <td style=3D"-=
+ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace=
+: 0pt !important; mso-table-rspace: 0pt !important; padding: 0 10px 20px 0;=
+" valign=3D"middle">=0A                                                <img=
+ src=3D"https://braze-images.com/appboy/communication/assets/image_assets/i=
+mages/68388f1075c4c800845ca799/original.png=3F1748537104" height=3D"26" wid=
+th=3D"26" border=3D"0" alt=3D"" style=3D"display: block; font-family: arial=
+, sans-serif; font-size: 15px; line-height: 15px; color: #3C3F44; -ms-text-=
+size-adjust: 100%; -webkit-text-size-adjust: 100%; -ms-interpolation-mode: =
+bicubic;">=0A                                            </td>=0A          =
+                                  <td style=3D"padding-bottom: 20px; -ms-te=
+xt-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt=
+ !important; mso-table-rspace: 0pt !important;" valign=3D"middle">=0A      =
+                                          <h2 style=3D"font-family: 'Roboto=
+ Slab', arial, sans; font-size: 19px; line-height: 19px; font-weight: bold;=
+ color: #3C3F44; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%=
+; margin: 0;">=0A                                                    Links =
+from around the web=0A                                                </h2>=
+=0A                                            </td>=0A                    =
+                    </tr>=0A                                    </table>=0A=
+                                    =0A                                    =
+                                    =0A                                    =
+                            <p style=3D"-ms-text-size-adjust: 100%; -webkit=
+-text-size-adjust: 100%; margin: 0 0 30px;"><a href=3D"https://clicks.stack=
+overflow.email/f/a/ENgql4QsajabL9ZhQnAJBQ~~/AAQRxRA~/-gB7_ddr5zcYZAOSw5ooNl=
+qlWhHjolG0EEVTteW7jkPj8RDOGX7uN7zuHysMS6vCJzPZNOitSEfC4U1l9BQ--yZVX0quhoR3E=
+0u7rnamJMk5ToA1d5bZMXT1tOV4wqhiTs691EZnVnomjaF9fCH5Qw~~" style=3D"font-weig=
+ht: bold; color: #0077cc; text-decoration: none; -ms-text-size-adjust: 100%=
+; -webkit-text-size-adjust: 100%;">Modern web for the ZX Spectrum</a>=C2=A0=
+<span style=3D"color: #6A737C; font-size: 12px; -ms-text-size-adjust: 100%;=
+ -webkit-text-size-adjust: 100%;" class=3D"unstyle-auto-detected-links">0x0=
+0.cl</span><br style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjus=
+t: 100%;">You'll need big hair and shoulder pads to sign onto this computer=
+, though.</p>=0A<p style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-a=
+djust: 100%; margin: 0 0 30px;"><a href=3D"https://clicks.stackoverflow.ema=
+il/f/a/rhll4h7UI73Jh5T_VnpwDA~~/AAQRxRA~/PLQS8Ay9tS-e6Juk9PFph2FjSjPbbHPYY3=
+LNI5WGdxaMschdRX4M69zbs3PCm_cTqejztV2--HbN0uKZu1xgRv3LhKZ-2-3BAo-295TB1CRdd=
+qyTLM6bztqrk2ZbDEWtkqSUgSfMQIPwKN-qBcC0Lw~~" style=3D"font-weight: bold; co=
+lor: #0077cc; text-decoration: none; -ms-text-size-adjust: 100%; -webkit-te=
+xt-size-adjust: 100%;">LLMs can get brain rot</a>=C2=A0<span style=3D"color=
+: #6A737C; font-size: 12px; -ms-text-size-adjust: 100%; -webkit-text-size-a=
+djust: 100%;" class=3D"unstyle-auto-detected-links">llm-brain-rot.github.io=
+</span><br style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 1=
+00%;">Even LLMs are not immune to AI-slop TikTok videos.</p>=0A<p style=3D"=
+-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin: 0 0 30p=
+x;"><a href=3D"https://clicks.stackoverflow.email/f/a/crW0xQ5Jf0oHI6uBMbvBq=
+Q~~/AAQRxRA~/Vm1DLCWls6PkePye4TpMnDqByp2jEi40DGPqt8_XUh0bvcnXWlF9qcIGiYxNRb=
+cepsp3ne8T-Bcubzcqv1hLzplDZBPnEixzy_8x2TpdzkWs40p2bYRMQWIck1tMMZzpxsWc9JMeW=
+lmyOPGT0AsOhNwt68SB0w7XAO4Ow7f_6x6vo6j68I_vSAr3cAiLAOR0" style=3D"font-weig=
+ht: bold; color: #0077cc; text-decoration: none; -ms-text-size-adjust: 100%=
+; -webkit-text-size-adjust: 100%;">Scripts I wrote that I use all the time<=
+/a>=C2=A0<span style=3D"color: #6A737C; font-size: 12px; -ms-text-size-adju=
+st: 100%; -webkit-text-size-adjust: 100%;" class=3D"unstyle-auto-detected-l=
+inks">evanhahn.com</span><br style=3D"-ms-text-size-adjust: 100%; -webkit-t=
+ext-size-adjust: 100%;">The original automation: pre-writing a bunch of lit=
+tle scripts that you can copy-paste later.</p>=0A<p style=3D"-ms-text-size-=
+adjust: 100%; -webkit-text-size-adjust: 100%; margin: 0 0 30px;"><a href=3D=
+"https://clicks.stackoverflow.email/f/a/9QUb4AinS5-UimAxQjWqVw~~/AAQRxRA~/E=
+1wlr0SwZyDOsledwZSXRJYnf3In8bd2xiv_WtRuIpwuk3vpoG30o_GYXU9328ThP4N9TelY3vGF=
+qklx9_S7JBdOadbqbu4UvDV7REnk9DAXxaCuAV5oBaETaQX-YA_8FsqKAsgkjJKc9CJGC4g3xpu=
+C2tnqu1rTVohzoU2WazPoCmr51xD196c4XSg6TaPh" style=3D"font-weight: bold; colo=
+r: #0077cc; text-decoration: none; -ms-text-size-adjust: 100%; -webkit-text=
+-size-adjust: 100%;">Designing software for things that rot</a>=C2=A0<span =
+style=3D"color: #6A737C; font-size: 12px; -ms-text-size-adjust: 100%; -webk=
+it-text-size-adjust: 100%;" class=3D"unstyle-auto-detected-links">drobinin.=
+com</span><br style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust=
+: 100%;">A software to replace your dad saying =E2=80=9CEh, it's probably f=
+ine,=E2=80=9D when he looks at last week's leftovers.</p>=0A               =
+                     =0A                                    <p style=3D"-ms=
+-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin: 0 0 30px;"=
+>=0A                                        Find a job that fits your techn=
+ical expertise and career goals with Stack Overflow Jobs, powered by Indeed=
+=E2=80=99s hiring platform (US, UK, NL, DE, and FR only). <a href=3D"https:=
+//clicks.stackoverflow.email/f/a/Z4mfW6bNDFpSQGhng93dbw~~/AAQRxRA~/-z4g7l6w=
+WlCr2DyzH9FyAAongzz--P9l75RrobDGwRHWn1m5kCa4WvCTVPkBYR2XOfSjASQmx12n_BFkh3V=
+e5cwi_OesIZ90lOIS2Pz0qHAMVBIfYfdwYPtkrt7l9V5-41sismLUYUmppA_xAmtCwnLUpnH2JS=
+rDRXKXxfhCK-N6FkX59Osh3TmGju1gWQPoiCavKMwRfqtVjMH2dbJUEvVbClaehFgOCAAIoir0d=
+yyzamjzhV9wt7U-JNp0vMl9GoHOSFLCjMafsjDXXcNK4g~~" style=3D"color: #0077cc; t=
+ext-decoration: none; -ms-text-size-adjust: 100%; -webkit-text-size-adjust:=
+ 100%;">Explore now</a>.=0A                                    </p>=0A     =
+                           </td>=0A                            </tr>=0A    =
+                        <!-- Section : END -->=0A                          =
+  <!-- Bumper : BEGIN -->=0A                            <tr style=3D"-ms-te=
+xt-size-adjust: 100%; -webkit-text-size-adjust: 100%;">=0A                 =
+               <td style=3D"line-height: 1; -ms-text-size-adjust: 100%; -we=
+bkit-text-size-adjust: 100%; mso-table-lspace: 0pt !important; mso-table-rs=
+pace: 0pt !important;" align=3D"center">=0A                                =
+    <img src=3D"https://braze-images.com/appboy/communication/assets/image_=
+assets/images/68388d89c333c800672cf345/original.png=3F1748536712" alt=3D"" =
+height=3D"" width=3D"581" border=3D"0" style=3D"width: 100%; max-width: 581=
+px; height: auto; display: block; font-weight: normal; font-family: arial, =
+sans-serif; font-size: 15px; color: #3C3F44; -ms-text-size-adjust: 100%; -w=
+ebkit-text-size-adjust: 100%; -ms-interpolation-mode: bicubic; margin: 0 au=
+to;">=0A                                </td>=0A                           =
+ </tr>=0A                            <!-- Bumper : BEGIN -->=0A            =
+            </table>=0A                    </td>=0A                </tr>=0A=
+=0A                <!-----------------------------=0A=0A                   =
+ EMAIL BODY : END=0A=0A                ------------------------------>=0A=
+=0A                <!-- Footer : BEGIN -->=0A                              =
+  <!-- Footer : BEGIN -->=0A                <tr style=3D"-ms-text-size-adju=
+st: 100%; -webkit-text-size-adjust: 100%;">=0A                    <td style=
+=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-l=
+space: 0pt !important; mso-table-rspace: 0pt !important; padding: 30px;" cl=
+ass=3D"sm-p">=0A                        <table align=3D"left" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%" st=
+yle=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-tabl=
+e-lspace: 0pt !important; mso-table-rspace: 0pt !important; border-spacing:=
+ 0; border-collapse: collapse; border-width: 0;">=0A                       =
+     <!-- Subscription Info : BEGIN -->=0A                            <tr s=
+tyle=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">=0A   =
+                             <td style=3D"padding-bottom: 10px; font-size: =
+12px; line-height: 15px; font-family: arial, sans-serif; color: #9199A1; -m=
+s-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace:=
+ 0pt !important; mso-table-rspace: 0pt !important;" align=3D"left">=0A     =
+                               You are receiving this email because you are=
+ subscribed to The Overflow Newsletter from Stack Overflow.=0A             =
+                   </td>=0A                            </tr>=0A            =
+                <tr style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-=
+adjust: 100%;">=0A                                <td style=3D"font-size: 1=
+2px; line-height: 15px; font-family: arial, sans-serif; color: #9199A1; -ms=
+-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: =
+0pt !important; mso-table-rspace: 0pt !important;" align=3D"left">=0A      =
+                              <a href=3D"https://clicks.stackoverflow.email=
+/f/a/2NCJ-NKLsJS-HtaBlBH3Vg~~/AAQRxRA~/FzHLb6PlAw7IsYlYm1Pj9cwsEIVdGRfN2MCu=
+JAjmF1zKaMFQlXiEK4cMxgChpx9lYM5DLWYZgUJ08d3ClDXgoRMRdrtsSuxJ_PBE4vEKvJqvc68=
+O3Pp7mj-UToWgNLkgM9sRnBy6PmF2VKkXZJyQxJRADYXo5hEweAt03R8VLQRZGHj18XdOHX4ZKt=
+rCYM_F_x90EYRK50Ho1aoMCZHtqVsgQ5cnJm5ddL636ZJiKF7yfhtjtL824jE-62TITw_eAYcZD=
+RH3K4G05suhocNrOLX0mEA60l4tfQOXzn8b3LuVACP28OhrrbcmOX-Bs5uMxUM8QsrLZuuXRILa=
+XXYMQLgTvcE-yrFRP4kpN_TGLf3iIqMiZ0FpmMv0nz1Bcqgx-EntjGdyRzkKcMcrdDcL6r_OgY5=
+hP1MDfyC9nokO2UloNeADl4rnYmIK-OIQlqUBm9RqFHF1jn6nd8n03NfDjn2chybHUjJbv3NPdI=
+mE_QH8qWrGNE7RIoiHfqOwPS8hDHRuq1HwCfMmf73COmWH72erxnDaajSE_60ParwxGkP0FHcxS=
+-Ng34fMT0aqiEBOPNTjXE5STyFjmgMVTthnLNNC1el87LFi7bGsjYWVV-7Xco9Hy03zLU5uHmM4=
+y8972sBM9cmJYYJx8v-900wLNS7xLBaPA_X7wVchDF6pselh1PIAChUUh6POLLckaDiZ" style=
+=3D"color: #9199A1; text-decoration: underline; -ms-text-size-adjust: 100%;=
+ -webkit-text-size-adjust: 100%;">Unsubscribe</a>&nbsp;&nbsp;&nbsp;&nbsp; =
+=0A                                    <a href=3D"https://clicks.stackoverf=
+low.email/f/a/K790dCiusmoJ3COZnx1O0A~~/AAQRxRA~/kyZ2KvFBlks-bOXLceBfpXnGbbW=
+qFw16NWIGfA_TUw-QyXPzqm0wzBIXYGN3d62_nMNkFDuI11yvSZNNDsXomYZSzoqS9x9I99YsNg=
+k7UAsdtewlP_P81CCkvABfNAn0Ul3e_obJoYDGFMCAEkbDNVbxIzV9HA-vaURTs3a9FdERVj9GP=
+zTIGNwuixyAys1znCNHFAX50hbV1mV92oHn2u4TeIYXf1VbcG8GOlzENR8xSFzlRUx3X6jh81pD=
+vj1db2duSHm1I5yq7KR0OzA6N1jWoRLb7096Pie2KtExadIRNhdY8lm1ipeW3XHKcZXr3mJKqan=
+mFQ5ak7HNgXU0Bi-3V8jRV6zGbwKxwhzOmuhKFu7y7Db38NnKi5YRiXCT3KZJHcOUcsMMMeyR4_=
+uUCM8IowLvHOd9yAdTvr1ektFw0dpCCzn0i3FRIeCbjHWSuLxc_0Cbc78VIu0oBEgXITX80xeNJ=
+dOVARVBTerjRj-t4ByF57ZukJtuJgvFY27WuAH8u4FqyxMScbr9ybLJgYDj0oNiAGgaWLyaCpdh=
+P57QZPc9G58mzIEg4ekgOwnpN19J7TBAgNBQhNFfIvo1_iAxxfbhxaDzdf5puvx2LZZb1sY1lkQ=
+q_paBTozDGBIYmZatPWWkSTDNQU8lZHyKp2yxaBh82KKPw0ecc4Z1bNTWvXEsAHjKGv-LSpdDOx=
+rkrHAIsxvckp9EU7Cccz06FAjOspqyj0PDOL_UbnjSGPuOZmxR6Ix38-T_iWSDqKEP3Gx7Mj6OV=
+ly_fbAVgkaWuC8YxPYz576P_Q1JyKnOEppoweJIJus9r1q9UIQ3m_B4wlcVWn4-ZAIVqqS51Zyx=
+RlbuX-OYkcbLkjXJ1I-Gj-a8QqvcvK-k2xKDsYGt2f5lWp1BZIa0JzQr7qFxL8YfqgqMfqqAZCD=
+Hz-jwaWKaKZcYltTf4nzKjm_FEsNFNIApUc2xqJj9jAQSOyQw4XO91lA5yLFTXHtUuimm69DeBH=
+ku_kW8PH_wpNVw3RoH-zVfRuhs-r2xp9kJt1Tzmsgd7tk1R0ugaaKq2j92j0rDTtj_WwoMVrb7W=
+sFJ4PdjqweDvd0ixTVhOndKeNtuglBi2lW1CJoMYoDtMVUpTXNQMiI~" style=3D"color: #9=
+199A1; text-decoration: underline; -ms-text-size-adjust: 100%; -webkit-text=
+-size-adjust: 100%;">Edit email settings</a>&nbsp;&nbsp;&nbsp;&nbsp; =0A   =
+                                 <a href=3D"https://clicks.stackoverflow.em=
+ail/f/a/GSkrYM0eXxb9N_3XWWWIjA~~/AAQRxRA~/z0xLR8BC_9lbml5fOO0EsmDQlFeXSJupM=
+KCf0fpQEhVoyYNiPMv8YbXSll_fCMgLJaPjHAWbsmwvtiGjHF2tu5TodYcVUy9BD6jT6ARfO2Ex=
+hyr_pNhSuKNfm511YzDMufTRsj37Vww9pLxNNu_bxMuVMoXSBFbg7NVXYBRmyZGYjN8_1yN9Lo7=
+LcvOugsH30Am1a1ESORL_74S5DJFQbgrOfKZPHli2GFKdqHdTzh2TXSJxtnHMlHRs5dlBuc4i" =
+style=3D"color: #9199A1; text-decoration: underline; -ms-text-size-adjust: =
+100%; -webkit-text-size-adjust: 100%;">Contact us</a>&nbsp;&nbsp;&nbsp;&nbs=
+p; =0A                                    <a href=3D"https://clicks.stackov=
+erflow.email/f/a/KOHc400vPpaXSRY3tOlYig~~/AAQRxRA~/hfaQ0obMSidSnSEkBDfJRazz=
+gtz1doGA-w_4R2KXdQ3_w2rscIEswHGCBSb2txoRsC7-8Jo3FkFBMH1E5jJwJNl77kX_TUTJDZI=
+aU74n5AGJDoEr6K65aWVJedlaVOvG-BDdK_XTNpoyzvG0aIvNyZKTNQlD6fDW4LyZ6Ac5IUHNXd=
+NN1huYBhJAbK8fVEFyc6RGbtT6mvskK_NU1W5TpeLyimTh6lRQCyFkeO8x7_YkSIrEt7mufiU_N=
+Jl-5G2z" style=3D"color: #9199A1; text-decoration: underline; -ms-text-size=
+-adjust: 100%; -webkit-text-size-adjust: 100%;">Privacy Policy</a>=0A      =
+                          </td>=0A                            </tr>=0A     =
+                       <!-- Subscription Info : BEGIN -->=0A               =
+             <!-- HR line : BEGIN -->=0A                            <tr sty=
+le=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">=0A     =
+                           <td style=3D"-ms-text-size-adjust: 100%; -webkit=
+-text-size-adjust: 100%; mso-table-lspace: 0pt !important; mso-table-rspace=
+: 0pt !important; padding: 30px 0;" width=3D"100%" class=3D"sm-py">=0A     =
+                               <table aria-hidden=3D"true" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"width: 100%=
+; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lsp=
+ace: 0pt !important; mso-table-rspace: 0pt !important; border-spacing: 0; b=
+order-collapse: collapse; border-width: 0;">=0A                            =
+            <tr style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adju=
+st: 100%;">=0A                                            <td height=3D"1" =
+width=3D"100%" style=3D"font-size: 0; line-height: 0; border-top-width: 1px=
+; border-top-color: #D6D8DB; border-top-style: solid; -ms-text-size-adjust:=
+ 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt !important; ms=
+o-table-rspace: 0pt !important;">&nbsp;</td>=0A                            =
+            </tr>=0A                                    </table>=0A        =
+                        </td>=0A                            </tr>=0A       =
+                     <!-- HR line : END -->=0A                            <=
+!-- Sender Info : BEGIN -->=0A                            <tr style=3D"-ms-=
+text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">=0A               =
+                 <td style=3D"padding-bottom: 5px; -ms-text-size-adjust: 10=
+0%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt !important; mso-t=
+able-rspace: 0pt !important;" align=3D"left">=0A                           =
+         <img src=3D"https://d15k2d11r6t6rl.cloudfront.net/public/users/Int=
+egrators/669d5713-9b6a-46bb-bd7e-c542cff6dd6a/3603a3d8f3104ca5bd7015a5845f7=
+fb7/LogoSm%402x.png" align=3D"left" alt=3D"" border=3D"0" width=3D"111" hei=
+ght=3D"22" style=3D"display: block; font-family: arial, sans-serif; font-si=
+ze: 12px; line-height: 12px; color: #3C3F44; -ms-text-size-adjust: 100%; -w=
+ebkit-text-size-adjust: 100%; -ms-interpolation-mode: bicubic;">=0A        =
+                        </td>=0A                            </tr>=0A       =
+                     <tr style=3D"-ms-text-size-adjust: 100%; -webkit-text-=
+size-adjust: 100%;">=0A                                <td style=3D"padding=
+-bottom: 5px; font-size: 12px; line-height: 15px; font-family: arial, sans-=
+serif; color: #9199A1; -ms-text-size-adjust: 100%; -webkit-text-size-adjust=
+: 100%; mso-table-lspace: 0pt !important; mso-table-rspace: 0pt !important;=
+" align=3D"left">=0A<strong style=3D"-ms-text-size-adjust: 100%; -webkit-te=
+xt-size-adjust: 100%;">Stack&nbsp;Overflow</strong>, <span class=3D"unstyle=
+-auto-detected-links" style=3D"-ms-text-size-adjust: 100%; -webkit-text-siz=
+e-adjust: 100%;">14 Wall Street, 20th Floor, New York, NY 10005</span>=0A</=
+td>=0A                            <!-- Sender Info : END -->=0A            =
+                <!-- Heart : BEGIN -->=0A                            </tr>=
+=0A<tr style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;=
+">=0A                                <td style=3D"-ms-text-size-adjust: 100=
+%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt !important; mso-ta=
+ble-rspace: 0pt !important;">=0A                                    <table =
+align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"border-radius: 1px; line-height: 0px; -ms-text-size-adj=
+ust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt !important=
+; mso-table-rspace: 0pt !important; border-spacing: 0; border-collapse: col=
+lapse; border-width: 0;" bgcolor=3D"#ffffff">=0A                           =
+             <tr style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adj=
+ust: 100%;">=0A                                            <td style=3D"-ms=
+-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: =
+0pt !important; mso-table-rspace: 0pt !important;">=0A                     =
+                           <div style=3D"border-radius: 1px; font-size: 11p=
+x; line-height: 11px; font-family: Consolas, monospace; color: #E06C77; -ms=
+-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 4px 6px 3=
+px; border: 1px solid #D6D9DC;" title=3D"because we care">&lt;3</div>=0A   =
+                                         </td>=0A                          =
+              </tr>=0A                                    </table>=0A      =
+                          </td>=0A                            </tr>=0A     =
+                       <!-- Heart : END -->=0A                        </tab=
+le>=0A                    </td>=0A                </tr>=0A                <=
+!-- Footer : END -->=0A                  =0A                <!-- Footer : E=
+ND -->=0A            </table>=0A        </div>=0A    <!--[if mso | IE]>=0A =
+   </td>=0A    </tr>=0A    </table>=0A    <![endif]-->=0A    </center>=0A=
+=0D=0A<img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://cl=
+icks.stackoverflow.email/q/1NrfTbbbleY5i8Hp9tM9UQ~~/AAQRxRA~/KUu5pM0tTjLg3T=
+JKkAowzD164wHIwRP3KRci_e8efI5VNrAj33SK9kJyn8O04b6cL8tOVwHzGrmfjuGOh36liw~~"=
+>=0D=0A</body>=0A</html>
+--_----1zquMXzLuD2RmTjRDQhifQ===_CF/B9-53467-F3F12096--
+

@@ -1,0 +1,1566 @@
+Delivered-To: panicker0117@gmail.com
+Received: by 2002:a05:7000:d886:b0:729:c8bf:da9a with SMTP id mm6csp1943447mab;
+        Sun, 28 Sep 2025 11:35:29 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE8TcFG1FCRfhVZ3s2KP3ZttL67xsAdlDWiSIPNGyzoEb3rsRXcro8f4pqjrCfCMMp+m3mo
+X-Received: by 2002:a17:903:1a2d:b0:27c:a35a:1321 with SMTP id d9443c01a7336-27ed4aae435mr119732565ad.51.1759084529303;
+        Sun, 28 Sep 2025 11:35:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1759084529; cv=none;
+        d=google.com; s=arc-20240605;
+        b=egqSrDqQJgqRowwf+yNTDnewdrOunDb9INPbTMyB7BofroLBA/rGNgyJy/rvBb1GUM
+         LsTApeM7VDYbMv+ztAs+fhO+4MMZmlmtXoT22DXcJSgFkfqIuIiwnALn9DW1GKpY2jH7
+         Y576RSUqrcyWgwNV4XJrWWyY+fceadn8Wz0f2wIv3tG64PYkT7ZLWWexfzuTznN04op/
+         kaSZVv7MJCU7lN9pkIoZh9pbZ8pn8izz1Z6OKBJCuwI1zhXyE6UKHiuFez6MnoYB16r0
+         vu4XfvSAoRIeD5u+frecWZi+q4vu0n9lEY8z74kEdG4laTER7B4QHLZ9yrMvnDzdyvZ0
+         +Kdw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=message-id:list-unsubscribe-post:reply-to:list-unsubscribe:to:from
+         :subject:mime-version:date:dkim-signature:dkim-signature;
+        bh=iCW+02cEQl5cdjW7xepxMl6zZidgJCrL9zETHNbb5RE=;
+        fh=61LiNnff/7rrwP3NHDsjY26kmdCWf8iOsm4ycRDdRpc=;
+        b=KQJKvpnZltL0a9+vYnCA+Rrg8LvEK9+bwQMmPlwONWNPsFnDgGgo8tK7CmPRbKQH/6
+         Ar9b0BGtXPb5oiWl2Ps7AIyen02Sk7CcecuozyzSQm2Ch9sZ9pv8zPt9HkqczRQPxdHA
+         6wlOJ/ZTmVZy/Dm58y2dx6N/POooyrr94teAkZrsQi7k8NHRlghMRQLz6HpqStIQi6Tf
+         Noei8kAuv5Wju3Z4uv8j+CaMGYFfA/6Lv6TF8YGXmadugOnKwbSWMBytXDgde1onv7d4
+         lMlTv/YzQDHZHO6ffNWPoEf0vtAb0LQyZUjuEnIHp41jkv9NKLO1tY2J4eAEDdxwDVW6
+         EW2A==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@cio8.devpost.com header.s=krs header.b=K2Igqahx;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b="OhWPM/9X";
+       spf=pass (google.com: domain of postmaster@cio8.devpost.com designates 69.72.44.6 as permitted sender) smtp.mailfrom=postmaster@cio8.devpost.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=devpost.com
+Return-Path: <postmaster@cio8.devpost.com>
+Received: from m44-6.mailgun.net (m44-6.mailgun.net. [69.72.44.6])
+        by mx.google.com with UTF8SMTPS id d9443c01a7336-27ed674228fsi60940665ad.170.2025.09.28.11.35.28
+        for <panicker0117@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 28 Sep 2025 11:35:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of postmaster@cio8.devpost.com designates 69.72.44.6 as permitted sender) client-ip=69.72.44.6;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@cio8.devpost.com header.s=krs header.b=K2Igqahx;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b="OhWPM/9X";
+       spf=pass (google.com: domain of postmaster@cio8.devpost.com designates 69.72.44.6 as permitted sender) smtp.mailfrom=postmaster@cio8.devpost.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=devpost.com
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=cio8.devpost.com; q=dns/txt; s=krs; t=1759084528; x=1759091728;
+ h=Message-Id: List-Unsubscribe-Post: Reply-To: List-Unsubscribe: To: To: From: From: Subject: Subject: Content-Type: Mime-Version: Date: X-Feedback-Id: Sender;
+ bh=iCW+02cEQl5cdjW7xepxMl6zZidgJCrL9zETHNbb5RE=;
+ b=K2IgqahxJt2pJold0L+GFN97U1NgtMNNcux4z0ApODsxTQ0tdIBy9pwi+wxp7cR0OaAmWZ+SVz5lz/CKQjmadg1YTxWjl5ayZaYcQRofzy0AyUZZraJGhKiRAlo/EYkVPlVN3Ah/mi0Cgd425tjjMdAQu/S9v8xHEI0qHmgSEKc=
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org; q=dns/txt; s=mg; t=1759084528; x=1759091728;
+ h=Message-Id: List-Unsubscribe-Post: Reply-To: List-Unsubscribe: To: To: From: From: Subject: Subject: Content-Type: Mime-Version: Date: X-Feedback-Id: Sender;
+ bh=iCW+02cEQl5cdjW7xepxMl6zZidgJCrL9zETHNbb5RE=;
+ b=OhWPM/9X6YlezIiFuzvNo3+blTEIUSKboNVcjQX7ES+GNnyEzOCbDHFNhDiyuovBkGs0wu1puvhFKUiAAxM9Oz6LXb4jp1DuFJWuDMuM6vDZWG9pd2D2Fv8GjnZ2Vi/Fnm7cYppmQPxqD/j7tjNgYqGFUU1OE6Us2OhLzAlqYVA=
+X-Mailgun-Sid: WyJjM2UyZCIsInBhbmlja2VyMDExN0BnbWFpbC5jb20iLCJhM2IzOTkiXQ==
+X-Feedback-Id: postmaster@cio8.devpost.com::5e1538d704ac33c28233d67c:mailgun
+Received: by d7213ba81edcbd241e03be6aef45baa061c5dd7545262ae57955f5e2e0cfd8f7 with HTTP
+ id 68d97ff0b1938ffbe9fd889d; Sun, 28 Sep 2025 18:35:28 GMT
+X-Mailgun-Sending-Ip: 69.72.44.6
+Date: Sun, 28 Sep 2025 18:35:28 +0000
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="eec73fc9e8035a74ce99755d5adef8211b328568b42d0c10b822695e94b9"
+Subject: HACKATHONS just for you, Hato
+From: Cassie from Devpost <cassie@devpost.com>
+To: panicker0117@gmail.com
+X-Mailgun-Dkim: true
+X-Mailgun-Native-Send: true
+X-Mailgun-Track-Clicks: false
+X-Mailgun-Track-Opens: false
+List-Unsubscribe: <https://devpost.com/notification_subscriptions/JmnY70k8ASYHkp87TFyiKg/auto_unsubscribe>
+X-Mailer: Customer.io (dgQIAwC7ubMEu7mzBAGZkZfjhy7MwoIFTcWXtXc=;
+ +https://whatis.customeriomail.com)
+X-Report-Abuse-To: badactor@customer.io
+Reply-To: Devpost <support@devpost.com>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Mailgun-Variables: {"email_id": "dgQIAwC7ubMEu7mzBAGZkZfjhy7MwoIFTcWXtXc="}
+Message-Id: <20250928183528.5cdb5e54b8bceca7@cio8.devpost.com>
+
+--eec73fc9e8035a74ce99755d5adef8211b328568b42d0c10b822695e94b9
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+
+( http://devpost.com )
+
+
+
+
+
+Hey Hato,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+We found some virtual hackathons you might like based on your interests!=20
+
+
+Check them out and be sure to update your profile ( https://devpost.com/set=
+tings/preferences_and_eligibility?utm_source=3Ddevpost&utm_medium=3Dalert&u=
+tm_content=3D20250926_allinterest ) so we can keep you informed about hacka=
+thons you care about:
+
+
+
+
+
+
+
+
+
+
+
+
+AI Accelerate: Unlocking New Frontiers ( https://ai-accelerate.devpost.com/=
+?utm_source=3Ddevpost&utm_medium=3Dalert&utm_campaign=3D20250926_allinteres=
+t )
+
+
+
+---------------------------------------------------------------------------=
+------------------------------------------------------------------------
+AI Accelerate: Unlocking New Frontiers ( https://ai-accelerate.devpost.com/=
+?utm_source=3Ddevpost&utm_medium=3Dalert&utm_campaign=3D20250926_allinteres=
+t )
+---------------------------------------------------------------------------=
+------------------------------------------------------------------------
+
+
+By Google
+
+
+
+
+Prizes
+
+$50,000 in cash
+
+
+
+Deadline
+
+October 24, 2025
+
+
+
+Eligibility Note
+
+Specific countries/territories excluded. See rules for details ( https://ai=
+-accelerate.devpost.com/rules/?utm_source=3Ddevpost&utm_medium=3Dalert&utm_=
+campaign=3D20250926_allinterest )
+
+
+
+Learn
+
+Open Ended, Databases, Machine Learning/AI
+
+
+
+Join Hackathon ( https://ai-accelerate.devpost.com/?utm_source=3Ddevpost&ut=
+m_medium=3Dalert&utm_campaign=3D20250926_allinterest )
+
+
+
+
+
+
+
+
+
+
+
+Rift Rewind Hackathon ( https://riftrewind.devpost.com/?utm_source=3Ddevpos=
+t&utm_medium=3Dalert&utm_campaign=3D20250926_allinterest )
+
+
+
+---------------------------------------------------------------------------=
+----------------------------------------------------
+Rift Rewind Hackathon ( https://riftrewind.devpost.com/?utm_source=3Ddevpos=
+t&utm_medium=3Dalert&utm_campaign=3D20250926_allinterest )
+---------------------------------------------------------------------------=
+----------------------------------------------------
+
+
+By Amazon
+
+
+
+
+Prizes
+
+$26,000 in cash
+
+
+
+Deadline
+
+November 10, 2025
+
+
+
+Eligibility Note
+
+Specific countries/territories excluded. See rules for details ( https://ri=
+ftrewind.devpost.com/rules/?utm_source=3Ddevpost&utm_medium=3Dalert&utm_cam=
+paign=3D20250926_allinterest )
+
+
+
+Learn
+
+Machine Learning/AI, Databases, Gaming
+
+
+
+Join Hackathon ( https://riftrewind.devpost.com/?utm_source=3Ddevpost&utm_m=
+edium=3Dalert&utm_campaign=3D20250926_allinterest )
+
+
+
+
+
+
+
+
+
+Good luck,
+
+Cassie
+
+
+
+
+
+
+**********************
+Other Great Hackathons
+**********************
+
+
+* Sep 30 -
+ Revenuecat Shipaton 2025 by RevenueCat ( https://revenuecat-shipaton-2025.=
+devpost.com/?utm_source=3Ddevpost&utm_medium=3Dalert&utm_campaign=3D2025092=
+6_allinterest )
+* Sep 30 -
+ Storyblok x Code and Coffee Hackathon 2025 by StoryBlok ( https://storyblo=
+k-code-coffee.devpost.com/?utm_source=3Ddevpost&utm_medium=3Dalert&utm_camp=
+aign=3D20250926_allinterest )
+* Oct 6 -
+ Plotly Analytics Vibe-a-Thon by Plotly ( https://analytics-vibeathon.devpo=
+st.com/?utm_source=3Ddevpost&utm_medium=3Dalert&utm_campaign=3D20250926_all=
+interest )
+* Oct 6 -
+ Baseline Tooling Hackathon by Google ( https://baseline.devpost.com/?utm_s=
+ource=3Ddevpost&utm_medium=3Dalert&utm_campaign=3D20250926_allinterest )
+* Oct 15 -
+ Starknet Re{Solve} Hackathon by Starknet Foundation ( https://resolve-star=
+knet.devpost.com/?utm_source=3Ddevpost&utm_medium=3Dalert&utm_campaign=3D20=
+250926_allinterest )
+* Oct 20 -
+ AWS AI Agent Global Hackathon by AWS ( https://aws-agent-hackathon.devpost=
+=2Ecom/?utm_source=3Ddevpost&utm_mediu=
+m=3Dalert&utm_campaign=3D20250926_allin=
+terest )
+* Oct 31 -
+ Google Chrome Built-in AI Challenge 2025 by Google ( https://googlechromea=
+i2025.devpost.com/?utm_source=3Ddevpost&utm_medium=3Dalert&utm_campaign=3D2=
+0250926_allinterest )
+* Nov 3 -
+ Chroma Awards: AI Film, Music Videos, and Games by ElevenLabs ( https://ch=
+romaawards.devpost.com/?utm_source=3Ddevpost&utm_medium=3Dalert&utm_campaig=
+n=3D20250926_allinterest )
+* Nov 17 -
+ Build Resilient Apps with Polkadot Cloud by POLKADOT ( https://polkadot.de=
+vpost.com/?utm_source=3Ddevpost&utm_medium=3Dalert&utm_campaign=3D20250926_=
+allinterest )
+
+
+
+
+
+Learn more about hackathons - join our Discord and connect with us on socia=
+l.
+
+
+
+Devpost Discord ( https://devpost.us2.list-manage.com/track/click?u=3D4812d=
+3b2b48f57c38070d62e7&id=3Df40a8cb9f2&e=3D87a990b7d9=3D20250926_allinterest =
+)
+
+Devpost Linkedin ( https://www.linkedin.com/company/devpost/?utm_source=3Dd=
+evpost&utm_medium=3Dalert&utm_campaign=3D20250926_allinterest )
+
+Devpost X ( https://twitter.com/devpost/?utm_source=3Ddevpost&utm_medium=3D=
+alert&utm_campaign=3D20250926_allinterest )
+
+
+=C2=A9 2025 Devpost, Inc. All rights reserved.
+
+Edit your notification settings ( http://devpost.com/notification_subscript=
+ions/JmnY70k8ASYHkp87TFyiKg ).
+--eec73fc9e8035a74ce99755d5adef8211b328568b42d0c10b822695e94b9
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="utf-8"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns=3D"http://www.w3.=
+org/1999/xhtml"><head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8=
+"/>
+
+    <!-- Set iPhone viewport -->
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
+=3D1.0"/>
+
+    <!--
+    From Email on Acid:
+    http://www.emailonacid.com/blog/details/C13/ensure_that_your_entire_ema=
+il_is_rendered_by_default_in_the_iphone_ipad
+    Two ways to ensure that your entire email is rendered by default in the=
+ iPhone and iPad:
+    1. Make sure that you have a minimum of 1,019 characters before your cl=
+osing head tag
+    including spaces and carriage returns.
+    2. Another option is to remove your tags entirely.
+    Be careful with this solution, some email service providers might place=
+ head tags within your email dynamically.
+
+    Cupcake ipsum dolor sit. Amet sweet roll marzipan. Icing muffin croissa=
+nt chocolate cake topping.
+    Lemon drops powder macaroon caramels chupa chups gingerbread I love.
+    Candy canes croissant muffin I love faworki cake chocolate cake. Puddin=
+g candy canes I love.
+    Sesame snaps I love ice cream brownie sweet sugar plum. Wafer caramels =
+bear claw ice cream jujubes.
+    I love wypas chocolate cake tiramisu. Gingerbread wafer I love marzipan=
+ jelly-o.
+    Cotton candy I love apple pie brownie oat cake powder halvah bear claw =
+tart.
+    Bear claw sesame snaps chocolate I love icing macaroon pudding oat cake=
+ gingerbread.
+    I love donut applicake sugar plum I love cheesecake donut I love.
+    -->
+
+    <style type=3D"text/css">
+      @media only screen and (max-device-width: 480px) {
+        .w600 { width:400px !important; }
+        td img { max-width: 300px !important; }
+        #headerImage { max-width: 300px !important; }
+      }
+
+      /* Client-specific Styles */
+      #outlook a { padding: 0; } /* Force Outlook to provide a "view in bro=
+wser" button. */
+      body { width: 100% !important; } .ReadMsgBody { width: 100%; } .Exter=
+nalClass { width: 100%; } /* Force Hotmail to display emails at full width =
+*/
+      body { -webkit-text-size-adjust: none; } /* Prevent Webkit platforms =
+from changing default text sizes. */
+
+      /* Reset Styles */
+      body { margin: 0; padding: 0; }
+      img { border: 0; height: auto; line-height: 100%; outline: none; text=
+-decoration: none; }
+      table td { border-collapse: collapse; }
+      table td img { max-width: 560px; }
+      #backgroundTable { height: 100% !important; margin: 0; padding: 0; wi=
+dth: 100% !important; }
+
+      /* Template Styles */
+
+      /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: COMMON PAGE ELEMENTS /\/\/\=
+/\/\/\/\/\/\/\ */
+
+      /**
+      * @tab Page
+      * @section background color
+      * @tip Set the background color for your email. You may want to choos=
+e one that matches your company's branding.
+      * @theme page
+      */
+
+      body, #backgroundTable {
+        background-color: #F5F7F7;
+        color: #575553;
+        font-family: sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        text-align: left;
+      }
+
+      /**
+      * @tab Page
+      * @section email border
+      * @tip Set the border for your email.
+      */
+      #templateContainer {
+        border:  none;
+      }
+
+      /**
+      * @tab Page
+      * @section heading 1
+      * @tip Set the styling for all first-level headings in your emails. T=
+hese should be the largest of your headings.
+      * @style heading 1
+      */
+      h1, .h1 {
+        color: #003e54;
+        display: block;
+        font-family: sans-serif;
+        font-size: 26px;
+        font-weight: bold;
+        line-height: 100%;
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 12px;
+        margin-left: 0;
+        text-align: left;
+      }
+
+      /**
+      * @tab Page
+      * @section heading 2
+      * @tip Set the styling for all second-level headings in your emails.
+      * @style heading 2
+      */
+      h2, .h2 {
+        color: #003e54;
+        display: block;
+        font-family: sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 100%;
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 10px;
+        margin-left: 0;
+        text-align: left;
+      }
+
+      /**
+      * @tab Page
+      * @section heading 3
+      * @tip Set the styling for all third-level headings in your emails.
+      * @style heading 3
+      */
+      h3, .h3 {
+        color: #003e54;
+        display: block;
+        font-family: sans-serif;
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 100%;
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 10px;
+        margin-left: 0;
+        text-align: left;
+      }
+
+      /**
+      * @tab Page
+      * @section heading 4
+      * @tip Set the styling for all fourth-level headings in your emails.
+      * @style heading 4
+      */
+      h4, .h4 {
+        color: #003e54;
+        display: block;
+        font-family: sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 100%;
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 10px;
+        margin-left: 0;
+        text-align: left;
+      }
+      /**
+      * @tab Page
+      * @section heading 4
+      * @tip Set the styling for all fourth-level headings in your emails.
+      * @style heading 4
+      */
+      h5, .h5 {
+        color: #003e54;
+        display: block;
+        font-family: sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 100%;
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 10px;
+        margin-left: 0;
+        text-align: left;
+      }
+
+      /**
+      * @tab Page
+      * @section heading 4
+      * @tip Set the styling for all sixth-level headings in your emails. T=
+hese should be the smallest of your headings.
+      * @style heading 4
+      */
+      h6, .h6 {
+        color: #003e54;
+        display: block;
+        font-family: sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 100%;
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 10px;
+        margin-left: 0;
+        text-align: left;
+      }
+
+      ul {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: HEADER /\/\/\/\/\/\/\/\/\/\=
+ */
+
+      /**
+      * @tab Header
+      * @section header style
+      * @tip Set the background color and border for your email's header ar=
+ea.
+      * @theme header
+      */
+      #templateHeader {
+        background-color: #F5F7F7;
+        border-bottom: 0;
+      }
+
+      /**
+      * @tab Header
+      * @section header text
+      * @tip Set the styling for your email's header text. Choose a size an=
+d color that is easy to read.
+      */
+      .headerContent {
+        font-family: sans-serif;
+        line-height: 100%;
+        padding: 16px 0;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      /**
+      * @tab Header
+      * @section header link
+      * @tip Set the styling for your email's header links. Choose a color =
+that helps them stand out from your text.
+      */
+      .headerContent a:link, .headerContent a:visited, /* Yahoo! Mail Overr=
+ide */ .headerContent a .yshortcuts /* Yahoo! Mail Override */ {
+        color: #2d9eb2;
+        display: block;
+        font-weight: normal;
+        margin-right: 20px;
+        text-decoration: underline;
+      }
+
+      #headerImage {
+        height: auto;
+        max-width: 600px;
+      }
+
+      #templateHeader.withChallengeLogo .headerContent {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      #challengeLogo {
+        background: white;
+        padding: 10px;
+      }
+
+      #challengeLogo img {
+        max-width: 600px;
+        max-height: 100px;
+      }
+
+      /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: MAIN BODY /\/\/\/\/\/\/\/\/=
+\/\ */
+
+      /**
+      * @tab Body
+      * @section body style
+      * @tip Set the background color for your email's body area.
+      */
+      #templateBody {
+        background-color: #F5F7F7;
+      }
+
+      /**
+      * @tab Body
+      * @section body text
+      * @tip Set the styling for your email's main content text. Choose a s=
+ize and color that is easy to read.
+      * @theme main
+      */
+
+      td.bodyContent {
+        padding: 0 0 16px 0;
+      }
+
+      .bodyContent div {
+        color: #575553;
+        font-family: sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        text-align: left;
+      }
+
+      /**
+      * @tab Body
+      * @section body link
+      * @tip Set the styling for your email's main content links. Choose a =
+color that helps them stand out from your text.
+      */
+      .bodyContent div a:link, .bodyContent div a:visited, /* Yahoo! Mail O=
+verride */ .bodyContent div a .yshortcuts /* Yahoo! Mail Override */ {
+        color: #1F96DB;
+        font-weight: normal;
+        text-decoration: none;
+      }
+
+      .bodyContent div a b,
+      .bodyContent div a strong {
+        color: #1F96DB !important;
+      }
+     =20
+      .bodyContent div a.button:link, .bodyContent div a.button:visited, /*=
+ Yahoo! Mail Override */ .bodyContent div a.button .yshortcuts /* Yahoo! Ma=
+il Override */ {
+        color: #1F96DB;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      /**
+      * @tab Body
+      * @section body strong text
+      * @tip Set the styling for your email's main content strong text. Cho=
+ose a color that helps them stand out from your text.
+      * @theme strong body text
+      */
+      .bodyContent div strong,
+      .bodyContent div b {
+        color: #575553;
+      }
+
+      /**
+      * @tab Body
+      * @section body small text
+      * @tip Set the styling for your email's main content small text.
+      * @theme small body text
+      */
+      .bodyContent.small div {
+        font-size: 11px;
+      }
+
+      .bodyContent div p.disclaimer {
+        color: #999794;
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      .bodyContent img {
+        display: inline;
+        height: auto;
+      }
+
+      /**
+      * @tab Body
+      * @section body separator style
+      * @tip Set the style for body separators.
+      */
+      .bodySeparator {
+        background-color: #F5F7F7;
+        color: #003e54;
+        display: block;
+        font-family: sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 100%;
+        margin: 0;
+        text-align: left;
+      }
+
+      .bodySeparator td {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: FOOTER /\/\/\/\/\/\/\/\/\/\=
+ */
+
+      /**
+      * @tab Footer
+      * @section footer style
+      * @tip Set the background color and top border for your email's foote=
+r area.
+      * @theme footer
+      */
+      #templateFooter {
+        background-color: #F5F7F7;
+        border-top: 0;
+      }
+
+      td.footerContent {
+        border-top: 2px solid #e6e6e6;
+        padding: 20px 0;
+      }
+
+      .footerContent td {
+        padding: 0;
+
+      }
+
+      /**
+      * @tab Footer
+      * @section footer text
+      * @tip Set the styling for your email's footer text. Choose a size an=
+d color that is easy to read.
+      * @theme footer
+      */
+      .footerContent,
+      .footerContent td {
+        color: #999794;
+        font-family: sans-serif;
+        font-size: 12px;
+        line-height: 18px;
+        text-align: left;
+      }
+
+      /**
+      * @tab Footer
+      * @section footer link
+      * @tip Set the styling for your email's footer links. Choose a color =
+that helps them stand out from your text.
+      */
+      .footerContent a:link, .footerContent a:visited, /* Yahoo! Mail Overr=
+ide */ .footerContent a .yshortcuts /* Yahoo! Mail Override */ {
+        color: #999794;
+        font-weight: normal;
+        text-decoration: underline;
+      }
+
+      .footerContent img {
+        display: inline;
+      }
+
+      /**
+      * @tab Footer
+      * @section utility bar style
+      * @tip Set the background color and border for your email's footer ut=
+ility bar.
+      * @theme footer
+      */
+      #utility {
+        background-color: #F5F7F7;
+        border: 0;
+      }
+
+      /**
+      * @tab Footer
+      * @section utility bar style
+      * @tip Set the background color and border for your email's footer ut=
+ility bar.
+      */
+      #utility div {
+        text-align: center;
+      }
+
+      /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: CONVERSATION HISTORY /\/\/\=
+/\/\/\/\/\/\/\ */
+
+      .message {
+        font-size: 12px;
+        text-align:  left;
+      }
+
+      .message .info {
+        color: #999794;
+        font-style: italic;
+        text-align: left;
+      }
+
+      .message .info.right {
+        text-align: right;
+      }
+
+      .message a:link, .message a:visited, /* Yahoo! Mail Override */ .mess=
+age a .yshortcuts /* Yahoo! Mail Override */ {
+        color: #2d9eb2;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .message .top {
+        line-height:  100%;
+        vertical-align:  top;
+        padding-bottom:  8px;
+      }
+
+      .messageSeparator td {
+        background-color: #FFFFFF
+      }
+     =20
+      .call_to_action_button:active {
+          -webkit-transition: border-bottom-width .5s;
+          transition: border-bottom-width .5s;
+          border-bottom-width: 0;
+      }
+     =20
+
+      /* -------------------------------------------
+          PHONE
+      -------------------------------------------- */
+      @media only screen and (max-width: 600px) {
+
+        #backgroundTable {
+          padding: 0 10px;
+        }
+
+      }
+    </style>
+  </head>
+  <body leftmargin=3D"0" marginwidth=3D"0" topmargin=3D"0" marginheight=3D"=
+0" offset=3D"0" style=3D"width: 100% !important; -webkit-text-size-adjust: =
+none; background-color: #F5F7F7; color: #575553; font-family: sans-serif; f=
+ont-size: 16px; line-height: 1.5; text-align: left; margin: 0; padding: 0;"=
+ bgcolor=3D"#F5F7F7">
+    <center>
+      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" height=3D"100=
+%" width=3D"100%" id=3D"backgroundTable" style=3D"height: 100% !important; =
+width: 100% !important; background-color: #F5F7F7; color: #575553; font-fam=
+ily: sans-serif; font-size: 16px; line-height: 1.5; text-align: left; margi=
+n: 0; padding: 0;" bgcolor=3D"#F5F7F7">
+        <tbody><tr>
+          <td align=3D"center" valign=3D"top" style=3D"border-collapse: col=
+lapse;">
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"600" id=3D"templateContainer" class=3D"w600" style=3D"border: none;">
+              <tbody><tr>
+                <td valign=3D"top" style=3D"border-collapse: collapse;">
+
+                  <!-- // Begin Template Header \\ -->
+                  <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" w=
+idth=3D"600" id=3D"templateHeader" class=3D"w600" style=3D"background-color=
+: #F5F7F7; border-bottom-width: 0;" bgcolor=3D"#F5F7F7">
+                    <tbody><tr>
+                      <td class=3D"headerContent" style=3D"border-collapse:=
+ collapse; font-family: sans-serif; line-height: 100%; text-align: left; ve=
+rtical-align: top; padding: 16px 0;" align=3D"left" valign=3D"top">
+                        <a href=3D"https://e.customeriomail.com/e/c/eyJlbWF=
+pbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGVGNXWHRYYz0iLCJocmVmIj=
+oiaHR0cDovL2RldnBvc3QuY29tIiwiaW50ZXJuYWwiOiIwOGIzMDJhYmE4MDFiYmI5YjMwNCIsI=
+mxpbmtfaWQiOjY1NTE1ODd9/6440210ab2afb7dd40a38196b7460787e731d91ddcfa6f291c5=
+4b9fcb34ff5b0" target=3D"_blank" style=3D"color: #2d9eb2; display: block; f=
+ont-weight: normal; margin-right: 20px; text-decoration: underline; border:=
+ none;"><img src=3D"https://challengepost-assets.s3.amazonaws.com/emails/de=
+vpost-email-logo.png" height=3D"30" style=3D"height: 30px; line-height: 100=
+%; outline: none; text-decoration: none; max-width: 560px; margin: 0; paddi=
+ng: 0; border: 0 none;"/></a>
+                      </td>
+                    </tr>
+                  </tbody></table>
+                  <!-- // End Template Header \\ -->
+
+                </td>
+              </tr>
+              <tr>
+                <td align=3D"center" valign=3D"top" style=3D"border-collaps=
+e: collapse;">
+
+                  <!-- // Begin Template Body \\ -->
+                  <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" w=
+idth=3D"600" id=3D"templateBody" class=3D"w600" style=3D"background-color: =
+#F5F7F7;" bgcolor=3D"#F5F7F7">
+                    <tbody><tr>
+                      <td valign=3D"top" style=3D"border-collapse: collapse=
+;">
+
+                        <!-- // Begin Module: Standard Content \\ -->
+                        <table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"100%">
+                          <tbody><tr>
+                            <td valign=3D"top" class=3D"bodyContent" style=
+=3D"border-collapse: collapse; padding: 0 0 16px;">
+                              <div style=3D"color: #575553; font-family: sa=
+ns-serif; font-size: 16px; line-height: 1.5; text-align: left;" align=3D"le=
+ft">
+                                <style type=3D"text/css">
+
+    .challenge-listing {
+        padding: 10px;
+        margin-bottom: 16px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.1);
+        background-color: #FFFFFF;
+    }
+   =20
+    .challenge-listing .tagline {
+        border-bottom: 1px solid #e6e6e6;
+        padding-bottom: 1rem;
+        line-height: 1.4rem;
+    }
+   =20
+    .challenge-listing .meta-data td {
+        padding: 6px;
+    }
+   =20
+    .challenge-listing .meta-data td:first-child {
+        padding-left: 0;
+        text-transform: uppercase;
+        font-size: 14px;
+        line-height: 14px;
+        padding-top: 10px;
+    }
+   =20
+    .challenge-listing p, .challenge-listing .meta-data td {
+        color: #5a757f;
+    }
+   =20
+    .bodyContent .challenge-listing h2 a {
+        font-size: 18px;
+        font-weight: bold;
+        color: #003e54 !important;
+    }
+   =20
+    .challenge-listing tr {
+        vertical-align: top;
+    }
+   =20
+    .hackathon-button {
+        background: #1f78d1;
+        border-radius: 3px;
+        font-size: 20px;
+        color: #FFFFFF !important;
+        letter-spacing: 0;
+        text-align: center;
+        line-height: 18px;
+        margin: 20px 0 6px;
+        display: block;
+        padding: 25px 10px;
+    }
+   =20
+    .discover-button {
+        background: #44565C;
+        border-radius: 3px;
+        font-size: 16px;
+        color: #FFFFFF !important;
+        letter-spacing: 0;
+        text-align: center;
+        line-height: 18px;
+        margin: 20px 0 6px;
+        display: block;
+        padding: 12px 10px;
+    }
+   =20
+    .challenge-logo {
+        margin-right: 12px;
+    }
+   =20
+    .challenge-logo img {
+        border-radius: 4px;
+        max-width: 100px !important;
+    }
+   =20
+    .hackathon-list {
+        color: #1f78d1 !important;
+        font-style: italic;
+    }
+   =20
+    .hackathon-subdate {
+        color: #5B5B5B;
+        font-size: 14px;
+        font-style: italic;
+    }
+
+    .challenge-listing > table > tr:first-child > td:first-child {
+        width: 110px;
+    }
+
+    .footer-info {
+        color: #5B5B5B;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .social-block{
+        display: inline-block;
+        margin: 10px 20px 0px 0px;
+    }
+</style>&#13;
+&#13;
+<p>&#13;
+&#13;
+    Hey Hato,&#13;
+&#13;
+</p>&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+<!-- Machine Learning/AI -->&#13;
+&#13;
+&#13;
+&#13;
+<!-- Databases -->&#13;
+&#13;
+&#13;
+    &#13;
+    &#13;
+    &#13;
+&#13;
+&#13;
+<!-- Beginner Friendly -->&#13;
+&#13;
+&#13;
+&#13;
+<!-- Plotly --> &#13;
+&#13;
+&#13;
+&#13;
+<!-- Google --> &#13;
+&#13;
+&#13;
+&#13;
+<!-- AWS --> &#13;
+&#13;
+&#13;
+&#13;
+<!-- Polkadot --> &#13;
+&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+    <p>We found some virtual hackathons you might like based on your intere=
+sts! &#13;
+    </p>&#13;
+    <p>Check them out and be sure to <a href=3D"https://e.customeriomail.co=
+m/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGVGNXWHRYY=
+z0iLCJocmVmIjoiaHR0cHM6Ly9kZXZwb3N0LmNvbS9zZXR0aW5ncy9wcmVmZXJlbmNlc19hbmRf=
+ZWxpZ2liaWxpdHk_dXRtX3NvdXJjZT1kZXZwb3N0XHUwMDI2dXRtX21lZGl1bT1hbGVydFx1MDA=
+yNnV0bV9jb250ZW50PTIwMjUwOTI2X2FsbGludGVyZXN0IiwiaW50ZXJuYWwiOiIwOGIzMDJhYm=
+E4MDFiYmI5YjMwNCIsImxpbmtfaWQiOjM1MjYxNTIxfQ/f39cfdd9bfa7ae42f158cfacffb146=
+3d27e589cb80cd598d36b514d4c992ec69" style=3D"color: #1F96DB; font-weight: n=
+ormal; text-decoration: none;">update your profile</a> so we can keep you i=
+nformed about hackathons you care about:&#13;
+    </p>&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+<div class=3D"challenge-listing" style=3D"color: #575553; font-family: sans=
+-serif; font-size: 16px; line-height: 1.5; text-align: left; margin-bottom:=
+ 16px; border-radius: 6px; box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.1); b=
+ackground-color: #FFFFFF; padding: 10px; border: 1px solid #ddd;" align=3D"=
+left">&#13;
+    <table style=3D"width: 100%;">&#13;
+        <tbody><tr style=3D"vertical-align: top;">&#13;
+            <td rowspan=3D"2" style=3D"border-collapse: collapse; width: 11=
+0px;">&#13;
+                <a href=3D"https://e.customeriomail.com/e/c/eyJlbWFpbF9pZCI=
+6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGVGNXWHRYYz0iLCJocmVmIjoiaHR0cH=
+M6Ly9haS1hY2NlbGVyYXRlLmRldnBvc3QuY29tLz91dG1fc291cmNlPWRldnBvc3RcdTAwMjZ1d=
+G1fbWVkaXVtPWFsZXJ0XHUwMDI2dXRtX2NhbXBhaWduPTIwMjUwOTI2X2FsbGludGVyZXN0Iiwi=
+aW50ZXJuYWwiOiIwOGIzMDJhYmE4MDFiYmI5YjMwNCIsImxpbmtfaWQiOjM1MjYxNTI5fQ/a676=
+5dbd8b2d1cca35ce64621691f78453833ff6d6f2f57329bc671a66271d29" class=3D"chal=
+lenge-logo" style=3D"color: #1F96DB; font-weight: normal; text-decoration: =
+none; margin-right: 12px;">&#13;
+                        <img src=3D"https://d112y698adiu2z.cloudfront.net/p=
+hotos/production/challenge_thumbnails/003/751/527/datas/medium_square.jpg" =
+alt=3D"AI Accelerate: Unlocking New Frontiers" width=3D"150px" style=3D"hei=
+ght: auto; line-height: 100%; outline: none; text-decoration: none; max-wid=
+th: 100px !important; display: inline; border-radius: 4px; border: 0;"/>&#1=
+3;
+                </a>&#13;
+            </td>&#13;
+            <td valign=3D"top" style=3D"border-collapse: collapse;">&#13;
+                <h2 style=3D"color: #003e54; display: block; font-family: s=
+ans-serif; font-size: 24px; font-weight: bold; line-height: 100%; text-alig=
+n: left; margin: 0 0 10px;" align=3D"left"><a href=3D"https://e.customeriom=
+ail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGVGN=
+XWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly9haS1hY2NlbGVyYXRlLmRldnBvc3QuY29tLz91dG1fc2=
+91cmNlPWRldnBvc3RcdTAwMjZ1dG1fbWVkaXVtPWFsZXJ0XHUwMDI2dXRtX2NhbXBhaWduPTIwM=
+jUwOTI2X2FsbGludGVyZXN0IiwiaW50ZXJuYWwiOiIwOGIzMDJhYmE4MDFiYmI5YjMwNCIsImxp=
+bmtfaWQiOjM1MjYxNTI5fQ/a6765dbd8b2d1cca35ce64621691f78453833ff6d6f2f57329bc=
+671a66271d29" target=3D"blank" style=3D"color: #003e54 !important; font-wei=
+ght: bold; text-decoration: none; font-size: 18px;">AI Accelerate: Unlockin=
+g New Frontiers</a></h2>&#13;
+<p class=3D"tagline" style=3D"border-bottom-style: solid; border-bottom-col=
+or: #e6e6e6; border-bottom-width: 1px; padding-bottom: 1rem; line-height: 1=
+=2E4rem; color: #5a757f;">By Google</p>&#13;
+                                <table class=3D"meta-data">&#13;
+  <tbody><tr style=3D"vertical-align: top;">&#13;
+                        <td style=3D"border-collapse: collapse; text-transf=
+orm: uppercase; font-size: 14px; line-height: 14px; color: #5a757f; padding=
+: 10px 6px 6px 0;">Prizes</td>&#13;
+                        <td style=3D"border-collapse: collapse; color: #5a7=
+57f; padding: 6px;">&#13;
+                            $50,000 in cash&#13;
+</td>&#13;
+                    </tr>&#13;
+<tr style=3D"vertical-align: top;">&#13;
+                        <td style=3D"border-collapse: collapse; text-transf=
+orm: uppercase; font-size: 14px; line-height: 14px; color: #5a757f; padding=
+: 10px 6px 6px 0;">Deadline</td>&#13;
+                        <td style=3D"border-collapse: collapse; color: #5a7=
+57f; padding: 6px;">&#13;
+                           October 24, 2025&#13;
+</td>&#13;
+                    </tr>&#13;
+<tr style=3D"vertical-align: top;">&#13;
+                        <td style=3D"border-collapse: collapse; text-transf=
+orm: uppercase; font-size: 14px; line-height: 14px; color: #5a757f; padding=
+: 10px 6px 6px 0;">Eligibility Note</td>&#13;
+                        <td style=3D"border-collapse: collapse; color: #5a7=
+57f; padding: 6px;">&#13;
+                           Specific countries/territories excluded. <a href=
+=3D"https://e.customeriomail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bX=
+pCQUdaa1pmamh5N013b0lGVGNXWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly9haS1hY2NlbGVyYXRlL=
+mRldnBvc3QuY29tL3J1bGVzLz91dG1fc291cmNlPWRldnBvc3RcdTAwMjZ1dG1fbWVkaXVtPWFs=
+ZXJ0XHUwMDI2dXRtX2NhbXBhaWduPTIwMjUwOTI2X2FsbGludGVyZXN0IiwiaW50ZXJuYWwiOiI=
+wOGIzMDJhYmE4MDFiYmI5YjMwNCIsImxpbmtfaWQiOjM1MjYxNTM3fQ/66e8e77ce127808992f=
+7d8a6d28e69d3953714e7cc10d2e205bb1c73e3a6d91b" style=3D"color: #1F96DB; fon=
+t-weight: normal; text-decoration: none;">See rules for details</a>&#13;
+</td>&#13;
+                    </tr>&#13;
+                    <tr style=3D"vertical-align: top;">&#13;
+                        <td style=3D"border-collapse: collapse; text-transf=
+orm: uppercase; font-size: 14px; line-height: 14px; color: #5a757f; padding=
+: 10px 6px 6px 0;">Learn</td>&#13;
+                        <td style=3D"border-collapse: collapse; color: #5a7=
+57f; padding: 6px;">&#13;
+                           Open Ended, Databases, Machine Learning/AI&#13;
+                        </td>&#13;
+                    </tr>&#13;
+    </tbody></table>&#13;
+                  <a class=3D"hackathon-button" href=3D"https://e.customeri=
+omail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGV=
+GNXWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly9haS1hY2NlbGVyYXRlLmRldnBvc3QuY29tLz91dG1f=
+c291cmNlPWRldnBvc3RcdTAwMjZ1dG1fbWVkaXVtPWFsZXJ0XHUwMDI2dXRtX2NhbXBhaWduPTI=
+wMjUwOTI2X2FsbGludGVyZXN0IiwiaW50ZXJuYWwiOiIwOGIzMDJhYmE4MDFiYmI5YjMwNCIsIm=
+xpbmtfaWQiOjM1MjYxNTI5fQ/a6765dbd8b2d1cca35ce64621691f78453833ff6d6f2f57329=
+bc671a66271d29" style=3D"color: #FFFFFF !important; font-weight: normal; te=
+xt-decoration: none; background-color: #1f78d1; border-radius: 3px; font-si=
+ze: 20px; letter-spacing: 0; text-align: center; line-height: 18px; display=
+: block; margin: 20px 0 6px; padding: 25px 10px;">Join Hackathon</a>&#13;
+            </td>&#13;
+        </tr>&#13;
+    </tbody></table>&#13;
+</div>&#13;
+&#13;
+&#13;
+&#13;
+<div class=3D"challenge-listing" style=3D"color: #575553; font-family: sans=
+-serif; font-size: 16px; line-height: 1.5; text-align: left; margin-bottom:=
+ 16px; border-radius: 6px; box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.1); b=
+ackground-color: #FFFFFF; padding: 10px; border: 1px solid #ddd;" align=3D"=
+left">&#13;
+    <table style=3D"width: 100%;">&#13;
+        <tbody><tr style=3D"vertical-align: top;">&#13;
+            <td rowspan=3D"2" style=3D"border-collapse: collapse; width: 11=
+0px;">&#13;
+                <a href=3D"https://e.customeriomail.com/e/c/eyJlbWFpbF9pZCI=
+6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGVGNXWHRYYz0iLCJocmVmIjoiaHR0cH=
+M6Ly9yaWZ0cmV3aW5kLmRldnBvc3QuY29tLz91dG1fc291cmNlPWRldnBvc3RcdTAwMjZ1dG1fb=
+WVkaXVtPWFsZXJ0XHUwMDI2dXRtX2NhbXBhaWduPTIwMjUwOTI2X2FsbGludGVyZXN0IiwiaW50=
+ZXJuYWwiOiIwOGIzMDJhYmE4MDFiYmI5YjMwNCIsImxpbmtfaWQiOjM1MjYxNTMyfQ/679747ae=
+d0a32248e837a4dd5dba094a1f045b17655452b3f967f266ffe87f53" class=3D"challeng=
+e-logo" style=3D"color: #1F96DB; font-weight: normal; text-decoration: none=
+; margin-right: 12px;">&#13;
+                        <img src=3D"https://d112y698adiu2z.cloudfront.net/p=
+hotos/production/challenge_thumbnails/003/715/081/datas/medium_square.png" =
+alt=3D"Rift Rewind Hackathon" width=3D"150px" style=3D"height: auto; line-h=
+eight: 100%; outline: none; text-decoration: none; max-width: 100px !import=
+ant; display: inline; border-radius: 4px; border: 0;"/>&#13;
+                </a>&#13;
+            </td>&#13;
+            <td valign=3D"top" style=3D"border-collapse: collapse;">&#13;
+                <h2 style=3D"color: #003e54; display: block; font-family: s=
+ans-serif; font-size: 24px; font-weight: bold; line-height: 100%; text-alig=
+n: left; margin: 0 0 10px;" align=3D"left"><a href=3D"https://e.customeriom=
+ail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGVGN=
+XWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly9yaWZ0cmV3aW5kLmRldnBvc3QuY29tLz91dG1fc291cm=
+NlPWRldnBvc3RcdTAwMjZ1dG1fbWVkaXVtPWFsZXJ0XHUwMDI2dXRtX2NhbXBhaWduPTIwMjUwO=
+TI2X2FsbGludGVyZXN0IiwiaW50ZXJuYWwiOiIwOGIzMDJhYmE4MDFiYmI5YjMwNCIsImxpbmtf=
+aWQiOjM1MjYxNTMyfQ/679747aed0a32248e837a4dd5dba094a1f045b17655452b3f967f266=
+ffe87f53" target=3D"blank" style=3D"color: #003e54 !important; font-weight:=
+ bold; text-decoration: none; font-size: 18px;">Rift Rewind Hackathon</a></=
+h2>&#13;
+<p class=3D"tagline" style=3D"border-bottom-style: solid; border-bottom-col=
+or: #e6e6e6; border-bottom-width: 1px; padding-bottom: 1rem; line-height: 1=
+=2E4rem; color: #5a757f;">By Amazon</p>&#13;
+                                <table class=3D"meta-data">&#13;
+  <tbody><tr style=3D"vertical-align: top;">&#13;
+                        <td style=3D"border-collapse: collapse; text-transf=
+orm: uppercase; font-size: 14px; line-height: 14px; color: #5a757f; padding=
+: 10px 6px 6px 0;">Prizes</td>&#13;
+                        <td style=3D"border-collapse: collapse; color: #5a7=
+57f; padding: 6px;">&#13;
+                            $26,000 in cash&#13;
+</td>&#13;
+                    </tr>&#13;
+<tr style=3D"vertical-align: top;">&#13;
+                        <td style=3D"border-collapse: collapse; text-transf=
+orm: uppercase; font-size: 14px; line-height: 14px; color: #5a757f; padding=
+: 10px 6px 6px 0;">Deadline</td>&#13;
+                        <td style=3D"border-collapse: collapse; color: #5a7=
+57f; padding: 6px;">&#13;
+                           November 10, 2025&#13;
+</td>&#13;
+                    </tr>&#13;
+<tr style=3D"vertical-align: top;">&#13;
+                        <td style=3D"border-collapse: collapse; text-transf=
+orm: uppercase; font-size: 14px; line-height: 14px; color: #5a757f; padding=
+: 10px 6px 6px 0;">Eligibility Note</td>&#13;
+                        <td style=3D"border-collapse: collapse; color: #5a7=
+57f; padding: 6px;">&#13;
+                           Specific countries/territories excluded. <a href=
+=3D"https://e.customeriomail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bX=
+pCQUdaa1pmamh5N013b0lGVGNXWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly9yaWZ0cmV3aW5kLmRld=
+nBvc3QuY29tL3J1bGVzLz91dG1fc291cmNlPWRldnBvc3RcdTAwMjZ1dG1fbWVkaXVtPWFsZXJ0=
+XHUwMDI2dXRtX2NhbXBhaWduPTIwMjUwOTI2X2FsbGludGVyZXN0IiwiaW50ZXJuYWwiOiIwOGI=
+zMDJhYmE4MDFiYmI5YjMwNCIsImxpbmtfaWQiOjM1MjYxNTM4fQ/f95ee1229f34a9148469c0a=
+6e547f6c09d5d3385808b39af1c0200532612dd0a" style=3D"color: #1F96DB; font-we=
+ight: normal; text-decoration: none;">See rules for details</a>&#13;
+</td>&#13;
+                    </tr>&#13;
+                    <tr style=3D"vertical-align: top;">&#13;
+                        <td style=3D"border-collapse: collapse; text-transf=
+orm: uppercase; font-size: 14px; line-height: 14px; color: #5a757f; padding=
+: 10px 6px 6px 0;">Learn</td>&#13;
+                        <td style=3D"border-collapse: collapse; color: #5a7=
+57f; padding: 6px;">&#13;
+                           Machine Learning/AI, Databases, Gaming&#13;
+                        </td>&#13;
+                    </tr>&#13;
+    </tbody></table>&#13;
+                  <a class=3D"hackathon-button" href=3D"https://e.customeri=
+omail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGV=
+GNXWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly9yaWZ0cmV3aW5kLmRldnBvc3QuY29tLz91dG1fc291=
+cmNlPWRldnBvc3RcdTAwMjZ1dG1fbWVkaXVtPWFsZXJ0XHUwMDI2dXRtX2NhbXBhaWduPTIwMjU=
+wOTI2X2FsbGludGVyZXN0IiwiaW50ZXJuYWwiOiIwOGIzMDJhYmE4MDFiYmI5YjMwNCIsImxpbm=
+tfaWQiOjM1MjYxNTMyfQ/679747aed0a32248e837a4dd5dba094a1f045b17655452b3f967f2=
+66ffe87f53" style=3D"color: #FFFFFF !important; font-weight: normal; text-d=
+ecoration: none; background-color: #1f78d1; border-radius: 3px; font-size: =
+20px; letter-spacing: 0; text-align: center; line-height: 18px; display: bl=
+ock; margin: 20px 0 6px; padding: 25px 10px;">Join Hackathon</a>&#13;
+            </td>&#13;
+        </tr>&#13;
+    </tbody></table>&#13;
+</div>&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+<p>&#13;
+Good luck,<br/>&#13;
+Cassie</p>&#13;
+<br/>&#13;
+        <hr/>&#13;
+        <h1 style=3D"color: #003e54; display: block; font-family: sans-seri=
+f; font-size: 26px; font-weight: bold; line-height: 100%; text-align: left;=
+ margin: 25px 0 12px;" align=3D"left">Other Great Hackathons</h1>&#13;
+<ul style=3D"margin-top: 0; margin-bottom: 0;">&#13;
+<li><span class=3D"hackathon-subdate" style=3D"color: #5B5B5B; font-size: 1=
+4px; font-style: italic;">Sep 30</span> -&#13;
+                    <a class=3D"hackathon-list" href=3D"https://e.customeri=
+omail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGV=
+GNXWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly9yZXZlbnVlY2F0LXNoaXBhdG9uLTIwMjUuZGV2cG9z=
+dC5jb20vP3V0bV9zb3VyY2U9ZGV2cG9zdFx1MDAyNnV0bV9tZWRpdW09YWxlcnRcdTAwMjZ1dG1=
+fY2FtcGFpZ249MjAyNTA5MjZfYWxsaW50ZXJlc3QiLCJpbnRlcm5hbCI6IjA4YjMwMmFiYTgwMW=
+JiYjliMzA0IiwibGlua19pZCI6MzUyNjE1MjN9/63f92b7f405e165c20456e011c4fe5689089=
+ebd6e013f1d63d1cdc77ce257d24" style=3D"color: #1f78d1 !important; font-weig=
+ht: normal; text-decoration: none; font-style: italic;">Revenuecat Shipaton=
+ 2025 by RevenueCat</a>&#13;
+</li>&#13;
+<li><span class=3D"hackathon-subdate" style=3D"color: #5B5B5B; font-size: 1=
+4px; font-style: italic;">Sep 30</span> -&#13;
+                    <a class=3D"hackathon-list" href=3D"https://e.customeri=
+omail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGV=
+GNXWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly9zdG9yeWJsb2stY29kZS1jb2ZmZWUuZGV2cG9zdC5j=
+b20vP3V0bV9zb3VyY2U9ZGV2cG9zdFx1MDAyNnV0bV9tZWRpdW09YWxlcnRcdTAwMjZ1dG1fY2F=
+tcGFpZ249MjAyNTA5MjZfYWxsaW50ZXJlc3QiLCJpbnRlcm5hbCI6IjA4YjMwMmFiYTgwMWJiYj=
+liMzA0IiwibGlua19pZCI6MzUyNjE1MjR9/1b1c526bc17ebe038d301e663fcd71da56490e29=
+2246587488e5b066cdaca3d4" style=3D"color: #1f78d1 !important; font-weight: =
+normal; text-decoration: none; font-style: italic;">Storyblok x Code and Co=
+ffee Hackathon 2025 by StoryBlok</a>&#13;
+</li>&#13;
+&#13;
+<li><span class=3D"hackathon-subdate" style=3D"color: #5B5B5B; font-size: 1=
+4px; font-style: italic;">Oct 6</span> -&#13;
+	<a class=3D"hackathon-list" href=3D"https://e.customeriomail.com/e/c/eyJlb=
+WFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGVGNXWHRYYz0iLCJocmVm=
+IjoiaHR0cHM6Ly9hbmFseXRpY3MtdmliZWF0aG9uLmRldnBvc3QuY29tLz91dG1fc291cmNlPWR=
+ldnBvc3RcdTAwMjZ1dG1fbWVkaXVtPWFsZXJ0XHUwMDI2dXRtX2NhbXBhaWduPTIwMjUwOTI2X2=
+FsbGludGVyZXN0IiwiaW50ZXJuYWwiOiIwOGIzMDJhYmE4MDFiYmI5YjMwNCIsImxpbmtfaWQiO=
+jM1MjYxNTI1fQ/6ae97a633a9b820383f468862dde8468dd13be9965fc06ea519c57f397b0b=
+7a6" style=3D"color: #1f78d1 !important; font-weight: normal; text-decorati=
+on: none; font-style: italic;">Plotly Analytics Vibe-a-Thon by Plotly</a>&#=
+13;
+</li>&#13;
+&#13;
+<li><span class=3D"hackathon-subdate" style=3D"color: #5B5B5B; font-size: 1=
+4px; font-style: italic;">Oct 6</span> -&#13;
+                    <a class=3D"hackathon-list" href=3D"https://e.customeri=
+omail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGV=
+GNXWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly9iYXNlbGluZS5kZXZwb3N0LmNvbS8_dXRtX3NvdXJj=
+ZT1kZXZwb3N0XHUwMDI2dXRtX21lZGl1bT1hbGVydFx1MDAyNnV0bV9jYW1wYWlnbj0yMDI1MDk=
+yNl9hbGxpbnRlcmVzdCIsImludGVybmFsIjoiMDhiMzAyYWJhODAxYmJiOWIzMDQiLCJsaW5rX2=
+lkIjozNTI2MTUyNn0/bdc47ad3d2dc823dff63c24ddc9aa506c35b142adfb866192f7b20f6e=
+cf871ca" style=3D"color: #1f78d1 !important; font-weight: normal; text-deco=
+ration: none; font-style: italic;">Baseline Tooling Hackathon by Google</a>=
+&#13;
+</li>&#13;
+<li><span class=3D"hackathon-subdate" style=3D"color: #5B5B5B; font-size: 1=
+4px; font-style: italic;">Oct 15</span> -&#13;
+                    <a class=3D"hackathon-list" href=3D"https://e.customeri=
+omail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGV=
+GNXWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly9yZXNvbHZlLXN0YXJrbmV0LmRldnBvc3QuY29tLz91=
+dG1fc291cmNlPWRldnBvc3RcdTAwMjZ1dG1fbWVkaXVtPWFsZXJ0XHUwMDI2dXRtX2NhbXBhaWd=
+uPTIwMjUwOTI2X2FsbGludGVyZXN0IiwiaW50ZXJuYWwiOiIwOGIzMDJhYmE4MDFiYmI5YjMwNC=
+IsImxpbmtfaWQiOjM1MjYxNTI3fQ/51b35afb1e8d27488a7dbc0ed90bc11df39c917fec2aff=
+7aec74293393050510" style=3D"color: #1f78d1 !important; font-weight: normal=
+; text-decoration: none; font-style: italic;">Starknet Re{Solve} Hackathon =
+by Starknet Foundation</a>&#13;
+</li>&#13;
+<li><span class=3D"hackathon-subdate" style=3D"color: #5B5B5B; font-size: 1=
+4px; font-style: italic;">Oct 20</span> -&#13;
+                    <a class=3D"hackathon-list" href=3D"https://e.customeri=
+omail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGV=
+GNXWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly9hd3MtYWdlbnQtaGFja2F0aG9uLmRldnBvc3QuY29t=
+Lz91dG1fc291cmNlPWRldnBvc3RcdTAwMjZ1dG1fbWVkaXVtPWFsZXJ0XHUwMDI2dXRtX2NhbXB=
+haWduPTIwMjUwOTI2X2FsbGludGVyZXN0IiwiaW50ZXJuYWwiOiIwOGIzMDJhYmE4MDFiYmI5Yj=
+MwNCIsImxpbmtfaWQiOjM1MjYxNTI4fQ/8b38c121480115266df2d41fca78f654c976d37942=
+d42df7936f2a35b2e823c4" style=3D"color: #1f78d1 !important; font-weight: no=
+rmal; text-decoration: none; font-style: italic;">AWS AI Agent Global Hacka=
+thon by AWS</a>&#13;
+</li>&#13;
+&#13;
+<li><span class=3D"hackathon-subdate" style=3D"color: #5B5B5B; font-size: 1=
+4px; font-style: italic;">Oct 31</span> -&#13;
+                    <a class=3D"hackathon-list" href=3D"https://e.customeri=
+omail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGV=
+GNXWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly9nb29nbGVjaHJvbWVhaTIwMjUuZGV2cG9zdC5jb20v=
+P3V0bV9zb3VyY2U9ZGV2cG9zdFx1MDAyNnV0bV9tZWRpdW09YWxlcnRcdTAwMjZ1dG1fY2FtcGF=
+pZ249MjAyNTA5MjZfYWxsaW50ZXJlc3QiLCJpbnRlcm5hbCI6IjA4YjMwMmFiYTgwMWJiYjliMz=
+A0IiwibGlua19pZCI6MzUyNjE1MzB9/002eb7c74b63e2514466e85298496f4d7284dd685181=
+449cbe593638ae6f7fbe" style=3D"color: #1f78d1 !important; font-weight: norm=
+al; text-decoration: none; font-style: italic;">Google Chrome Built-in AI C=
+hallenge 2025 by Google</a>&#13;
+</li>&#13;
+<li><span class=3D"hackathon-subdate" style=3D"color: #5B5B5B; font-size: 1=
+4px; font-style: italic;">Nov 3</span> -&#13;
+                    <a class=3D"hackathon-list" href=3D"https://e.customeri=
+omail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGV=
+GNXWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly9jaHJvbWFhd2FyZHMuZGV2cG9zdC5jb20vP3V0bV9z=
+b3VyY2U9ZGV2cG9zdFx1MDAyNnV0bV9tZWRpdW09YWxlcnRcdTAwMjZ1dG1fY2FtcGFpZ249MjA=
+yNTA5MjZfYWxsaW50ZXJlc3QiLCJpbnRlcm5hbCI6IjA4YjMwMmFiYTgwMWJiYjliMzA0IiwibG=
+lua19pZCI6MzUyNjE1MzF9/ed0ae0db538102a9a935d0e84d92781dcbb960d018becb405430=
+782c31a7f08f" style=3D"color: #1f78d1 !important; font-weight: normal; text=
+-decoration: none; font-style: italic;">Chroma Awards: AI Film, Music Video=
+s, and Games by ElevenLabs</a>&#13;
+</li>&#13;
+&#13;
+&#13;
+<li><span class=3D"hackathon-subdate" style=3D"color: #5B5B5B; font-size: 1=
+4px; font-style: italic;">Nov 17</span> -&#13;
+	<a class=3D"hackathon-list" href=3D"https://e.customeriomail.com/e/c/eyJlb=
+WFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGVGNXWHRYYz0iLCJocmVm=
+IjoiaHR0cHM6Ly9wb2xrYWRvdC5kZXZwb3N0LmNvbS8_dXRtX3NvdXJjZT1kZXZwb3N0XHUwMDI=
+2dXRtX21lZGl1bT1hbGVydFx1MDAyNnV0bV9jYW1wYWlnbj0yMDI1MDkyNl9hbGxpbnRlcmVzdC=
+IsImludGVybmFsIjoiMDhiMzAyYWJhODAxYmJiOWIzMDQiLCJsaW5rX2lkIjozNTI2MTUyMn0/f=
+d97509654319bbc108ff011eb060dda30620a6c6a39c51f50e16993c068a650" style=3D"c=
+olor: #1f78d1 !important; font-weight: normal; text-decoration: none; font-=
+style: italic;">Build Resilient Apps with Polkadot Cloud by POLKADOT</a></l=
+i>&#13;
+</ul>&#13;
+&#13;
+<br/>&#13;
+<hr/>&#13;
+<p class=3D"footer-info" style=3D"color: #5B5B5B; font-size: 16px; text-ali=
+gn: center;" align=3D"center">Learn more about hackathons - join our Discor=
+d and connect with us on social.</p>&#13;
+<center>&#13;
+<div class=3D"social-block" style=3D"color: #575553; font-family: sans-seri=
+f; font-size: 16px; line-height: 1.5; text-align: left; display: inline-blo=
+ck; margin: 10px 20px 0px 0px;" align=3D"left"><a href=3D"https://e.custome=
+riomail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0l=
+GVGNXWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly9kZXZwb3N0LnVzMi5saXN0LW1hbmFnZS5jb20vdH=
+JhY2svY2xpY2s_dT00ODEyZDNiMmI0OGY1N2MzODA3MGQ2MmU3XHUwMDI2aWQ9ZjQwYThjYjlmM=
+lx1MDAyNmU9ODdhOTkwYjdkOT0yMDI1MDkyNl9hbGxpbnRlcmVzdCIsImludGVybmFsIjoiMDhi=
+MzAyYWJhODAxYmJiOWIzMDQiLCJsaW5rX2lkIjozNTI2MTUzM30/448db32a810d89c23a37f6b=
+b91290c5f1e56da2cc0111ba271a0b9fd83329d71" style=3D"color: #1F96DB; font-we=
+ight: normal; text-decoration: none;">&#13;
+                        <img src=3D"https://userimg-assets.customeriomail.c=
+om/images/client-env-8/1701979713105_discord-mark-blue_01HH2YAVKK41F333Z2G9=
+SKQ6V8.png" alt=3D"Devpost Discord" width=3D"30px" style=3D"height: auto; l=
+ine-height: 100%; outline: none; text-decoration: none; max-width: 560px; d=
+isplay: inline; border: 0;"/></a>&#13;
+</div>&#13;
+<div class=3D"social-block" style=3D"color: #575553; font-family: sans-seri=
+f; font-size: 16px; line-height: 1.5; text-align: left; display: inline-blo=
+ck; margin: 10px 20px 0px 0px;" align=3D"left"><a href=3D"https://e.custome=
+riomail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0l=
+GVGNXWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2NvbXBhbnkvZGV2cG=
+9zdC8_dXRtX3NvdXJjZT1kZXZwb3N0XHUwMDI2dXRtX21lZGl1bT1hbGVydFx1MDAyNnV0bV9jY=
+W1wYWlnbj0yMDI1MDkyNl9hbGxpbnRlcmVzdCIsImludGVybmFsIjoiMDhiMzAyYWJhODAxYmJi=
+OWIzMDQiLCJsaW5rX2lkIjozNTI2MTUzNH0/b633d096ace425c65e33cb776cd87c88426bc49=
+7b1869f4bf35e8fd3fe9726f9" style=3D"color: #1F96DB; font-weight: normal; te=
+xt-decoration: none;">&#13;
+                        <img src=3D"https://userimg-assets.customeriomail.c=
+om/images/client-env-8/1683891400341_In-Blue-72_01H07VZCHG8P9M4ZPG5RSCYM1T.=
+png" alt=3D"Devpost Linkedin" width=3D"30px" style=3D"height: auto; line-he=
+ight: 100%; outline: none; text-decoration: none; max-width: 560px; display=
+: inline; border: 0;"/></a>&#13;
+</div>&#13;
+<div class=3D"social-block" style=3D"color: #575553; font-family: sans-seri=
+f; font-size: 16px; line-height: 1.5; text-align: left; display: inline-blo=
+ck; margin: 10px 20px 0px 0px;" align=3D"left"><a href=3D"https://e.custome=
+riomail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0l=
+GVGNXWHRYYz0iLCJocmVmIjoiaHR0cHM6Ly90d2l0dGVyLmNvbS9kZXZwb3N0Lz91dG1fc291cm=
+NlPWRldnBvc3RcdTAwMjZ1dG1fbWVkaXVtPWFsZXJ0XHUwMDI2dXRtX2NhbXBhaWduPTIwMjUwO=
+TI2X2FsbGludGVyZXN0IiwiaW50ZXJuYWwiOiIwOGIzMDJhYmE4MDFiYmI5YjMwNCIsImxpbmtf=
+aWQiOjM1MjYxNTM1fQ/21db5e556c1f540be788dab0c47b677ac390cbbafa5c38dc16a68a3e=
+2c14544f" style=3D"color: #1F96DB; font-weight: normal; text-decoration: no=
+ne;">&#13;
+                        <img src=3D"https://userimg-assets.customeriomail.c=
+om/images/client-env-8/1693580581322_logo-black_01H98M9PMT0GMB042DWR2HFXDG.=
+png" alt=3D"Devpost X" width=3D"30px" style=3D"height: auto; line-height: 1=
+00%; outline: none; text-decoration: none; max-width: 560px; display: inlin=
+e; border: 0;"/></a>&#13;
+</div>&#13;
+</center>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <!-- // Call To Action \\ -->
+                         =20
+                          <!-- // End Call To Action \\ -->
+
+                        </tbody></table>
+                        <!-- // End Module: Standard Content \\ -->
+
+                      </td>
+                    </tr>
+                  </tbody></table>
+                  <!-- // End Template Body \\ -->
+                </td>
+              </tr>
+            </tbody></table>
+
+            <br/>
+
+            <!-- // Begin Template Footer \\ -->
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"600" id=3D"templateFooter" class=3D"w600" style=3D"background-color: #F=
+5F7F7; border-top-width: 0;" bgcolor=3D"#F5F7F7">
+              <tbody><tr>
+                <td valign=3D"top" class=3D"footerContent" style=3D"border-=
+collapse: collapse; border-top-width: 2px; border-top-color: #e6e6e6; borde=
+r-top-style: solid; color: #999794; font-family: sans-serif; font-size: 12p=
+x; line-height: 18px; text-align: left; padding: 20px 0;" align=3D"left">
+
+                  <!-- // Begin Module: Transactional Footer \\ -->
+                  <table border=3D"0" cellpadding=3D"10" cellspacing=3D"0" =
+width=3D"100%">
+                    <tbody><tr>
+                      <td valign=3D"top" style=3D"border-collapse: collapse=
+; color: #999794; font-family: sans-serif; font-size: 12px; line-height: 18=
+px; text-align: left; padding: 0;" align=3D"left">
+                        =C2=A9 2025 Devpost, Inc. All rights reserved.=20
+                       =20
+                          <a target=3D"_blank" href=3D"https://e.customerio=
+mail.com/e/c/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dWJNRXU3bXpCQUdaa1pmamh5N013b0lGVG=
+NXWHRYYz0iLCJocmVmIjoiaHR0cDovL2RldnBvc3QuY29tL25vdGlmaWNhdGlvbl9zdWJzY3Jpc=
+HRpb25zL0ptblk3MGs4QVNZSGtwODdURnlpS2ciLCJpbnRlcm5hbCI6IjA4YjMwMmFiYTgwMWJi=
+YjliMzA0IiwibGlua19pZCI6MzUyMDU5Njl9/859c9001c4895d557e9b1a77daf82b55223ef2=
+6a77ac57d52d104f60dd4cb343" style=3D"color: #999794; font-weight: normal; t=
+ext-decoration: underline;">Edit your notification settings</a>.
+                       =20
+                        <br/><br/>
+                      </td>
+                    </tr>
+                  </tbody></table>
+                  <!-- // End Module: Transactional Footer \\ -->
+
+                </td>
+              </tr>
+            </tbody></table>
+            <!-- // End Template Footer \\ -->
+
+          </td>
+        </tr>
+      </tbody></table>
+    </center>
+ =20
+
+<img src=3D"https://e.customeriomail.com/e/o/eyJlbWFpbF9pZCI6ImRnUUlBd0M3dW=
+JNRXU3bXpCQUdaa1pmamh5N013b0lGVGNXWHRYYz0ifQ=3D=3D" style=3D"height: 1px !i=
+mportant; max-height: 1px !important; max-width: 1px !important; width: 1px=
+ !important; display: none !important;" alt=3D""/></body></html>
+--eec73fc9e8035a74ce99755d5adef8211b328568b42d0c10b822695e94b9--
